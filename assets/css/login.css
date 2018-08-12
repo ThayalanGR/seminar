@@ -1,0 +1,59 @@
+
+
+body {
+    width: 100%;
+    height: auto;
+    background-color:#f3f3f3;
+}
+
+#saraLogo {
+    max-width:60px;
+    max-height:60px;
+}
+
+
+@media only screen and (max-width: 620px) {
+    
+#saraLogo {
+    max-width:40px;
+    max-height:40px;
+}
+
+#heading {
+    font-size:18px;
+}
+#subheading {
+    font-size: 13px;
+}
+}
+
+@media only screen and (max-width: 940px) {
+    
+    #saraLogo {
+        max-width:40px;
+        max-height:40px;
+    }
+    
+    #heading {
+        font-size:18px;
+    }
+    #subheading {
+        font-size: 13px;
+    }
+    }
+    
+    @media only screen and (max-width: 425px) {
+    
+        #saraLogo {
+            max-width:30px;
+            max-height:30px;
+        }
+        
+        #heading {
+            font-size:16px;
+        }
+        #subheading {
+            font-size: 11px;
+        }
+        }
+        
