@@ -72,7 +72,7 @@ function updatePassword(userId, pass1) {
             <p>please wait,redirecting you to homepage</p> `
 
             $('#passwordModal').modal('show')
-
+            window.location.href="http://localhost/seminar/restapi/journals/journals.php?uid=" + userId;
             setInterval(function() {
                 $('#passwordModal').modal('hide')
             }, 5000)
