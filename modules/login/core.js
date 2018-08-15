@@ -6,11 +6,20 @@ const notifyCloseRef = document.getElementById('notifyCloseButton')
 
 function parseValidationResult(result) {
 
+
     if(result.response[0].oAuth){
         localStorage.setItem('token', result.response[0].token)
-        localStorage.setItem('uname', textRef.value)
-        localStorage.setItem('initial', result.response[0].initial)
-        window.location.href = "http://localhost/seminar/modules/home/"
+        localStorage.setItem("uname" , result.response[0].uname)
+        localStorage.setItem("initial",  result.response[0].initial)
+        localStorage.setItem("roleId",  result.response[0].roleId)
+        localStorage.setItem("deptId",  result.response[0].deptId)
+        localStorage.setItem("emailId",  result.response[0].email)
+        if(result.response[0].roleId == 1) {
+            window.location.href = "http://localhost/seminar/modules/home/"
+        }
+        if(result.response[0].roleId == 3) {
+            window.location.href = "http://localhost/seminar/modules/admin/"
+        }
     }
     else {
         notifyContentRef.innerHTML = `Username/Password Incorrect`

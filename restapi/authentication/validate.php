@@ -11,7 +11,7 @@ if(isset($_GET['staffid']) && isset($_GET['password']) ) {
     $staffName = trim($_GET['staffid']);
     $password = md5(trim($_GET['password']));
 
-    $sql = "select user_id, initial_change from tbl_staff where user_name = '".$staffName."' and password = '".$password."' ";
+    $sql = "select * from tbl_staff where user_name = '".$staffName."' and password = '".$password."' ";
 
     $result = mysqli_query($DB,$sql);
     
@@ -21,7 +21,11 @@ if(isset($_GET['staffid']) && isset($_GET['password']) ) {
         $jsonArray= array(
          'oAuth' => true,
          'token' => $row['user_id'],
-         'initial' => $row['initial_change']
+         'initial' => $row['initial_change'],
+         'uname' => $row['user_name'],
+         'roleId' => $row['role_id'],
+         'deptId' => $row['dept_id'],
+         'emailId' => $row['email']
         );
         array_push($json["response"], $jsonArray);  
         echo json_encode($json);

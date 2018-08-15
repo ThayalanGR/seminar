@@ -37,6 +37,7 @@
         /* box-shadow: 2px 1px black; */
         min-height:10px;
         border-radius: 5px;
+        font-size: 12px;
         
     }
 
@@ -57,66 +58,78 @@
 </style>
 <body>
 
-<!-- <input type="button" value="logout" onClick = "handleLogoutRequest()" id="logoutButton"> -->
+
+
 <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
-    <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
+       
+     <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
         <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
         <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
     </a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav pl-4 ">
-      <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
-      <!-- <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Pricing</a> -->
-    </div>
-</div>
-    <div class="my-1 my-lg-0" >
-            <ul class="nav navbar-nav">
-                    <li class="dropdown nav-item"> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
+            </li>
+
+          </ul>
+          <div class="my-1 my-lg-0">
+                <ul class="nav navbar-nav">
+                        <li class="dropdown nav-item"> 
+                        
+                            <a class="dropdown-toggle  nav-link   p-0" data-toggle="dropdown" aria-expanded="false"  href="#">
                     
-                        <a class="dropdown-toggle  nav-link   p-0" data-toggle="dropdown" aria-expanded="false"  href="#">
-                
-                            <i class="fas fa-user-alt text-primary"></i> 
-                &nbsp;
-                            <label class="text-primary font-weight-bold" id="uname"></label>
-                
-                        </a>
-                            <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
-                                <li role="presentation" class="dropdown-item "><a href="../../modules/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
-                                </li>
-                                <hr>
-                                <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
-                                </li>
-                                <hr>
-                                <li role="presentation" class=" dropdown-item "><a style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
-                                </li>
-                            </ul>
-                    </li>
+                                <i class="fas fa-user-alt text-primary"></i> 
+                    &nbsp;
+                                <label class="text-primary font-weight-bold" id="uname"></label>
+                    
+                            </a>
+                                <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
+                                    <li role="presentation" class="dropdown-item "><a href="../../modules/home/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
+                                    </li>
+                                    <hr>
+                                    <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
+                                    </li>
+                                    <hr>
+                                    <li role="presentation" class=" dropdown-item "><a style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
+                                    </li>
+                                </ul>
+                        </li>
                 </ul>
-                
-    </div>
-</nav>
+            </div>
+        </div>
+      </nav>
+
+
+
+
+
 <div class="container-fluid mt-5 pt-5">
     <div class="row ">
         <div class="col-md-10 offset-md-1 shadow p-3 rounded">
             <div class="row">
                 <div class="col text-center">
                     <label for="departmentView" class="text-primary font-weight-bold">Department : </label>
-                     <select name="department" id="departmentView"></select>
+                     <select name="department" class="input input-block form-control-sm btn-outline-blue rounded" id="departmentView"></select>
                 </div>
             </div>
             <div class="row">
                     <div class="col text-center">
                       <hr>
+                      <div id="notifymessage"></div>
                     </div>
                 </div>
             <div class="row bg-white p-2">
                 <div class="col  rounded">
                     <div class="row ">
-                        <div class="col period font-weight-bold"> Period/Day order</div>
+                        <div class="col period font-weight-bold "><br> Period/Day order</div>
                         <div class="col periodmeta font-weight-bold "><br> 1</div>
                         <div class="col periodmeta font-weight-bold "><br> 2</div>
                         <div class="col periodmeta font-weight-bold "><br> 3</div>
@@ -127,105 +140,95 @@
                         <div class="col periodmeta font-weight-bold "><br> 8</div>
                     </div>
                     <div class="row">
-                        <div class="col period font-weight-bold "><span id="fetchdayorder1">I</span><br><span id="fetchdate1">(12/04/18)</span></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
+                        <div class="col period font-weight-bold "><span id="fetchdayorder1"></span><br><span id="fetchdate1"></span></div>
+                        <div class="col period hoverable" id="11"></div>
+                        <div class="col period hoverable" id="12"></div>
+                        <div class="col period hoverable" id="13"></div>
+                        <div class="col period hoverable" id="14"></div>
+                        <div class="col period hoverable" id="15"></div>
+                        <div class="col period hoverable" id="16"></div>
+                        <div class="col period hoverable" id="17"></div>
+                        <div class="col period hoverable" id="18"></div>
                     </div>
                     <div class="row">
-                        <div class="col period font-weight-bold "><span id="fetchdayorder2">I</span><br><span id="fetchdate2">(12/04/18)</span></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
+                        <div class="col period font-weight-bold "><span id="fetchdayorder2"></span><br><span id="fetchdate2"></span></div>
+                        <div class="col period hoverable " id="21"></div>
+                        <div class="col period hoverable" id="22"></div>
+                        <div class="col period hoverable" id="23"></div>
+                        <div class="col period hoverable" id="24"></div>
+                        <div class="col period hoverable" id="25"></div>
+                        <div class="col period hoverable" id="26"></div>
+                        <div class="col period hoverable" id="27"></div>
+                        <div class="col period hoverable" id="28"></div>
                     </div>
                     <div class="row">
-                        <div class="col period font-weight-bold "><span id="fetchdayorder3">I</span><br><span id="fetchdate3">(12/04/18)</span></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
+                        <div class="col period font-weight-bold "><span id="fetchdayorder3"></span><br><span id="fetchdate3"></span></div>
+                        <div class="col period hoverable" id="31"></div>
+                        <div class="col period hoverable" id="32"></div>
+                        <div class="col period hoverable" id="33"></div>
+                        <div class="col period hoverable" id="34"></div>
+                        <div class="col period hoverable" id="35"></div>
+                        <div class="col period hoverable" id="36"></div>
+                        <div class="col period hoverable" id="37"></div>
+                        <div class="col period hoverable" id="38"></div>
                     </div>
                     <div class="row">
-                        <div class="col period font-weight-bold "><span id="fetchdayorder4">I</span><br><span id="fetchdate4">(12/04/18)</span></div>  
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
+                        <div class="col period font-weight-bold "><span id="fetchdayorder4"></span><br><span id="fetchdate4"></span></div>  
+                        <div class="col period hoverable" id="41"></div>
+                        <div class="col period hoverable" id="42"></div>
+                        <div class="col period hoverable" id="43"></div>
+                        <div class="col period hoverable" id="44"></div>
+                        <div class="col period hoverable" id="45"></div>
+                        <div class="col period hoverable" id="46"></div>
+                        <div class="col period hoverable" id="47"></div>
+                        <div class="col period hoverable" id="48"></div>
                     </div>
                     <div class="row">
-                        <div class="col period font-weight-bold "><span id="fetchdayorder5">I</span><br><span id="fetchdate5">(12/04/18)</span></div>  
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
-                        <div class="col period hoverable"></div>
+                        <div class="col period font-weight-bold "><span id="fetchdayorder5"></span><br><span id="fetchdate5"></span></div>  
+                        <div class="col period hoverable" id="51"></div>
+                        <div class="col period hoverable" id="52"></div>
+                        <div class="col period hoverable" id="53"></div>
+                        <div class="col period hoverable" id="54"></div>
+                        <div class="col period hoverable" id="55"></div>
+                        <div class="col period hoverable" id="56"></div>
+                        <div class="col period hoverable" id="57"></div>
+                        <div class="col period hoverable" id="58"></div>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
 </div>
 
 
 <!-- modal for notification -->
 
 
-<div class="modal fade" id="notifyModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-body" id="notifyContent">
-    
-            </div>
-            <div class="modal-footer" style="display:none;" id="notifyCloseButton">
-                <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    
     <!-- modal for notification -->
 
     <!-- modal for changing password -->
 
 
-    <div class="modal fade" id="passwordModal"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div id="message" class="text-center">
-                    
+
+    <div class="modal  fade" id="passwordModal"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="message" class="text-center">
+                        
+                    </div>
+                    <div class="modal-body" id="passwordContent">
+                    </div>
+                    <div class="modal-footer" id="passwordFooter">
+                    </div>
                 </div>
-            <div class="modal-body" id="passwordContent">
-            </div>
-            <div class="modal-footer" id="passwordFooter">
-            </div>
             </div>
         </div>
-    </div>
-
-
 
           <!-- Side Modal Top Right -->
     
@@ -236,5 +239,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
     <script src="./core.js"></script>
+    <script src="./showBooking.js"></script>
 </body>
+
+
+    
 </html>

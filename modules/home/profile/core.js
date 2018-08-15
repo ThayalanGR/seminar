@@ -4,12 +4,15 @@ const passwordContentRef = document.getElementById('passwordContent')
 const passwordFooterRef = document.getElementById('passwordFooter')
 const messageRef = document.getElementById('message')
 const logoutRef = document.getElementById('logoutButton')
-
-
-
 function handleLogoutRequest(){
     window.location.href = "http://localhost/seminar/modules/logout/"
 }
+
+$(document).ready(function() {
+    const unameRef = document.getElementById('uname')
+    unameRef.innerHTML = localStorage.getItem('uname')
+})
+
 
 // password change block
 function passwordChange(initial) {
@@ -103,49 +106,13 @@ function passwordProcessing() {
 }
 
 
-// end of password construct dom
-
-
-function constructDeptDom(result) {
-    const deptRef = document.getElementById('departmentView')
-    let output = ''
-    const items = result.department
-    items.forEach(e => {
-        // let deptId = items.deptId
-        // let deptName = items.deptName
-        output += `<option name="${e.deptId}">${e.deptName}</option>`
-    })
-    deptRef.innerHTML = output
-
-}
-
-
-function getDept() {
-    
-    url = `http://localhost/seminar/restapi/department/getdepartment.php`
-    fetch(url).
-    then(data => data.json()).
-    then(result => {
-        console.log(result)
-        constructDeptDom(result)
-    })
-    .catch(error => console.log(error))
-
-
-}
-
 
 $(document).ready(function() {
-    const unameRef = document.getElementById('uname')
-    unameRef.innerHTML = localStorage.getItem('uname')
     const initial = localStorage.getItem('initial')
     passwordChange(initial)
-
-
-    //main process
-    getDept()
-
 })
+
+
 
 
 
