@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2018 at 03:45 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Aug 15, 2018 at 09:22 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,20 +31,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_booking` (
   `book_id` int(11) NOT NULL,
   `dept_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
   `day_order` int(11) NOT NULL,
-  `period` int(11) NOT NULL,
+  `period` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `sub_id` int(11) NOT NULL,
-  `hall_id` int(11) NOT NULL
+  `hall_id` int(11) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_id`, `day_order`, `period`, `user_id`, `sub_id`, `hall_id`) VALUES
-(1, 1, 1, 3, 2, 1, 1, 1);
+INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_id`, `sub_id`, `hall_id`, `active`) VALUES
+(1, 1, '18-08-14', '18-08-14', 1, 'p2', 1, 1, 1, 0),
+(2, 1, '18-08-14', '18-08-14', 1, 'p3', 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -73,20 +76,26 @@ INSERT INTO `tbl_dept` (`dept_id`, `dept_name`) VALUES
 
 CREATE TABLE `tbl_group` (
   `group_id` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
   `day_order` int(11) NOT NULL,
-  `date` date NOT NULL
+  `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_group`
 --
 
-INSERT INTO `tbl_group` (`group_id`, `day_order`, `date`) VALUES
-(1, 1, '2018-08-11'),
-(1, 2, '2018-08-12'),
-(1, 3, '2018-08-13'),
-(1, 4, '2018-08-14'),
-(1, 5, '2018-08-15');
+INSERT INTO `tbl_group` (`group_id`, `group_name`, `day_order`, `date`) VALUES
+(1, '18-08-14', 1, '18-08-14'),
+(2, '18-08-14', 2, '18-08-15'),
+(3, '18-08-14', 3, '18-08-16'),
+(4, '18-08-14', 4, '18-08-17'),
+(5, '18-08-14', 5, '18-08-18'),
+(6, '18-08-20', 1, '18-08-20'),
+(7, '18-08-20', 2, '18-08-21'),
+(8, '18-08-20', 3, '18-08-22'),
+(9, '18-08-20', 4, '18-08-23'),
+(10, '18-08-20', 5, '18-08-24');
 
 -- --------------------------------------------------------
 
@@ -97,11 +106,12 @@ INSERT INTO `tbl_group` (`group_id`, `day_order`, `date`) VALUES
 CREATE TABLE `tbl_history` (
   `book_id` int(11) NOT NULL,
   `dept_id` int(11) NOT NULL,
-  `week` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
   `day_order` int(11) NOT NULL,
-  `period` int(2) NOT NULL,
+  `period` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `subject_code` varchar(255) NOT NULL,
+  `sub_id` int(11) NOT NULL,
   `hall_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,9 +123,18 @@ CREATE TABLE `tbl_history` (
 
 CREATE TABLE `tbl_limit` (
   `limit_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
+  `sub_id` int(11) NOT NULL,
   `current_usage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_limit`
+--
+
+INSERT INTO `tbl_limit` (`limit_id`, `user_id`, `role_id`, `sub_id`, `current_usage`) VALUES
+(1, 1, 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -134,7 +153,10 @@ CREATE TABLE `tbl_logindetails` (
 --
 
 INSERT INTO `tbl_logindetails` (`user_id`, `login`, `logout`) VALUES
-(1, '2018-08-11 07:36:57', '2018-08-11 07:36:57');
+(1, '2018-08-11 07:36:57', '2018-08-11 07:36:57'),
+(2, '2018-08-13 05:59:54', '2018-08-13 05:59:54'),
+(1, '2018-08-11 07:36:57', '2018-08-11 07:36:57'),
+(2, '2018-08-13 05:59:54', '2018-08-13 05:59:54');
 
 -- --------------------------------------------------------
 
@@ -205,7 +227,7 @@ INSERT INTO `tbl_staff` (`user_id`, `name`, `user_name`, `dept_id`, `email`, `ro
 (1, 'Mr. R Hemant Kumar', 'hemantkumar-cse', 1, '', 1, '2bad7ec7505a0c5e727bf53b41bbaac0', '', 0),
 (2, 'Ms. N Kavitha', 'kavitha-cse', 1, '', 1, '97b4bc63e6260e74226687b6e4da0945', '988ad95c1ef313568d4d0b70b7828927', 1),
 (3, ' Mr. K.S Chandrasekaran', 'chandrasekaran-cse', 1, '', 1, '3431bcf881579752db42f341f3387d1a', '', 0),
-(4, 'Mr. D Boobala Muralitharan', 'boobala-cse', 1, '', 1, 'd96137d4e95ec62bd531929cfaea1226', '', 0),
+(4, 'Mr. D Boobala Muralitharan', 'boobala-cse', 1, '', 1, 'd41d8cd98f00b204e9800998ecf8427e', '74be16979710d4c4e7c6647856088456', 1),
 (5, 'Ms. C Merlyne Sandra Christina', 'merlyne-cse', 1, '', 1, '3b44d7823b191c5ac3c90f98cba32164', '', 0),
 (6, 'Ms. V Punitha', 'punitha-cse', 1, '', 1, 'ffd86fcb46ea95c971823dd859a0db9b', '', 0),
 (7, 'Ms. N Radha', 'radha-cse', 1, '', 1, '0334c8bd6ac8aced89e544162e0ae162', '', 0),
@@ -1366,36 +1388,74 @@ INSERT INTO `tbl_subject` (`sub_id`, `sub_code`, `sub_name`, `dept_id`, `year`, 
 --
 
 CREATE TABLE `tbl_temp` (
-  `dept_id` int(11) NOT NULL,
-  `day_order` int(11) NOT NULL,
-  `p1` int(11) NOT NULL,
-  `p2` int(11) NOT NULL,
-  `p3` int(11) NOT NULL,
-  `p4` int(11) NOT NULL,
-  `p5` int(11) NOT NULL,
-  `p6` int(11) NOT NULL,
-  `p7` int(11) NOT NULL,
-  `p8` int(11) NOT NULL
+  `temp_id` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `day_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users`
+-- Table structure for table `tbl_timeline`
 --
 
-CREATE TABLE `tbl_users` (
-  `user_id` int(11) NOT NULL,
-  `pwd1` varchar(255) NOT NULL,
-  `forgot_pwd` varchar(255) NOT NULL
+CREATE TABLE `tbl_timeline` (
+  `temp_id` int(11) NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `day_order` int(11) NOT NULL,
+  `p1` int(11) DEFAULT '0',
+  `p2` int(11) DEFAULT '0',
+  `p3` int(11) DEFAULT '0',
+  `p4` int(11) DEFAULT '0',
+  `p5` int(11) DEFAULT '0',
+  `p6` int(11) DEFAULT '0',
+  `p7` int(11) DEFAULT '0',
+  `p8` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `tbl_timeline`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `pwd1`, `forgot_pwd`) VALUES
-(4, '12345', '12345');
+INSERT INTO `tbl_timeline` (`temp_id`, `dept_id`, `group_name`, `date`, `day_order`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`) VALUES
+(1, 1, '18-08-14', '18-08-14', 1, 0, 1, 2, 0, 0, 0, 0, 0),
+(2, 2, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 3, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 4, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 5, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 6, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 7, '18-08-14', '18-08-14', 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 1, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 2, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, 3, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, 4, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, 5, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, 6, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(14, 7, '18-08-14', '18-08-15', 2, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, 1, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, 2, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, 3, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, 4, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(19, 5, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(20, 6, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(21, 7, '18-08-14', '18-08-16', 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(22, 1, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(23, 2, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(24, 3, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, 4, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(26, 5, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, 6, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, 7, '18-08-14', '18-08-17', 4, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, 1, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, 2, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(31, 3, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(32, 4, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, 5, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, 6, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, 7, '18-08-14', '18-08-18', 5, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1415,7 +1475,14 @@ CREATE TABLE `tbl_workload` (
 --
 
 INSERT INTO `tbl_workload` (`user_id`, `dept_id`, `sub_id`, `sec`) VALUES
-(1, 1, 1, 'a');
+(1, 2, 3, 'a'),
+(1, 1, 2, 'b'),
+(1, 2, 4, 'a'),
+(2, 1, 1, 'a'),
+(1, 2, 3, 'a'),
+(1, 1, 2, 'b'),
+(1, 2, 4, 'a'),
+(2, 1, 1, 'a');
 
 --
 -- Indexes for dumped tables
@@ -1438,6 +1505,12 @@ ALTER TABLE `tbl_dept`
   ADD PRIMARY KEY (`dept_id`);
 
 --
+-- Indexes for table `tbl_group`
+--
+ALTER TABLE `tbl_group`
+  ADD PRIMARY KEY (`group_id`);
+
+--
 -- Indexes for table `tbl_history`
 --
 ALTER TABLE `tbl_history`
@@ -1452,7 +1525,8 @@ ALTER TABLE `tbl_history`
 --
 ALTER TABLE `tbl_limit`
   ADD PRIMARY KEY (`limit_id`),
-  ADD KEY `role_id` (`role_id`);
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `sub_id` (`sub_id`);
 
 --
 -- Indexes for table `tbl_logindetails`
@@ -1491,21 +1565,13 @@ ALTER TABLE `tbl_subject`
 -- Indexes for table `tbl_temp`
 --
 ALTER TABLE `tbl_temp`
-  ADD PRIMARY KEY (`day_order`),
-  ADD KEY `tbl_temp_ibfk_1` (`p1`),
-  ADD KEY `tbl_temp_ibfk_2` (`p2`),
-  ADD KEY `tbl_temp_ibfk_3` (`p3`),
-  ADD KEY `tbl_temp_ibfk_4` (`p4`),
-  ADD KEY `tbl_temp_ibfk_5` (`p5`),
-  ADD KEY `tbl_temp_ibfk_6` (`p6`),
-  ADD KEY `tbl_temp_ibfk_7` (`p7`),
-  ADD KEY `tbl_temp_ibfk_8` (`p8`);
+  ADD PRIMARY KEY (`temp_id`);
 
 --
--- Indexes for table `tbl_users`
+-- Indexes for table `tbl_timeline`
 --
-ALTER TABLE `tbl_users`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `tbl_timeline`
+  ADD PRIMARY KEY (`temp_id`);
 
 --
 -- Indexes for table `tbl_workload`
@@ -1522,7 +1588,13 @@ ALTER TABLE `tbl_workload`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_group`
+--
+ALTER TABLE `tbl_group`
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_history`
@@ -1534,7 +1606,7 @@ ALTER TABLE `tbl_history`
 -- AUTO_INCREMENT for table `tbl_limit`
 --
 ALTER TABLE `tbl_limit`
-  MODIFY `limit_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `limit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_seminarhall`
@@ -1555,6 +1627,18 @@ ALTER TABLE `tbl_subject`
   MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=884;
 
 --
+-- AUTO_INCREMENT for table `tbl_temp`
+--
+ALTER TABLE `tbl_temp`
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_timeline`
+--
+ALTER TABLE `tbl_timeline`
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -1568,65 +1652,11 @@ ALTER TABLE `tbl_booking`
   ADD CONSTRAINT `tbl_booking_ibfk_4` FOREIGN KEY (`sub_id`) REFERENCES `tbl_subject` (`sub_id`);
 
 --
--- Constraints for table `tbl_history`
---
-ALTER TABLE `tbl_history`
-  ADD CONSTRAINT `tbl_history_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `tbl_dept` (`dept_id`),
-  ADD CONSTRAINT `tbl_history_ibfk_2` FOREIGN KEY (`day_order`) REFERENCES `tbl_temp` (`day_order`),
-  ADD CONSTRAINT `tbl_history_ibfk_3` FOREIGN KEY (`hall_id`) REFERENCES `tbl_seminarhall` (`hall_id`),
-  ADD CONSTRAINT `tbl_history_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `tbl_staff` (`user_id`);
-
---
 -- Constraints for table `tbl_limit`
 --
 ALTER TABLE `tbl_limit`
-  ADD CONSTRAINT `tbl_limit_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`role_id`);
-
---
--- Constraints for table `tbl_logindetails`
---
-ALTER TABLE `tbl_logindetails`
-  ADD CONSTRAINT `tbl_logindetails_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_staff` (`user_id`),
-  ADD CONSTRAINT `tbl_logindetails_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_staff` (`user_id`);
-
---
--- Constraints for table `tbl_staff`
---
-ALTER TABLE `tbl_staff`
-  ADD CONSTRAINT `tbl_staff_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`role_id`),
-  ADD CONSTRAINT `tbl_staff_ibfk_2` FOREIGN KEY (`dept_id`) REFERENCES `tbl_dept` (`dept_id`);
-
---
--- Constraints for table `tbl_subject`
---
-ALTER TABLE `tbl_subject`
-  ADD CONSTRAINT `tbl_subject_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `tbl_dept` (`dept_id`);
-
---
--- Constraints for table `tbl_temp`
---
-ALTER TABLE `tbl_temp`
-  ADD CONSTRAINT `tbl_temp_ibfk_1` FOREIGN KEY (`p1`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_2` FOREIGN KEY (`p2`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_3` FOREIGN KEY (`p3`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_4` FOREIGN KEY (`p4`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_5` FOREIGN KEY (`p5`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_6` FOREIGN KEY (`p6`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_7` FOREIGN KEY (`p7`) REFERENCES `tbl_booking` (`book_id`),
-  ADD CONSTRAINT `tbl_temp_ibfk_8` FOREIGN KEY (`p8`) REFERENCES `tbl_booking` (`book_id`);
-
---
--- Constraints for table `tbl_users`
---
-ALTER TABLE `tbl_users`
-  ADD CONSTRAINT `tbl_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_staff` (`user_id`);
-
---
--- Constraints for table `tbl_workload`
---
-ALTER TABLE `tbl_workload`
-  ADD CONSTRAINT `tbl_workload_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_staff` (`user_id`),
-  ADD CONSTRAINT `tbl_workload_ibfk_2` FOREIGN KEY (`sub_id`) REFERENCES `tbl_subject` (`sub_id`);
+  ADD CONSTRAINT `tbl_limit_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`role_id`),
+  ADD CONSTRAINT `tbl_limit_ibfk_2` FOREIGN KEY (`sub_id`) REFERENCES `tbl_subject` (`sub_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
