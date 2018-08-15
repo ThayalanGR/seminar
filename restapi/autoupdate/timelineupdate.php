@@ -2,7 +2,7 @@
 
 require_once('../config/dbconnection.php');
 
-$currenttime = strtotime(date("y-m-d"));
+$currenttime = strtotime(date("Y-m-d"));
 $sql1 = "select date from tbl_group";
 $result1 = mysqli_query($DB,$sql1);
 $current = "";
@@ -56,7 +56,7 @@ $sql9 = "delete from tbl_temp where date = '".$yesterday."'";
 mysqli_query($DB,$sql9);
 $sql10 = "delete from tbl_timeline where date = '".$yesterday."'";
 mysqli_query($DB,$sql10);
-$sql11 = "insert into  tbl_history(book_id, dept_id, group_name, date, day_order, period, user_id, sub_id, hall_id) (select book_id, dept_id, group_name, date, day_order, period, user_id, sub_id, hall_id from tbl_booking where date = '".$yesterday."')";
+$sql11 = "insert into  tbl_history(book_id, dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description) (select book_id, dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description from tbl_booking where date = '".$yesterday."')";
 mysqli_query($DB,$sql11);
 
 ?>
