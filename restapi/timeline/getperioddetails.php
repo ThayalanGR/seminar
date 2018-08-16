@@ -19,6 +19,7 @@ if(isset($_GET['periodid'])) {
     'capture' => true,
     'book_id' => $row['book_id'],
     'dept_id' => $row['dept_id'],
+    'dept_name' => $row['dept_name'],
     'group_name' => $row['group_name'],
     'date' => $row['date'],
     'day_order' => $row['day_order'],

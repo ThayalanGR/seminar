@@ -28,48 +28,56 @@
 <body>
 
 <!-- <input type="button" value="logout" onClick = "handleLogoutRequest()" id="logoutButton"> -->
-<nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
-    <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
-        <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
-        <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
-    </a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav pl-4 ">
-      <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
-      <!-- <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Pricing</a> -->
-    </div>
-</div>
-    <div class="my-1 my-lg-0" >
-            <ul class="nav navbar-nav">
-                    <li class="dropdown nav-item"> 
-                    
-                        <a class="dropdown-toggle  nav-link   p-0" data-toggle="dropdown" aria-expanded="false"  href="#">
-                
-                            <i class="fas fa-user-alt text-primary"></i> 
-                &nbsp;
-                            <label class="text-primary font-weight-bold" id="uname"></label>
-                
-                        </a>
-                            <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
-                                <li role="presentation" class="dropdown-item "><a href="useractivity.php"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
-                                </li>
-                                <hr>
-                                <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
-                                </li>
-                                <hr>
-                                <li role="presentation" class=" dropdown-item "><a style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
-                                </li>
-                            </ul>
-                    </li>
-                </ul>
-                
-    </div>
-</nav>
 
+<nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
+       
+        <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
+           <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
+           <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
+       </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                   <i class="fas fa-bars"></i>
+           </button>
+         
+           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+               <li class="nav-item">
+                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="nav-item">
+                       <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
+               </li>
+   
+             </ul>
+             <div class="my-1 my-lg-0">
+                   <ul class="nav navbar-nav">
+                           <li class="dropdown nav-item"> 
+                           
+                               <a class="dropdown-toggle  nav-link   p-0" data-toggle="dropdown" aria-expanded="false"  href="#">
+                       
+                                   <i class="fas fa-user-alt text-primary"></i> 
+                       &nbsp;
+                                   <label class="text-primary font-weight-bold" id="uname"></label>
+                       
+                               </a>
+                                   <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
+                                       <li role="presentation" class="dropdown-item "><a href="../../modules/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class=" dropdown-item "><a style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
+                                       </li>
+                                   </ul>
+                           </li>
+                   </ul>
+               </div>
+           </div>
+         </nav>
+   
+   
+   
 
 <div class="container-fluid">
     <div class="row">
