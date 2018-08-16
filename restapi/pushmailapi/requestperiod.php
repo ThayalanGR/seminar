@@ -9,6 +9,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $token = $_GET['token'];
     $book_id = $_GET['book_id'];
     $request_msg = $_GET['request_msg'];
+    $sub_code = $_GET['sub_code'];
 
     $sourceName = "";
     $destinationName = "";
@@ -93,10 +94,6 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
 
     }
 
-
-
-
 }
-
 
 ?>

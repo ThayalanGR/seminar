@@ -12,9 +12,15 @@ if(isset($_GET['date'])) {
     $date = explode("~",$date_str);
     $daycount = count($date);
     $groupname = $date[0];
+    // $sql1 = "select date from tbl_group";
+    // $result1 = mysqli_query($DB,$sql1);
+    // while($row1 = mysqli_fetch_array($result1)) {
+    //     $storeddates = $row1['date'];
+    //     ///TODO date check
+    // }
     for($x=0; $x<$daycount; $x++)
     {
-        // echo $date[$x];
+        echo $date[$x];
         $dayorder = $x+1;
         $sql = "insert into tbl_group (`group_name`,`day_order`,`date`) values ('".$groupname."',". $dayorder.",'". $date[$x]."')";
         mysqli_query($DB,$sql);

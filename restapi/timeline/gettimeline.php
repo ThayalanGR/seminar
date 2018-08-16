@@ -29,7 +29,7 @@ if(isset($_GET['deptid'])) {
         'p7' => $row['p7'],
         'p8' => $row['p8']
         );
-        array_push($json["timeline"], $jsonArray);
+        array_push($json["timeline"], $jsonArray);  
     }
     echo json_encode($json);
 }
