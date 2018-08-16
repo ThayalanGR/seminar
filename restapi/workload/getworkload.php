@@ -19,7 +19,7 @@ if(isset($_GET['username'])) {
         'sem' => $row['sem'],
         'dept' => $row['dept'],
         'section' => $row['sec'],
-        'sub_code' => $row['sub_code'],
+        'sub_code' => $row['sub_code']
         );
         array_push($json["workload"], $jsonArray);  
     }
