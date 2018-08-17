@@ -20,7 +20,7 @@ if(isset($_GET['date'])) {
     // }
     for($x=0; $x<$daycount; $x++)
     {
-        echo $date[$x];
+
         $dayorder = $x+1;
         $sql = "insert into tbl_group (`group_name`,`day_order`,`date`) values ('".$groupname."',". $dayorder.",'". $date[$x]."')";
         mysqli_query($DB,$sql);

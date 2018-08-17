@@ -37,10 +37,10 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     $result4 = mysqli_query($DB,$sql4);
     $row4 = mysqli_fetch_array($result4);
     $todaysusage = $row4['todaysusage'];
-    echo $currentusage."  ".$maxbook."  ".$todaysusage."          ";
+    // echo $currentusage."  ".$maxbook."  ".$todaysusage."          ";
     
     if($roleid == 1) {
-        if($todaysusage < 2 && $currentusage < $maxbook) {
+        if($currentusage <= $maxbook) {
             $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.")";
             mysqli_query($DB,$sql);
 
@@ -59,7 +59,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
             $current = $currentusage + 1;
             $sql6 = "update tbl_limit set current_usage = ".$current." where user_id = ".$userid." and sub_code = '".$subject."'";
             mysqli_query($DB,$sql6);
-            echo $today."  ".$current."      ";
+            // echo $today."  ".$current."      ";
             $json = array();
             $json["response"] = array(  
                 "status" => true
@@ -76,7 +76,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
         }
     }
     else if($roleid == 2) {
-        if($todaysusage < 8 && $currentusage < $maxbook) {
+        if($currentusage <= $maxbook) {
             $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.")";
             mysqli_query($DB,$sql);
 

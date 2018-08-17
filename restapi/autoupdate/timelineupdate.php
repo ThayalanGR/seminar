@@ -37,7 +37,7 @@ $tempgroupname = $row5['group_name'];
 $tempdaterow = $row5['date'];  
 $tempdayorder = $row5['day_order'];
 
-for($x=1; $x<=7; $x++) {
+for($x=1; $x<=8; $x++) {
     $sql6 = "insert into tbl_timeline (dept_id, group_name, date, day_order) values (".$x.",'".$tempgroupname."', '".$tempdaterow."', ".$tempdayorder.")";
     mysqli_query($DB,$sql6);
 }
