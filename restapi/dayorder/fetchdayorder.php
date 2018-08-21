@@ -13,13 +13,13 @@ if(isset($_GET['roleid'])) {
     if($roleid == 3)
     {
         $json = array();
-        $sql1 = "select distinct group_name from tbl_group";
+        $sql1 = "select distinct group_name from tbl_dayorder";
         $result1 = mysqli_query($DB,$sql1);
         $count = 0; 
         while($row1 = mysqli_fetch_array($result1)) {
             $groupname = $row1['group_name'];
             // echo $groupname;
-            $sql = "select group_name, day_order, date from tbl_group where group_name = '".$groupname."'";
+            $sql = "select group_name, day_order, date from tbl_dayorder where group_name = '".$groupname."'";
             $result = mysqli_query($DB,$sql);
             $json[$count] = array();
             while($row = mysqli_fetch_array($result)) {

@@ -6,24 +6,31 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once('../config/dbconnection.php');
 
-if(isset($_GET['date'])) {
-    $date_str = trim($_GET['date']); 
-    $date = array(); 
-    $date = explode("~",$date_str);
-    $daycount = count($date);
-    $groupname = $date[0];
-    // $sql1 = "select date from tbl_group";
-    // $result1 = mysqli_query($DB,$sql1);
-    // while($row1 = mysqli_fetch_array($result1)) {
-    //     $storeddates = $row1['date'];
-    //     ///TODO date check
-    // }
-    for($x=0; $x<$daycount; $x++)
-    {
-
-        $dayorder = $x+1;
-        $sql = "insert into tbl_group (`group_name`,`day_order`,`date`) values ('".$groupname."',". $dayorder.",'". $date[$x]."')";
-        mysqli_query($DB,$sql);
+if(isset($_GET['date']) && isset($_GET['count'])) {
+    $gndate = trim($_GET['date']); 
+    $count = trim($_GET['count']);
+    $count = $count * 5;
+    $dayorder = 1;
+    $i = 0;
+    for($x=0; $x<$count; $x++) {
+        $date = date('Y-m-d', strtotime("+$i days", strtotime($gndate)));   
+        $is_sunday = date('l', strtotime($date)); 
+        if($is_sunday == "Sunday")
+        {
+            $i=$i+1;
+        }
+        $do=$dayorder % 5;
+        if($do == 0) {
+            $do = 5;
+        }
+        $reqdate = date('Y-m-d', strtotime("$i days",strtotime($gndate)));  
+        if($do == 1) {
+            $groupname = $reqdate;
+        }
+        $sql = "insert into tbl_dayorder (`group_name`,`day_order`,`date`) values ('".$groupname."', ".$do.", '". $reqdate."')";
+        mysqli_query($DB,$sql); 
+        $dayorder++;
+        $i++;
     }
     $json = array();
     $json["response"] = array(  

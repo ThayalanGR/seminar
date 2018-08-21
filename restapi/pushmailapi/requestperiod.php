@@ -14,6 +14,30 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $sourceName = "";
     $destinationName = "";
 
+    $sql1 = "select name from tbl_staff where user_id = ".$token;
+    $result1 = mysqli_query($DB, $sql1);
+    $row1 = mysqli_fetch_array($result1);
+    $sendername = $row1['name'];
+
+    $sql2 = "select t1.book_id, t1.dept_id, t2.dept_name, t1.group_name, t1.date, t1.day_order, t1.period, t1.user_name, t1.sub_code, t1.dept, t1.sec, t1.sem, t1.description, t1.active from tbl_booking t1 inner join tbl_dept t2 on t1.dept_id = t2.dept_id where t1.book_id=".$periodid;
+    $result2 = mysqli_query($DB,$sql2);
+    $row2 = mysqli_fetch_array($result2); 
+
+    $book_id = $row2['book_id'];
+    $dept_id = $row2['dept_id'];
+    $dept_name = $row2['dept_name'];
+    $group_name = $row2['group_name'];
+    $date = $row2['date'];
+    $day_order = $row2['day_order'];
+    $period = $row2['period'];
+    $recievername = $row2['user_name'];
+    $sub_code = $row2['sub_code'];
+    $dept = $row2['dept'];
+    $sec = $row2['sec'];
+    $sem = $row2['sem'];
+    $description = $row['description'];
+    $active = $row['active'];
+
     $message = '
             <!DOCTYPE html>
             <html lang="en">
@@ -31,18 +55,18 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                             <div class="row">
                                 <div class="col text-center">
                                     <h3 class="text-warning">Saranathan College of Engineering</h3>
-                                    <h5 class="text-primary">Seminar Hall Booking - RestApi</h5>
+                                    <h5 class="text-primary">Seminar Hall Booking</h5>
                                     <hr>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col m-2 p-4">
-                                    <p><span class="font-weight-bold">Hello mohankumar-cse</span>,<br><br>
-                                    <span class="font-weight-bold">kavitha-cse </span> Requested the period that you have booked (ie., <span class="text-warning"> 01-08-2018 Day Order - 1  CSE Seminar Hall for the Class CS6302-CSE-A-SEM-6 </span>)
+                                    <p><span class="font-weight-bold">Hello  '.echo $recievername;.'</span>,<br><br>
+                                    <span class="font-weight-bold">'.echo $sendername;.'</span> Requested the period that you have booked (ie., <span class="text-warning"> '.echo $date;.' Day Order - '.echo $day_order;.'  '.echo $dept_name;.' Seminar Hall for the Class '.echo $sub_code;. ' - '.echo $dept;.'-'.echo $sec;.'-SEM-'.echo $sem;.' </span>)
                                     <br> 
                                     <hr>
-                                    <span class="text-primary"> Request message from <b> kavitha-cse</b></span><br>&nbsp; &nbsp;
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores quae doloremque quam molestias adipisci dolore veritatis recusandae deleniti maxime sunt!
+                                    <span class="text-primary"> Request message from <b>'.echo $sendername;.'</b></span><br>&nbsp; &nbsp;
+                                    '.echo $request_msg;.'
                                     </p>
                                     <hr>
                                 </div>

@@ -18,13 +18,14 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     $userid = trim($_GET['userid']);
     $roleid = trim($_GET['roleid']);
     $active = 0;
+    $event = 0;
 
     $details = array(); 
     $details = explode("-",$subcode);
     $subject = $details[0];
     $dept = $details[1];
     $sec = $details[2];
-    $sem = $details[3];
+    $sem = $details[4];
 
     $sql3 = "select t1.current_usage, t2.max_book from tbl_limit t1 inner join tbl_role t2 on t1.role_id = t2.role_id where user_id = ".$userid." and sub_code = '".$subject."'";
     $result3 = mysqli_query($DB,$sql3);
@@ -37,18 +38,18 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     $result4 = mysqli_query($DB,$sql4);
     $row4 = mysqli_fetch_array($result4);
     $todaysusage = $row4['todaysusage'];
-    // echo $currentusage."  ".$maxbook."  ".$todaysusage."          ";
+    echo $currentusage."  ".$maxbook."  ".$todaysusage."          ";
     
     if($roleid == 1) {
         if($currentusage <= $maxbook) {
-            $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.")";
+            $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active, event) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.", ".$event.")";
             mysqli_query($DB,$sql);
 
             $sql1 = "select book_id from tbl_booking where dept_id = ".$deptid." and group_name = '".$group."' and date = '".$date."' and day_order = ".$dayorder." and period = '".$period."'";
             $result1 = mysqli_query($DB,$sql1);
             $row1 = mysqli_fetch_array($result1);
             $bookid = $row1['book_id'];
-
+            echo $bookid;
             $sql2 = "update tbl_timeline set ".$period." = ".$bookid." where dept_id = ".$deptid." and group_name = '".$group."' and date = '".$date."' and day_order = ".$dayorder;
             mysqli_query($DB,$sql2);
 
@@ -77,7 +78,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     }
     else if($roleid == 2) {
         if($currentusage <= $maxbook) {
-            $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.")";
+            $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active, event) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.", ".$event.")";
             mysqli_query($DB,$sql);
 
             $sql1 = "select book_id from tbl_booking where dept_id = ".$deptid." and group_name = '".$group."' and date = '".$date."' and day_order = ".$dayorder." and period = '".$period."'";
