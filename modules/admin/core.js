@@ -158,54 +158,19 @@ $(document).ready(function() {
     //main process
     // getDept()
 
-    const batchCount = document.getElementById('batchCount')
-
-    batchCount.addEventListener('click', (event) =>  {
-        const batchBody = document.getElementById('batchBody')
-       
    
-            output = `
-                <div class="row text-center">
-                    <div class="col-12 text-center">
-                        <p>Batch</p>
-                        <div id="msg" class="alert alert-danger"  style="display:none"> </div>
-                        <div class="row">
-                                <div class="col">Day-Order-1</div>
-                                <div class="col"><input class="input input-sm btn-outline-blue" type="date" min="${date}"   id="day1"></div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                                <div class="col">Day-Order-2</div>
-                                <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day2"></div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                                <div class="col">Day-Order-3</div>
-                                <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day3"></div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                                <div class="col">Day-Order-4</div>
-                                <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day4"></div>
-                        </div>
-                        <hr>
-                        <div class="row ">
-                                <div class="col">Day-Order-5</div>
-                                <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day5"></div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center"><a id="submitBatch" class="btn btn-sm btn-primary" onClick="processAddBatchRequest();" >submit</a></div>
-                </div>
-                
-                ` 
-                batchBody.innerHTML = output
-                batchCount.style.display = "none"
 
 
+        url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
+
+        fetch(url).
+        then(data => data.json()).
+        then(response => {
+            console.log(response)
+            displayBatchHistory(response)
         })
+        .catch(error => console.log(error))
+    
 
 
 
@@ -232,62 +197,108 @@ function find_duplicate_in_array(arra1) {
 
 }
 
-function processAddBatchRequest(){
-    const date1 = document.getElementById('day1').value
-    const date2 = document.getElementById('day2').value
-    const date3 = document.getElementById('day3').value
-    const date4 = document.getElementById('day4').value
-    const date5 = document.getElementById('day5').value
 
-    const alertRef = document.getElementById('msg')
-
-
-
-    console.log(date1,date2,date3,date4,date5)
-
-    let decide = find_duplicate_in_array([date1,date2,date3,date4,date5])
-
-    console.log(decide.length)
-    
-
-
-    if(decide.length == 0 && date1 != "" && date2 != "" && date3 != "" && date4 != "" && date5 != "" ){
-        date = date5
-
-        console.log(date)
-    
-        const prepareOutput = date1+'~'+date2+'~'+date3+'~'+date4+'~'+date5
-        console.log(prepareOutput)
-    
-        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${prepareOutput}`
-    
-        fetch(url1).
-        then(data => data.json()).
-        then(result => {
-            console.log(result)    
-            batchCount.style.display = "block"
-            batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
-        })
-        .catch(error => {
-            console.log(error)
-        })    
-
+function displayBatchHistory(response) {
+    const batchBody = document.getElementById('batchBody')
+    let output = ``
+    const count = response.length
+    for(let i=0 ; i < count; i++) {
+        const element = response[i]
+        output += `
+        <div class="row text-center">
+            <div class="col-12 text-center">
+                <p>Batch - ${element[0].groupname}</p>
+              
+                <div id="msg" class="alert alert-danger"  style="display:none"> </div>
+                <div class="row ">
+                        <div class="col">Day-Order-1</div>
+                        <div class="col"><input class="input input-sm btn-outline-blue" type="date" min="${date}"   value="${element[0].date}" id="${element[0].groupname+'1'}"></div>
+                        <div class="col">
+                        <a id="deleteandswap" onClick="deleteAndSwap('${element[0].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
+                        </div>
+                </div>
+                <hr>
+                <div class="row ">
+                        <div class="col">Day-Order-2</div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[1].date}"   id="${element[0].groupname+'2'}"></div>
+                        <div class="col">
+                        <a id="deleteandswap" onClick="deleteAndSwap('${element[1].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
+                        </div>
+                </div>
+                <hr>
+                <div class="row ">
+                        <div class="col">Day-Order-3</div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[2].date}"   id="${element[0].groupname+'3'}"></div>
+                        <div class="col">
+                        <a id="deleteandswap" onClick="deleteAndSwap('${element[2].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
+                        </div>
+                </div>
+                <hr>
+                <div class="row ">
+                        <div class="col">Day-Order-4</div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[3].date}"   id="${element[0].groupname+'4'}"></div>
+                        <div class="col">
+                        <a id="deleteandswap" onClick="deleteAndSwap('${element[3].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
+                        </div>
+                </div>
+                <hr>
+                <div class="row ">
+                        <div class="col">Day-Order-5</div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[4].date}"   id="${element[0].groupname+'5'}"></div>
+                        <div class="col">
+                        <a id="deleteandswap" onClick="deleteAndSwap('${element[4].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
+                        </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+        ` 
+        
     }
-
-    else {
-        alertRef.style.display = "block"
-        alertRef.innerHTML = 'one or more date have identical values'
-    }
     
-
-
-   
-
-
+        batchBody.innerHTML = output
 }
 
 
 
+function deleteAndSwap(date) {
+    const alertRef = document.getElementById('messagemain')
+    console.log(date)
+    alertRef.innerHTML = `<p class="alert alert-warning ">please wait , our machines processing your request
+                            <br><i class="fas fa-spinner text-primary fa-spin"></i> <br>    
+                        </p>`
+    const url1 = `http://localhost/seminar/restapi/dayorder/insertdayordeqr.php?date=${date}`
+    fetch(url1).
+    then(data => data.json()).
+    then(result => {
+        console.log(result)    
+        if(result.status == true) {
+            batchCount.style.display = "block"
+            batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>
+                                    <p class="alert alert-success"> reflecting your changes
+                                        <br><i class="fas fa-spinner text-primary fa-spin"></i> <br>    
+                                    </p>
+                                    `
+            setInterval(function() {
+                alertRef.innerHTML = ``
+                url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
+                fetch(url).
+                then(data => data.json()).
+                then(response => {
+                    console.log(response)
+                    displayBatchHistory(response)
+                })
+                .catch(error => console.log(error))
+            }, 3000)
+        }
+
+    })
+    .catch(error => {
+        console.log(error)
+    })    
+
+
+}
 
 
 function OneTimeGeneration() {
@@ -315,13 +326,13 @@ function OneTimeGeneration() {
 
 
 function OneTimeGenerationProcess() {
-    // alert()
-    messageRef.innerHTML = ``   
+    // alert() 
     const batchDateRef = document.getElementById("batchDate")
     const date = batchDateRef.value
     const batchCountRef = document.getElementById("batchCounter")
     const count = batchCountRef.value
     if( date != "" && count != 0 && count != "") {
+        messageRef.innerHTML = ``  
         console.log(date,count)
         const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${date}&count=${count}`
     
@@ -331,6 +342,11 @@ function OneTimeGenerationProcess() {
             console.log(result)    
             batchCount.style.display = "block"
             batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+            setInterval(function() {
+                batchBody.innerHTML = ``
+                batchCount.style.display = "none"
+                $('#passwordModal').modal('hide')
+            }, 3000)
         })
         .catch(error => {
             console.log(error)
@@ -338,9 +354,10 @@ function OneTimeGenerationProcess() {
 
     }
     else {
-        messageRef.innerHTML = `<p class="alert alert-dangers">please fill-up all fields</p>`
+        messageRef.innerHTML = `<p class="alert alert-danger">please fill-up all fields</p>`
 
         $('#passwordModal').modal('show')
+      
 
     }
     
@@ -348,3 +365,124 @@ function OneTimeGenerationProcess() {
 
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// old copy
+
+
+
+
+// function processAddBatchRequest(){
+//     const date1 = document.getElementById('day1').value
+//     const date2 = document.getElementById('day2').value
+//     const date3 = document.getElementById('day3').value
+//     const date4 = document.getElementById('day4').value
+//     const date5 = document.getElementById('day5').value
+
+//     const alertRef = document.getElementById('msg')
+
+
+
+//     console.log(date1,date2,date3,date4,date5)
+
+//     let decide = find_duplicate_in_array([date1,date2,date3,date4,date5])
+
+//     console.log(decide.length)
+    
+
+
+//     if(decide.length == 0 && date1 != "" && date2 != "" && date3 != "" && date4 != "" && date5 != "" ){
+//         date = date5
+
+//         console.log(date)
+    
+//         const prepareOutput = date1+'~'+date2+'~'+date3+'~'+date4+'~'+date5
+//         console.log(prepareOutput)
+    
+//         const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${prepareOutput}`
+    
+//         fetch(url1).
+//         then(data => data.json()).
+//         then(result => {
+//             console.log(result)    
+//             batchCount.style.display = "block"
+//             batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+//         })
+//         .catch(error => {
+//             console.log(error)
+//         })    
+
+//     }
+
+//     else {
+//         alertRef.style.display = "block"
+//         alertRef.innerHTML = 'one or more date have identical values'
+//     }
+    
+
+
+   
+
+
+// }
+
+
+// const batchCount = document.getElementById('batchCount')
+
+// batchCount.addEventListener('click', (event) =>  {
+//     const batchBody = document.getElementById('batchBody')
+   
+
+//         output = `
+//             <div class="row text-center">
+//                 <div class="col-12 text-center">
+//                     <p>Batch</p>
+//                     <div id="msg" class="alert alert-danger"  style="display:none"> </div>
+//                     <div class="row">
+//                             <div class="col">Day-Order-1</div>
+//                             <div class="col"><input class="input input-sm btn-outline-blue" type="date" min="${date}"   id="day1"></div>
+//                     </div>
+//                     <hr>
+//                     <div class="row">
+//                             <div class="col">Day-Order-2</div>
+//                             <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day2"></div>
+//                     </div>
+//                     <hr>
+//                     <div class="row">
+//                             <div class="col">Day-Order-3</div>
+//                             <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day3"></div>
+//                     </div>
+//                     <hr>
+//                     <div class="row">
+//                             <div class="col">Day-Order-4</div>
+//                             <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day4"></div>
+//                     </div>
+//                     <hr>
+//                     <div class="row ">
+//                             <div class="col">Day-Order-5</div>
+//                             <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"   id="day5"></div>
+//                     </div>
+//                     <hr>
+//                 </div>
+//             </div>
+//             <div class="row">
+//                 <div class="col-12 text-center"><a id="submitBatch" class="btn btn-sm btn-primary" onClick="processAddBatchRequest();" >submit</a></div>
+//             </div>
+            
+//             ` 
+//             batchBody.innerHTML = output
+//             batchCount.style.display = "none"
+
+
+//     })
