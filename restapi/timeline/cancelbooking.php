@@ -20,23 +20,29 @@ if(isset($_GET['bookid'])) {
     $subcode = $row['sub_code'];
     $username = $row['user_name'];
 
+    $sql7 = "select user_id from tbl_staff where user_name = '".$username."'";
+    $result7 = mysqli_query($DB,$sql7);
+    $row7 = mysqli_fetch_array($result7);
+    $userid = $row7['user_id'];
+
     $sql2 = "delete from tbl_booking where book_id = ".$bookid;
     mysqli_query($DB,$sql2);
+
     $sql3 = "update tbl_timeline set ".$period." = 0 where dept_id = ".$deptid." and group_name = '".$groupname."' and date = '".$date."' and day_order = ".$dayorder;
     mysqli_query($DB,$sql3);
 
-    $sql3 = "select t1.current_usage, t2.max_book from tbl_limit t1 inner join tbl_role t2 on t1.role_id = t2.role_id where user_id = ".$userid." and sub_code = '".$subject."'";
-    $result3 = mysqli_query($DB,$sql3);
-    $row3 = mysqli_fetch_array($result3);
-    $currentusage = $row3['current_usage'];
-    $maxbook = $row3['max_book'];
+    $sql4 = "select t1.current_usage, t2.max_book from tbl_limit t1 inner join tbl_role t2 on t1.role_id = t2.role_id where user_id = ".$userid." and sub_code = '".$subject."'";
+    $result4 = mysqli_query($DB,$sql4);
+    $row4 = mysqli_fetch_array($result4);
+    $currentusage = $row4['current_usage'];
+    $maxbook = $row4['max_book'];
 
     $today = $todaysusage - 1;
-    $sql5 = "update tbl_todaylimit set todaysusage = ".$today." where user_id = ".$userid." and sub_code = '".$subject."'";
+    $sql5 = "update tbl_todaylimit set todaysusage = ".$today." where user_id = ".$userid." and sub_code = '".$subcode."'";
     mysqli_query($DB,$sql5);
     
     $current = $currentusage - 1;
-    $sql6 = "update tbl_limit set current_usage = ".$current." where user_id = ".$userid." and sub_code = '".$subject."'";
+    $sql6 = "update tbl_limit set current_usage = ".$current." where user_id = ".$userid." and sub_code = '".$subcode."'";
     mysqli_query($DB,$sql6);
     
     $json = array();

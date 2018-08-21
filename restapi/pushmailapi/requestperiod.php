@@ -61,12 +61,12 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                             </div>
                             <div class="row">
                                 <div class="col m-2 p-4">
-                                    <p><span class="font-weight-bold">Hello '.echo $recievername;.'</span>,<br><br>
-                                    <span class="font-weight-bold">kavitha-cse </span> Requested the period that you have booked (ie., <span class="text-warning"> '.echo $date;.' Day Order - '.echo $day_order;.'  '.echo $dept_name;.' Seminar Hall for the Class CS6302-CSE-A-SEM-6 </span>)
+                                    <p><span class="font-weight-bold">Hello  '.echo $recievername;.'</span>,<br><br>
+                                    <span class="font-weight-bold">'.echo $sendername;.'</span> Requested the period that you have booked (ie., <span class="text-warning"> '.echo $date;.' Day Order - '.echo $day_order;.'  '.echo $dept_name;.' Seminar Hall for the Class '.echo $sub_code;. ' - '.echo $dept;.'-'.echo $sec;.'-SEM-'.echo $sem;.' </span>)
                                     <br> 
                                     <hr>
-                                    <span class="text-primary"> Request message from <b> kavitha-cse</b></span><br>&nbsp; &nbsp;
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores quae doloremque quam molestias adipisci dolore veritatis recusandae deleniti maxime sunt!
+                                    <span class="text-primary"> Request message from <b>'.echo $sendername;.'</b></span><br>&nbsp; &nbsp;
+                                    '.echo $request_msg;.'
                                     </p>
                                     <hr>
                                 </div>

@@ -156,14 +156,14 @@ if(response.timeline[0].p1 != 0 ){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one1.style.backgroundColor = "#ff918c" 
         one1.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"   onclick="setPeriodInfo('p1','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')">asas</a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s    onclick="setPeriodInfo('p1','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one1. style.backgroundColor = "#60ff73" 
     one1.innerHTML = output
 }
@@ -177,14 +177,14 @@ if(response.timeline[0].p2 != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"   onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`  
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"    onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name}<br>${response.perioddetails[0].sub_code}</a></div>`  
         one2.style.backgroundColor = "#ff918c"                 
         one2.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"   onclick="setPeriodInfo('p2','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"    onclick="setPeriodInfo('p2','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one2. style.backgroundColor = "#60ff73"     
     one2.innerHTML = output
 }
@@ -198,7 +198,7 @@ if(response.timeline[0].p3  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         
         one3.style.backgroundColor = "#ff918c" 
         one3.innerHTML = output
@@ -206,7 +206,7 @@ if(response.timeline[0].p3  != 0){
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p3','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p3','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
 
     one3. style.backgroundColor = "#60ff73" 
     one3.innerHTML = output
@@ -221,7 +221,7 @@ if(response.timeline[0].p4  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one4.style.backgroundColor = "#ff918c" 
                     
         one4.innerHTML = output
@@ -229,7 +229,7 @@ if(response.timeline[0].p4  != 0){
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p4','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p4','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     // one4.style.backgroundColor = "#32ff36"
     one4. style.backgroundColor = "#60ff73" 
     one4.innerHTML = output
@@ -244,14 +244,14 @@ if(response.timeline[0].p5  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one5.style.backgroundColor = "#ff918c"                                
         one5.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p5','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p5','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one5. style.backgroundColor = "#60ff73"             
     one5.innerHTML = output
 }
@@ -265,14 +265,14 @@ if(response.timeline[0].p6  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one6.style.backgroundColor = "#ff918c"                                 
         one6.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p6','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p6','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one6. style.backgroundColor = "#60ff73"             
     one6.innerHTML = output
 }
@@ -286,14 +286,14 @@ if(response.timeline[0].p7  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one7.style.backgroundColor = "#ff918c"                 
         one7.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p7','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p7','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one7. style.backgroundColor = "#60ff73"             
     one7.innerHTML = output
 }
@@ -307,14 +307,14 @@ if(response.timeline[0].p8  != 0){
     then(data => data.json())
     .then(response => {
         console.log(response)
-        let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+        let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
         one8.style.backgroundColor = "#ff918c"                 
         one8.innerHTML = output
         
     }).
     catch(err => console.log(err))
 }else {
-    let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p8','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a>`
+    let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p8','${response.timeline[0].groupname}', '${response.timeline[0].date}', '${response.timeline[0].dayorder}', '${response.timeline[0].deptid}')"></a></div>`
     one8. style.backgroundColor = "#60ff73"            
     one8.innerHTML = output
 }
@@ -343,14 +343,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two1.style.backgroundColor = "#ff918c" 
 two1.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p1','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p1','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two1. style.backgroundColor = "#60ff73" 
 two1.innerHTML = output
 }
@@ -364,7 +364,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two2.style.backgroundColor = "#ff918c" 
 
 two2.innerHTML = output
@@ -372,7 +372,7 @@ two2.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p2','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p2','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two2. style.backgroundColor = "#60ff73" 
 two2.innerHTML = output
 }
@@ -386,7 +386,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 
 two3.style.backgroundColor = "#ff918c" 
 two3.innerHTML = output
@@ -394,7 +394,7 @@ two3.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p3','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p3','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 
 two3. style.backgroundColor = "#60ff73" 
 two3.innerHTML = output
@@ -409,7 +409,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two4.style.backgroundColor = "#ff918c" 
             
 two4.innerHTML = output
@@ -417,7 +417,7 @@ two4.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p4','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p4','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 // one4.style.backgroundColor = "#32ff36"
 two4. style.backgroundColor = "#60ff73" 
 two4.innerHTML = output
@@ -432,14 +432,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two5.style.backgroundColor = "#ff918c"                                
 two5.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p5','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p5','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two5. style.backgroundColor = "#60ff73"             
 two5.innerHTML = output
 }
@@ -453,14 +453,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two6.style.backgroundColor = "#ff918c"                                 
 two6.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p6','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p6','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two6. style.backgroundColor = "#60ff73"             
 two6.innerHTML = output
 }
@@ -474,14 +474,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two7.style.backgroundColor = "#ff918c"                 
 two7.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p7','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p7','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two7. style.backgroundColor = "#60ff73"             
 two7.innerHTML = output
 }
@@ -495,14 +495,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 two8.style.backgroundColor = "#ff918c"                 
 two8.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p8','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p8','${response.timeline[1].groupname}', '${response.timeline[1].date}', '${response.timeline[1].dayorder}', '${response.timeline[1].deptid}')"></a></div>`
 two8. style.backgroundColor = "#60ff73"            
 two8.innerHTML = output
 }
@@ -531,14 +531,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three1.style.backgroundColor = "#ff918c" 
 three1.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p1','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p1','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three1. style.backgroundColor = "#60ff73" 
 three1.innerHTML = output
 }
@@ -552,7 +552,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three2.style.backgroundColor = "#ff918c" 
 
 three2.innerHTML = output
@@ -560,7 +560,7 @@ three2.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p2','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p2','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three2. style.backgroundColor = "#60ff73" 
 three2.innerHTML = output
 }
@@ -574,7 +574,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 
 three3.style.backgroundColor = "#ff918c" 
 three3.innerHTML = output
@@ -582,7 +582,7 @@ three3.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p3','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p3','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 
 three3. style.backgroundColor = "#60ff73" 
 three3.innerHTML = output
@@ -597,7 +597,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three4.style.backgroundColor = "#ff918c" 
             
 three4.innerHTML = output
@@ -605,7 +605,7 @@ three4.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p4','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p4','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 // one4.style.backgroundColor = "#32ff36"
 three4. style.backgroundColor = "#60ff73" 
 three4.innerHTML = output
@@ -620,14 +620,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three5.style.backgroundColor = "#ff918c"                                
 three5.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p5','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p5','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three5. style.backgroundColor = "#60ff73"             
 three5.innerHTML = output
 }
@@ -641,14 +641,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three6.style.backgroundColor = "#ff918c"                                 
 three6.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p6','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p6','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three6. style.backgroundColor = "#60ff73"             
 three6.innerHTML = output
 }
@@ -662,14 +662,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three7.style.backgroundColor = "#ff918c"                 
 three7.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p7','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p7','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three7. style.backgroundColor = "#60ff73"             
 three7.innerHTML = output
 }
@@ -683,14 +683,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 three8.style.backgroundColor = "#ff918c"                 
 three8.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p8','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p8','${response.timeline[2].groupname}', '${response.timeline[2].date}', '${response.timeline[2].dayorder}', '${response.timeline[2].deptid}')"></a></div>`
 three8. style.backgroundColor = "#60ff73"            
 three8.innerHTML = output
 }
@@ -716,14 +716,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four1.innerHTML = output
 four1.style.backgroundColor = "#ff918c" 
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p1','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p1','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four1.innerHTML = output
 four1. style.backgroundColor = "#60ff73" 
 }
@@ -737,7 +737,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four2.style.backgroundColor = "#ff918c" 
 
 four2.innerHTML = output
@@ -745,7 +745,7 @@ four2.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p2','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p2','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four2. style.backgroundColor = "#60ff73" 
 four2.innerHTML = output
 }
@@ -759,7 +759,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 
 four3.style.backgroundColor = "#ff918c" 
 four3.innerHTML = output
@@ -767,7 +767,7 @@ four3.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p3','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p3','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 
 four3. style.backgroundColor = "#60ff73" 
 four3.innerHTML = output
@@ -782,7 +782,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four4.style.backgroundColor = "#ff918c" 
             
 four4.innerHTML = output
@@ -790,7 +790,7 @@ four4.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p4','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p4','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 // one4.style.backgroundColor = "#32ff36"
 four4. style.backgroundColor = "#60ff73" 
 four4.innerHTML = output
@@ -805,14 +805,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four5.style.backgroundColor = "#ff918c"                                
 four5.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p5','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p5','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four5. style.backgroundColor = "#60ff73"             
 four5.innerHTML = output
 }
@@ -826,14 +826,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four6.style.backgroundColor = "#ff918c"                                 
 four6.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p6','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p6','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four6. style.backgroundColor = "#60ff73"             
 four6.innerHTML = output
 }
@@ -847,14 +847,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four7.style.backgroundColor = "#ff918c"                 
 four7.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p7','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p7','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four7. style.backgroundColor = "#60ff73"             
 four7.innerHTML = output
 }
@@ -868,14 +868,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 four8.style.backgroundColor = "#ff918c"                 
 four8.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p8','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p8','${response.timeline[3].groupname}', '${response.timeline[3].date}', '${response.timeline[3].dayorder}', '${response.timeline[3].deptid}')"></a></div>`
 four8. style.backgroundColor = "#60ff73"            
 four8.innerHTML = output
 }
@@ -904,14 +904,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five1.style.backgroundColor = "#ff918c" 
 five1.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p1','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p1','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five1. style.backgroundColor = "#60ff73" 
 five1.innerHTML = output
 }
@@ -925,7 +925,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five2.style.backgroundColor = "#ff918c" 
 
 five2.innerHTML = output
@@ -933,7 +933,7 @@ five2.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p2','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p2','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five2. style.backgroundColor = "#60ff73" 
 five2.innerHTML = output
 }
@@ -947,7 +947,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 
 five3.style.backgroundColor = "#ff918c" 
 five3.innerHTML = output
@@ -955,7 +955,7 @@ five3.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p3','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p3','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 
 five3. style.backgroundColor = "#60ff73" 
 five3.innerHTML = output
@@ -970,7 +970,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five4.style.backgroundColor = "#ff918c" 
             
 five4.innerHTML = output
@@ -978,7 +978,7 @@ five4.innerHTML = output
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p4','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p4','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 // one4.style.backgroundColor = "#32ff36"
 five4. style.backgroundColor = "#60ff73" 
 five4.innerHTML = output
@@ -993,14 +993,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five5.style.backgroundColor = "#ff918c"                                
 five5.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p5','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p5','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five5. style.backgroundColor = "#60ff73"             
 five5.innerHTML = output
 }
@@ -1014,14 +1014,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five6.style.backgroundColor = "#ff918c"                                 
 five6.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p6','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p6','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five6. style.backgroundColor = "#60ff73"             
 five6.innerHTML = output
 }
@@ -1035,14 +1035,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five7.style.backgroundColor = "#ff918c"                 
 five7.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p7','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p7','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five7. style.backgroundColor = "#60ff73"             
 five7.innerHTML = output
 }
@@ -1056,14 +1056,14 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a>`
+let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five8.style.backgroundColor = "#ff918c"                 
 five8.innerHTML = output
 
 }).
 catch(err => console.log(err))
 }else {
-let output = `<a class="text-dark row"   style="min-width:100%; padding: 2px; min-height:100%; margin-right: 0; margin-left: 0;"  onclick="setPeriodInfo('p8','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"   onclick="setPeriodInfo('p8','${response.timeline[4].groupname}', '${response.timeline[4].date}', '${response.timeline[4].dayorder}', '${response.timeline[4].deptid}')"></a></div>`
 five8. style.backgroundColor = "#60ff73"            
 five8.innerHTML = output
 }
@@ -1083,6 +1083,8 @@ function getresponse(deptId) {
     then(response => {
         console.log(response)
         if(response.timeline.length > 0){
+            const notifyMessage = document.getElementById('notifymessage')
+            notifyMessage.innerHTML = ``
             insertTimelineValues(response)
         }
         else {
@@ -1097,6 +1099,8 @@ function getresponse(deptId) {
  
 
 function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
+    const periodMessageRef = document.getElementById('periodmessage')
+    periodMessageRef.innerHTML = ``
 
     const uname = localStorage.getItem('uname')
     console.log(uname)
@@ -1104,6 +1108,8 @@ function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
     fetch(url)
     .then(data => data.json())
     .then(response => {
+        const periodMessageRef = document.getElementById('periodmessage')
+        periodMessageRef.innerHTML = ``
         console.log(response)
         let option = ``
         const element = response.workload
@@ -1153,7 +1159,7 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
     console.log(periodDesc, periodSub, periodName,groupName,date,dayorder,deptid)
 
     if(periodDesc != "" && periodSub != "Select Subject" ) {
-        url = `http://localhost/seminar/restapi/timeline/insertperioddetails.php?deptid=${deptid}&group=${groupName}&date=${date}&dayorder=${dayorder}&period=${periodName}&username=${uname}&subcode=${periodSub}&description=${periodDesc}`
+        url = `http://localhost/seminar/restapi/timeline/insertperioddetails.php?deptid=${deptid}&group=${groupName}&date=${date}&dayorder=${dayorder}&period=${periodName}&username=${uname}&subcode=${periodSub}&description=${periodDesc}&userid=${localStorage.getItem('token')}&roleid=${localStorage.getItem('roleId')}`
         console.log(url)
         fetch(url)
         .then(data => data.json())
@@ -1174,7 +1180,7 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
             }
             else {
                 const periodMessageRef = document.getElementById('periodmessage')
-                periodMessageRef.innerHTML = `<p class="alert alert-danger">Something went wrong try again with correct details</p>  `
+                periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>`
                 $('#periodinfomodal').modal('show')
             }
     
@@ -1196,7 +1202,8 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
 
 
 function getPeriodInfo(periodId) {
-
+    const periodMessageRef = document.getElementById('periodmessage')
+    periodMessageRef.innerHTML = ``
 
     const uname = localStorage.getItem('uname')
     console.log(uname)
@@ -1216,9 +1223,13 @@ function getPeriodInfo(periodId) {
         fetch(url)
         .then(data => data.json())
         .then(response => {
+            const periodMessageRef = document.getElementById('periodmessage')
+            periodMessageRef.innerHTML = ``
             console.log(response)
             const periodinfomodalRef = document.getElementById('periodContent')
-            periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
+
+            if(response.perioddetails[0].user_name != uname) {
+                periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
                                             <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
                                             <hr>
                                         <div class="form-group " >
@@ -1246,14 +1257,7 @@ function getPeriodInfo(periodId) {
                                                         ${response.perioddetails[0].dept_name} - ${response.perioddetails[0].sec} - sem - ${response.perioddetails[0].sem}
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col text-primary font-weight-bold">
-                                                        Description :
-                                                    </div>
-                                                    <div class="col">
-                                                        ${response.perioddetails[0].description}
-                                                    </div>
-                                                </div>
+                                               
                                                 <div class="row">
                                                     <div class="col"> <hr> </div>
                                                 </div>
@@ -1275,10 +1279,58 @@ function getPeriodInfo(periodId) {
                                                 </div>
                                             </div>
                                         </form>`
-            const periodinfomodalRefFooter = document.getElementById('periodFooter')
-            periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}')">Request</button>`
-            periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
-            $('#periodinfomodal').modal('show')
+                const periodinfomodalRefFooter = document.getElementById('periodFooter')
+                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}')">Request</button>`
+                periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+                $('#periodinfomodal').modal('show')
+            } else {
+                periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
+                <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
+                <hr>
+                <div class="form-group " >
+                    <div class="row bg-light">
+                            <div class="col text-primary font-weight-bold">
+                                Staff Name :
+                            </div>
+                            <div class="col">
+                                ${response.perioddetails[0].user_name}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-primary font-weight-bold">
+                                Subject Code :
+                            </div>
+                            <div class="col">
+                                ${response.perioddetails[0].sub_code}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-primary font-weight-bold">
+                                Class :
+                            </div>
+                            <div class="col">
+                                ${response.perioddetails[0].dept_name} - ${response.perioddetails[0].sec} - sem - ${response.perioddetails[0].sem}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-primary font-weight-bold">
+                                Description :
+                            </div>
+                            <div class="col">
+                                ${response.perioddetails[0].description}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"> <hr> </div>
+                        </div>
+                       
+                    </div>
+                </form>`
+                const periodinfomodalRefFooter = document.getElementById('periodFooter')
+                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}')">Cancel Booking</button>`
+                periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+                $('#periodinfomodal').modal('show')
+            }
 
         })
         .catch(err => console.log(err))
@@ -1323,7 +1375,7 @@ function getPeriodInfoCatch(book_id) {
             }
             else {
                 const periodMessageRef = document.getElementById('periodmessage')
-                periodMessageRef.innerHTML = `<p class="alert alert-danger">Something went wrong try again with correct details</p>  `
+                periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>  `
                 $('#periodinfomodal').modal('show')
             }
     

@@ -2,7 +2,7 @@
 
 require_once('../config/dbconnection.php');
 
-$sql5 = "select group_name, date, day_order from tbl_group where group_name = '18-08-14'";
+$sql5 = "select group_name, date, day_order from tbl_group where group_name = '2018-08-16'";
 $result5 = mysqli_query($DB,$sql5);
 while($row5 = mysqli_fetch_array($result5)) {
     $tempgroupname = $row5['group_name'];      

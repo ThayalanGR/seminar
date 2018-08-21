@@ -286,3 +286,65 @@ function processAddBatchRequest(){
 
 }
 
+
+
+
+
+function OneTimeGeneration() {
+
+    const modRef = document.getElementById('passwordModal')
+    passwordContentRef.innerHTML = `<form onSubmit = "return false;">
+                                    <h5 class="text-primary text-center">Set Day Orders</h5>
+                                    <hr>
+                                    <div class="form-group">
+                                    <label for="batchDate">Enter Starting Date : </label>
+                                    <input type="date" class="rounded btn-outline-primary form-control"  min="${date}" id="batchDate" placeholder="Enter Starting Date">
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="number" class="rounded btn-outline-primary form-control" id="batchCounter" placeholder="Enter number of batches">
+                                    </div>
+                                </form>`
+    passwordFooterRef.innerHTML =`<button type="button" class="btn btn-primary" onClick="OneTimeGenerationProcess();">Submit</button>`
+    passwordFooterRef.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+    $('#passwordModal').modal('show')
+
+
+    
+}
+
+
+
+function OneTimeGenerationProcess() {
+    // alert()
+    messageRef.innerHTML = ``   
+    const batchDateRef = document.getElementById("batchDate")
+    const date = batchDateRef.value
+    const batchCountRef = document.getElementById("batchCounter")
+    const count = batchCountRef.value
+    if( date != "" && count != 0 && count != "") {
+        console.log(date,count)
+        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${date}&count=${count}`
+    
+        fetch(url1).
+        then(data => data.json()).
+        then(result => {
+            console.log(result)    
+            batchCount.style.display = "block"
+            batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+        })
+        .catch(error => {
+            console.log(error)
+        })    
+
+    }
+    else {
+        messageRef.innerHTML = `<p class="alert alert-dangers">please fill-up all fields</p>`
+
+        $('#passwordModal').modal('show')
+
+    }
+    
+
+
+    
+}
