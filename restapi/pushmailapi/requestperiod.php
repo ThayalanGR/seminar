@@ -4,12 +4,11 @@ include("../config/dbconnection.php");
 require_once "../library/phpmailer/class.phpmailer.php";
 
 
-if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg']) && isset($_GET['sub_code'])) {
+if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'])) {
 
     $token = $_GET['token'];
     $book_id = $_GET['book_id'];
     $request_msg = $_GET['request_msg'];
-    $sub_code = $_GET['sub_code'];
 
     $sourceName = "";
     $destinationName = "";
@@ -19,7 +18,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $row1 = mysqli_fetch_array($result1);
     $sendername = $row1['name'];
 
-    $sql2 = "select t1.book_id, t1.dept_id, t2.dept_name, t1.group_name, t1.date, t1.day_order, t1.period, t1.user_name, t1.sub_code, t1.dept, t1.sec, t1.sem, t1.description, t1.active from tbl_booking t1 inner join tbl_dept t2 on t1.dept_id = t2.dept_id where t1.book_id=".$periodid;
+    $sql2 = "select t1.book_id, t1.dept_id, t2.dept_name, t1.group_name, t1.date, t1.day_order, t1.period, t1.user_name, t1.sub_code, t1.dept, t1.sec, t1.sem, t1.description, t1.active from tbl_booking t1 inner join tbl_dept t2 on t1.dept_id = t2.dept_id where t1.book_id=".$book_id;
     $result2 = mysqli_query($DB,$sql2);
     $row2 = mysqli_fetch_array($result2); 
 
@@ -35,8 +34,8 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $dept = $row2['dept'];
     $sec = $row2['sec'];
     $sem = $row2['sem'];
-    $description = $row['description'];
-    $active = $row['active'];
+    $description = $row2['description'];
+    $active = $row2['active'];
 
     $message = '
             <!DOCTYPE html>
@@ -61,12 +60,12 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                             </div>
                             <div class="row">
                                 <div class="col m-2 p-4">
-                                    <p><span class="font-weight-bold">Hello  '.echo $recievername;.'</span>,<br><br>
-                                    <span class="font-weight-bold">'.echo $sendername;.'</span> Requested the period that you have booked (ie., <span class="text-warning"> '.echo $date;.' Day Order - '.echo $day_order;.'  '.echo $dept_name;.' Seminar Hall for the Class '.echo $sub_code;. ' - '.echo $dept;.'-'.echo $sec;.'-SEM-'.echo $sem;.' </span>)
+                                    <p><span class="font-weight-bold">Hello  '.$recievername.'</span>,<br><br>
+                                    <span class="font-weight-bold">'.$sendername.'</span> Requested the period that you have booked (ie., <span class="text-warning"> '.$date.' Day Order - '.$day_order.'  '.$dept_name.' Seminar Hall for the Class '.$sub_code. ' - '.$dept.'-'.$sec.'-SEM-'.$sem.' </span>)
                                     <br> 
                                     <hr>
-                                    <span class="text-primary"> Request message from <b>'.echo $sendername;.'</b></span><br>&nbsp; &nbsp;
-                                    '.echo $request_msg;.'
+                                    <span class="text-primary"> Request message from <b>'.$sendername.'</b></span><br>&nbsp; &nbsp;
+                                    '.$request_msg.'
                                     </p>
                                     <hr>
                                 </div>
@@ -118,6 +117,8 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
 
     }
 
+
+    echo $message;
 }
 
 ?>
