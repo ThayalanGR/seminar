@@ -24,6 +24,36 @@
         padding-top: 5px;
         padding-left: 5px;
     }
+
+
+    .period {
+        padding: 5px 5px 5px 5px;
+        height: 65px;
+        width: 65px;
+        /* vertical-align: middle; */
+        text-align: center;
+        margin: 2px;
+        /* border: 1px solid white; */
+        background-color: #f3f3f3;
+        /* box-shadow: 2px 1px black; */
+        min-height:10px;
+        border-radius: 5px;
+        font-size: 12px;
+        
+    }
+
+    .periodmeta {
+        height: 65px;
+        width: 65px;
+        /* vertical-align: middle; */
+        /* text-align: center; */
+        margin: 2px;
+        /* border: 1px solid white; */
+        background-color: #f3f3f3;
+        /* box-shadow: 2px 1px black; */
+        /* min-height:10px; */
+        border-radius: 5px;
+    }
 </style>
 <body>
 
@@ -32,7 +62,7 @@
 <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
        
         <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
-           <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
+           <img src="../../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
            <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
        </a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,10 +72,10 @@
            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                <li class="nav-item">
-                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
+                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../home/">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                       <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
+                       <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../event/">Event Booking</a>
                </li>
    
              </ul>
@@ -61,7 +91,7 @@
                        
                                </a>
                                    <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
-                                       <li role="presentation" class="dropdown-item "><a href="../../modules/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
+                                       <li role="presentation" class="dropdown-item "><a href="../../home/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
                                        </li>
                                        <hr>
                                        <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
@@ -79,10 +109,55 @@
    
    
 
-<div class="container-fluid">
+<div class="container-fluid ">
     <div class="row">
-        <div class="col-12">
-                
+        <div class="col-md-10 col-sm-12 offset-md-1 mt-5 pt-5">
+            <div class="row">
+                <div class="col text-center text-primary font-weight-bold">
+                    <hr><h3 class="text-primary font-weight-bold">Event Booking</h3><hr>
+                </div>
+            </div>
+            <div class="row ">
+                    
+                    <div class="col text-center">
+                        <label for="departmentView" class="text-success font-weight-bold">Department : </label>
+                        <select name="department" class="input input-block form-control-sm btn-outline-success rounded" id="departmentView"></select>
+                        <hr>
+                    </div>
+                    <div class="col text-center">
+                            <label for="departmentView" class="text-success font-weight-bold">Date : </label>
+                            <input type="date" name="departmentdate" id="departmentdate" min="" class="input input-block form-control-sm btn-outline-success rounded">
+                            <hr>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">
+                                <hr>
+                        </div>
+                            
+                    </div>
+                    
+            </div>
+            <div class="row">
+                    <div class="col text-center text-warning font-weight-bold">
+                        Availability View<hr>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-danger">
+                            <div id="contentBodyMessage"></div>    
+                        </div>
+                    </div>
+                    <div id="contentPeriodBody"></div>
+                    <div class="row">
+                        <div class="col text-center text-warning font-weight-bold">
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="contentPeriodBodyDesc"></div>
+                </div>
+            </div>     
         </div>
     </div>
 </div>
@@ -98,9 +173,8 @@
 <div class="modal fade" id="notifyModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-body" id="notifyContent">
-    
-            </div>
+                <div id="notifymessage" class="text-center"> </div>
+                <div class="modal-body" id="notifyContent"></div>
             <div class="modal-footer" style="display:none;" id="notifyCloseButton">
                 <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
             </div>
@@ -134,7 +208,9 @@
     
     
     <!-- modal for changing password -->
-      <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
