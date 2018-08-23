@@ -21,7 +21,7 @@ if(isset($_GET['holiday'])) {
     $sql2 = "select date, day_order from tbl_group where group_id >= ".$did;
     $result2 = mysqli_query($DB,$sql2);
     $count = mysqli_num_rows($result2);
-    echo $count;
+    // echo $count;
     $gndate = $holiday;
     $i = 1;
     

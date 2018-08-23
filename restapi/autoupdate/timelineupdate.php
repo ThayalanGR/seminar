@@ -2,7 +2,7 @@
 
 require_once('../config/dbconnection.php');
 
-$currenttime = strtotime(date("Y-m-d"));
+$currenttime = date("Y-m-d");
 // $sql1 = "select date from tbl_group";
 // $result1 = mysqli_query($DB,$sql1);
 // $current = "";
@@ -20,7 +20,7 @@ $sql2 = "select group_id from tbl_group where date = '".$currenttime."'";
 $result2 = mysqli_query($DB,$sql2);
 $row2 = mysqli_fetch_array($result2);
 $groupid = $row2['group_id'];
-// echo $groupid;
+//  echo $groupid;
 
 $sql3 = "select group_name, day_order, date from tbl_group where group_id >= ".$groupid." limit 5";
 $result3 = mysqli_query($DB,$sql3);

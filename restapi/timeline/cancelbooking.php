@@ -36,13 +36,13 @@ if(isset($_GET['bookid'])) {
     $row4 = mysqli_fetch_array($result4);
     $currentusage = $row4['current_usage'];
     $maxbook = $row4['max_book'];
-    echo $currentusage;
+    // echo $currentusage;
     // $today = $todaysusage - 1;
     // $sql5 = "update tbl_todaylimit set todaysusage = ".$today." where user_id = ".$userid." and sub_code = '".$subcode."'";
     // mysqli_query($DB,$sql5);
     
     $current = $currentusage - 1;
-    echo $current;
+    // echo $current;
     $sql6 = "update tbl_limit set current_usage = ".$current." where user_id = ".$userid." and sub_code = '".$subcode."' and group_name = '".$groupname."'";
     mysqli_query($DB,$sql6);
     

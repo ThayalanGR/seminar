@@ -41,7 +41,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     // echo $currentusage."  ".$maxbook."  ".$todaysusage."          ";
     
     if($roleid == 1) {
-        if($currentusage <= $maxbook) {
+        if($currentusage < $maxbook) {
             $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active, event) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.", ".$event.")";
             mysqli_query($DB,$sql);
 
@@ -49,7 +49,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
             $result1 = mysqli_query($DB,$sql1);
             $row1 = mysqli_fetch_array($result1);
             $bookid = $row1['book_id'];
-            echo $bookid;
+            // echo $bookid;
 
             $sql2 = "update tbl_timeline set ".$period." = ".$bookid." where dept_id = ".$deptid." and group_name = '".$group."' and date = '".$date."' and day_order = ".$dayorder;
             mysqli_query($DB,$sql2);
@@ -78,7 +78,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
         }
     }
     else if($roleid == 2) {
-        if($currentusage <= $maxbook) {
+        if($currentusage < $maxbook) {
             $sql = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description, active, event) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '". $period."', '".$username."', '".$subject."', '".$dept."', '".$sec."',".$sem.",'".$description."', ".$active.", ".$event.")";
             mysqli_query($DB,$sql);
 

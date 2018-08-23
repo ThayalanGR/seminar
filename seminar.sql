@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2018 at 07:36 PM
+-- Generation Time: Aug 23, 2018 at 07:00 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -313,15 +313,18 @@ CREATE TABLE `tbl_booking` (
   `sem` int(11) DEFAULT NULL,
   `description` blob,
   `active` int(2) NOT NULL,
-  `event` int(11) NOT NULL DEFAULT '0'
+  `event` int(2) NOT NULL DEFAULT '0',
+  `event_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_name`, `sub_code`, `dept`, `sec`, `sem`, `description`, `active`, `event`) VALUES
-(7, 1, '2018-08-25', '2018-08-28', 3, 'p6', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0);
+INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_name`, `sub_code`, `dept`, `sec`, `sem`, `description`, `active`, `event`, `event_name`) VALUES
+(3, 1, '2018-08-25', '2018-08-28', 3, 'p8', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
+(12, 1, '2018-08-25', '2018-08-28', 3, 'p6', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
+(13, 1, '2018-08-25', '2018-08-28', 3, 'p7', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -347,6 +350,37 @@ INSERT INTO `tbl_dept` (`dept_id`, `dept_name`) VALUES
 (6, 'MECH'),
 (7, 'CIVIL'),
 (8, 'ENG');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_eventbackup`
+--
+
+CREATE TABLE `tbl_eventbackup` (
+  `book_id` int(11) NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `group_name` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `day_order` int(11) NOT NULL,
+  `period` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `sub_code` varchar(255) NOT NULL,
+  `dept` varchar(255) NOT NULL,
+  `sec` varchar(255) NOT NULL,
+  `sem` int(11) NOT NULL,
+  `description` blob NOT NULL,
+  `active` int(2) NOT NULL,
+  `event` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_eventbackup`
+--
+
+INSERT INTO `tbl_eventbackup` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_name`, `sub_code`, `dept`, `sec`, `sem`, `description`, `active`, `event`) VALUES
+(1, 1, '2018-08-25', '2018-08-28', 3, 'p6', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0),
+(2, 1, '2018-08-25', '2018-08-28', 3, 'p7', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -405,7 +439,9 @@ CREATE TABLE `tbl_history` (
   `dept` varchar(255) NOT NULL,
   `sec` varchar(255) NOT NULL,
   `sem` int(11) NOT NULL,
-  `description` blob NOT NULL
+  `description` blob NOT NULL,
+  `event` int(2) NOT NULL,
+  `event_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -631,7 +667,7 @@ INSERT INTO `tbl_limit` (`limit_id`, `user_id`, `sub_code`, `group_name`, `role_
 (201, 285, 'CE8301', '2018-08-18', 1, 0),
 (202, 285, 'CE6502', '2018-08-18', 1, 0),
 (203, 286, 'ME6701', '2018-08-18', 1, 0),
-(204, 1, 'CS6703', '2018-08-25', 1, 1),
+(204, 1, 'CS6703', '2018-08-25', 1, 3),
 (205, 2, 'IT6801', '2018-08-25', 1, 0),
 (206, 2, 'CS8391', '2018-08-25', 1, 0),
 (207, 3, 'CS6503', '2018-08-25', 1, 0),
@@ -2073,7 +2109,12 @@ INSERT INTO `tbl_temp` (`temp_id`, `group_name`, `date`, `day_order`) VALUES
 (2, '2018-08-18', '2018-08-24', 5),
 (3, '2018-08-25', '2018-08-25', 1),
 (4, '2018-08-25', '2018-08-27', 2),
-(5, '2018-08-25', '2018-08-28', 3);
+(5, '2018-08-25', '2018-08-28', 3),
+(6, '2018-08-18', '2018-08-23', 4),
+(7, '2018-08-18', '2018-08-24', 5),
+(8, '2018-08-25', '2018-08-25', 1),
+(9, '2018-08-25', '2018-08-27', 2),
+(10, '2018-08-25', '2018-08-28', 3);
 
 -- --------------------------------------------------------
 
@@ -2130,7 +2171,7 @@ INSERT INTO `tbl_timeline` (`temp_id`, `dept_id`, `group_name`, `date`, `day_ord
 (26, 5, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (27, 6, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (28, 7, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, 1, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 7, 0, 0),
+(29, 1, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 12, 13, 3),
 (30, 2, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (31, 3, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (32, 4, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -2638,7 +2679,7 @@ ALTER TABLE `stafftbl`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_group`
@@ -2674,13 +2715,13 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_temp`
 --
 ALTER TABLE `tbl_temp`
-  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_timeline`
 --
 ALTER TABLE `tbl_timeline`
-  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tbl_todaylimit`

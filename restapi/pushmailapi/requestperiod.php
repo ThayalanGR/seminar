@@ -118,7 +118,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     }
 
 
-    echo $message;
+    // echo $message;
 }
 
 ?>
