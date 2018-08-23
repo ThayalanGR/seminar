@@ -147,6 +147,43 @@ fetchdate3.innerHTML = response.timeline[2].date
 fetchdate4.innerHTML = response.timeline[3].date
 fetchdate5.innerHTML = response.timeline[4].date
 
+let dateCalc = new Date()
+// alert(dateCalc.getHours())
+
+function TimeManagementSystem() {
+    if(dateCalc.getMinutes() >= 9) {
+        one1.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 10) {
+        one2.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 11) {
+        one3.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 12) {
+        one4.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 13) {
+        one5.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 14) {
+        one6.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 15) {
+        one7.classList.add('disabled', 'bg-light')
+    }
+    if(dateCalc.getHours() >= 16) {
+        one8.classList.add('disabled', 'bg-light')
+    }
+}
+
+TimeManagementSystem()
+// calcPeriodTimings()
+setInterval(function() {   
+    TimeManagementSystem()
+}, 5000)
+
+
 //fetchong day order-1 
 if(response.timeline[0].p1 != 0 ){
     

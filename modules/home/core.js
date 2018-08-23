@@ -69,7 +69,7 @@ function updatePassword(userId, pass1) {
 
             $('#passwordModal').modal('show')
 
-            setInterval(function() {
+            setTimeout(function() {
                 $('#passwordModal').modal('hide')
             }, 3000)
         }

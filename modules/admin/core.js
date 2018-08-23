@@ -67,7 +67,7 @@ function updatePassword(userId, pass1) {
 
             $('#passwordModal').modal('show')
 
-            setInterval(function() {
+            setTimeout(function() {
                 passwordFooterRef.innerHTML = ''
                 passwordContentRef.innerHTML = ''
                 messageRef.innerHTML = ''
@@ -279,7 +279,7 @@ function deleteAndSwap(date) {
                                         <br><i class="fas fa-spinner text-primary fa-spin"></i> <br>    
                                     </p>
                                     `
-            setInterval(function() {
+            setTimeout(function() {
                 alertRef.innerHTML = ``
                 url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
                 fetch(url).
@@ -342,7 +342,7 @@ function OneTimeGenerationProcess() {
             console.log(result)    
             batchCount.style.display = "block"
             batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
-            setInterval(function() {
+            setTimeout(function() {
                 batchBody.innerHTML = ``
                 batchCount.style.display = "none"
                 $('#passwordModal').modal('hide')

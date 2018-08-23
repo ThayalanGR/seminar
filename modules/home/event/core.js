@@ -77,7 +77,7 @@ function updatePassword(userId, pass1) {
 
             $('#passwordModal').modal('show')
 
-            setInterval(function() {
+            setTimeout(function() {
                 $('#passwordModal').modal('hide')
             }, 3000)
         }
@@ -174,7 +174,7 @@ function processEventBooking() {
         contentBodyMessage.innerHTML = `<div class="alert alert-success text-center"> Event Booking Successfull</div> `
         contentPeriodBody.innerHTML = ``
         contentPeriodBodyDesc.innerHTML = ``
-        setInterval(function(){
+        setTimeout(function(){
             contentBodyMessage.innerHTML = ``
         }, 5000)
     }
@@ -182,7 +182,7 @@ function processEventBooking() {
         const  contentBodyMessage = document.getElementById('contentBodyMessage')
         console.log("rejected")
         contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"> invalid fields</div> `
-        setInterval(function(){
+        setTimeout(function(){
             contentBodyMessage.innerHTML = ``
         }, 3000)
 
@@ -375,7 +375,7 @@ $(document).ready(function() {
         }
         else {
             contentBodyMessage.innerHTML = `<div class="alert alert-danger"> please select department field</div> `
-            setInterval(function(){
+            setTimeout(function(){
                 contentBodyMessage.innerHTML = ``
             }, 3000)
         }
@@ -388,7 +388,7 @@ $(document).ready(function() {
         }
         else {
             contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"> please select Event Date</div> `
-            setInterval(function(){
+            setTimeout(function(){
                 contentBodyMessage.innerHTML = ``
             }, 3000)
         }
