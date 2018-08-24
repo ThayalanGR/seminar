@@ -23,9 +23,8 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
     $periods = explode("-",$period);
     $periodcount = count($periods);
 
-    for($x=0; $x<$periodcount; $x++) {
-
-        $sql1 = "select book_id, sub_code, sec, sem, date, day_order where date = '".$date."' and day_order = '".$dayorder."' and period = '".$periods[$x]."' and group_name = '".$group"'";
+    for($x=0 ; $x<$periodcount ; $x++) {
+        $sql1 = "select book_id, sub_code, sec, sem, date, day_order where date = '".$date."' and day_order = '".$dayorder."' and period = '".$periods[$x]."' and group_name = '".$group."' ";
         $result1 = mysqli_query($DB,$sql1);
         if($row1 = mysqli_fetch_array($result1)) {
             $usrbookid = $row1['book_id'];
