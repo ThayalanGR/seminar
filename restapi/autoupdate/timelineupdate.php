@@ -65,4 +65,45 @@ mysqli_query($DB,$sql10);
 $sql11 = "insert into  tbl_history(book_id, dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description) (select book_id, dept_id, group_name, date, day_order, period, user_name, sub_code, dept, sec, sem, description from tbl_booking where date = '".$yesterday."')";
 mysqli_query($DB,$sql11);
 
+$sql12 = "delete from tbl_booking where date = '".$yesterday."'";
+mysqli_query($DB,$sql12);
+
+
+$currenttime = date("Y-m-d");
+
+$sql2 = "select group_id, day_order from tbl_group where date = '".$currenttime."'";
+$result2 = mysqli_query($DB,$sql2);
+$row2 = mysqli_fetch_array($result2);
+$currentid = $row2['group_id'];
+$dayorder = $row2['day_order'];
+
+if($dayorder == 1) {        
+    $currentid = $currentid + 5;
+    $sql3 = "select group_name from tbl_group where group_id = ".$currentid;
+    $result3 = mysqli_query($DB,$sql3);
+    $row3 = mysqli_fetch_array($result3);
+    $nextgroup = $row3['group_name'];
+
+    $sql1 = "select user_id, user_name, role_id from tbl_staff";
+    $result1 = mysqli_query($DB,$sql1);
+
+    while($row1 = mysqli_fetch_array($result1)) {
+        $username = $row1['user_name'];
+        $userid = $row1['user_id'];
+        $roleid = $row1['role_id'];
+        $sql2 = "select sub_code from tbl_workload where sub_type = 'T' and staff1 = '".$username."'";
+        $result2 = mysqli_query($DB,$sql2);
+        $groupname = "2018-08-18";
+
+        while($row2 = mysqli_fetch_array($result2)) {
+            $subcode = $row2['sub_code'];
+            $sql3 = "insert into tbl_limit (user_id, sub_code, group_name, role_id) values (".$userid.", '".$subcode."', '".$nextgroup."', ".$roleid.")";
+            mysqli_query($DB,$sql3);
+            // $sql4 = "insert into tbl_todaylimit (user_id, sub_code, role_id) values (".$userid.", '".$subcode."', ".$roleid.")";
+            // mysqli_query($DB,$sql4);
+
+        }
+    }
+}
+
 ?>
