@@ -1,6 +1,12 @@
 
 const disRef = document.getElementById('dis')
 
+$(document).ready(function() {
+    const unameRef = document.getElementById('uname')
+    unameRef.innerHTML = localStorage.getItem('uname')
+})
+
+
 function grabAOF() {
 
     
