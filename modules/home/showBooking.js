@@ -1365,7 +1365,7 @@ function getPeriodInfoCatch(book_id) {
                 periodMessageRef.innerHTML = `<p class="alert alert-success">Request successfully sent, keep checking your email </p>
                 <i class="fas fa-spinner text-primary fa-spin"></i> <br>
                 <p>please wait,redirecting you to homepage</p> `
-                getresponse(deptid)
+                // getresponse(deptid)
                 $('#periodinfomodal').modal('show')
                 
                 setTimeout(function() {    
