@@ -4,19 +4,21 @@ include("../config/dbconnection.php");
 require_once "../library/phpmailer/class.phpmailer.php";
 
 
-if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'])) {
+if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg']) && isset($_GET['subject'])) {
 
     $token = $_GET['token'];
     $book_id = $_GET['book_id'];
     $request_msg = $_GET['request_msg'];
+    $sub = $_GET['subject'];
 
     $sourceName = "";
     $destinationName = "";
 
-    $sql1 = "select name from tbl_staff where user_id = ".$token;
+    $sql1 = "select name,role_id from tbl_staff where user_id = ".$token;
     $result1 = mysqli_query($DB, $sql1);
     $row1 = mysqli_fetch_array($result1);
     $sendername = $row1['name'];
+    $role = $row1['role_id'];
 
     $sql2 = "select t1.book_id, t1.dept_id, t2.dept_name, t1.group_name, t1.date, t1.day_order, t1.period, t1.user_name, t1.sub_code, t1.dept, t1.sec, t1.sem, t1.description, t1.active from tbl_booking t1 inner join tbl_dept t2 on t1.dept_id = t2.dept_id where t1.book_id=".$book_id;
     $result2 = mysqli_query($DB,$sql2);
@@ -132,7 +134,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                             </div>
                             <div class="row pb-4">
                                 <div class="col text-center">
-                                    <a href="http://allowrequest.php" class="btn button text-p btn-success rounded pl-5 pr-5  text-white shadow">Allow</a>&nbsp;
+                                    <a href="http://localhost/seminar/restapi/pushmailapi/allowrequest.php?bookid='.$book_id.'&deptid='.$dept_id.'&group='.$group_name.'&date='.$date.'&dayorder='.$day_order.'&period='.$period.'&username='.$sendername.'&subcode='.$sub.'&description='.$request_msg.'&userid='.$token.'&roleid='.$role.'" class="btn button text-p btn-success rounded pl-5 pr-5  text-white shadow">Allow</a>&nbsp;
                                     <a href="http://localhost/seminar/restapi/pushmailapi/denyrequest.php?sender='.$sendername.'&reciever='.$recievername.'&date='.$date.'&dayorder='.$day_order.'&dept='.$dept_name.'&sem='.$sem.'&sec='.$sec.'" class="btn button text-d btn-danger text-white rounded shadow pl-5 pr-5">Deny</a>
                                 </div>
                             </div>
@@ -142,7 +144,10 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
             </body>
             </html>
     ';
-    http://localhost/seminar/restapi/pushmailapi/allowrequest.php?bookid='.$book_id.'&&&
+
+    
+
+    
     // php mailer code starts
     date_default_timezone_set('Etc/UTC');
     $mail = new PHPMailer(true);
