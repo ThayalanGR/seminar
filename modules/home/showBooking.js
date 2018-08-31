@@ -155,7 +155,7 @@ let dateCalc = new Date()
 // alert(dateCalc.getHours())
 
 function TimeManagementSystem() {
-    if(dateCalc.getMinutes() >= 9) {
+    if(dateCalc.getHours() >= 9) {
         one1.classList.add('disabled', 'bg-light')
     }
     if(dateCalc.getHours() >= 10) {
