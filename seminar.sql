@@ -1,23 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2018 at 07:00 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `seminar`
 --
@@ -296,6 +284,157 @@ INSERT INTO `stafftbl` (`id`, `name`, `empno`, `pass`, `Dept`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `staff_achievements`
+--
+
+CREATE TABLE `staff_achievements` (
+  `sno` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `content` varchar(500) CHARACTER SET utf8 NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_areaofinterest`
+--
+
+CREATE TABLE `staff_areaofinterest` (
+  `sno` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `areaofinterest` varchar(150) NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_book`
+--
+
+CREATE TABLE `staff_book` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(50) NOT NULL,
+  `author` varchar(150) NOT NULL,
+  `btitle` varchar(150) NOT NULL,
+  `monyr` varchar(15) NOT NULL,
+  `remarks` varchar(150) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_conference`
+--
+
+CREATE TABLE `staff_conference` (
+  `c_id` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `author_name` varchar(300) NOT NULL,
+  `dept` varchar(25) NOT NULL,
+  `title` varchar(400) NOT NULL,
+  `conf_name` varchar(250) NOT NULL,
+  `organized_by` varchar(100) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `conf_date` varchar(30) NOT NULL,
+  `conf_from_date` date NOT NULL,
+  `con_to_date` date NOT NULL,
+  `pages` varchar(15) NOT NULL,
+  `ctype` varchar(20) NOT NULL,
+  `remarks` varchar(75) NOT NULL,
+  `conf_url` varchar(150) NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `rowid` varchar(25) NOT NULL,
+  `aca_yr` varchar(9) NOT NULL,
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_journals`
+--
+
+CREATE TABLE `staff_journals` (
+  `j_id` bigint(20) UNSIGNED NOT NULL,
+  `USERID` varchar(30) NOT NULL,
+  `author_name` varchar(300) NOT NULL,
+  `dept` varchar(10) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `journal_name` varchar(150) NOT NULL,
+  `pub_month` int(11) NOT NULL,
+  `pub_year` int(11) NOT NULL,
+  `pub_yr` varchar(25) NOT NULL,
+  `volume` varchar(30) NOT NULL,
+  `issue` varchar(20) NOT NULL,
+  `pages` varchar(30) NOT NULL,
+  `jtype` varchar(20) NOT NULL,
+  `remarks` varchar(250) NOT NULL,
+  `j_url` varchar(250) NOT NULL,
+  `pub_type` varchar(15) NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `rowid` varchar(25) NOT NULL,
+  `aca_yr` varchar(9) NOT NULL,
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_patent`
+--
+
+CREATE TABLE `staff_patent` (
+  `p_id` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `dept` varchar(25) NOT NULL,
+  `prno` varchar(15) NOT NULL,
+  `title` varchar(400) NOT NULL,
+  `inv` varchar(400) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `disp_status` varchar(1) NOT NULL,
+  `ptype` varchar(15) NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `sstatus` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'Staff Status W-Working, L-Left',
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_workshop`
+--
+
+CREATE TABLE `staff_workshop` (
+  `sno` bigint(20) UNSIGNED NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `dept` varchar(10) NOT NULL,
+  `ws_name` varchar(150) NOT NULL,
+  `organized_by` varchar(100) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `ws_date` varchar(30) NOT NULL,
+  `ws_from_date` date NOT NULL,
+  `ws_to_date` date NOT NULL,
+  `remarks` varchar(150) NOT NULL,
+  `wtype` varchar(15) NOT NULL,
+  `disporder` int(11) NOT NULL,
+  `status` varchar(1) NOT NULL DEFAULT 'W' COMMENT 'W-Working, L-Left',
+  `aca_yr` varchar(9) NOT NULL,
+  `active` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_booking`
 --
 
@@ -323,8 +462,13 @@ CREATE TABLE `tbl_booking` (
 
 INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_name`, `sub_code`, `dept`, `sec`, `sem`, `description`, `active`, `event`, `event_name`) VALUES
 (3, 1, '2018-08-25', '2018-08-28', 3, 'p8', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
+<<<<<<< HEAD
+(14, 1, '2018-08-25', '2018-08-28', 3, 'p6', '', 'CS6701', 'CSE', 'B', 7, 0x617361736173, 0, 0, NULL),
+(15, 1, '2018-08-25', '2018-08-28', 3, 'p7', '', 'CS6701', 'CSE', 'B', 7, 0x616466736166617366, 0, 0, NULL);
+=======
 (12, 1, '2018-08-25', '2018-08-28', 3, 'p6', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
 (13, 1, '2018-08-25', '2018-08-28', 3, 'p7', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL);
+>>>>>>> upstream/master
 
 -- --------------------------------------------------------
 
@@ -675,7 +819,11 @@ INSERT INTO `tbl_limit` (`limit_id`, `user_id`, `sub_code`, `group_name`, `role_
 (209, 4, 'CS6504', '2018-08-25', 1, 0),
 (210, 8, 'CS6504', '2018-08-25', 1, 0),
 (211, 10, 'EC8393', '2018-08-25', 1, 0),
+<<<<<<< HEAD
+(212, 11, 'CS6701', '2018-08-25', 1, 2),
+=======
 (212, 11, 'CS6701', '2018-08-25', 1, 0),
+>>>>>>> upstream/master
 (213, 13, 'EI6001', '2018-08-25', 1, 0),
 (214, 13, 'CS6501', '2018-08-25', 1, 0),
 (215, 14, 'CS8351', '2018-08-25', 1, 0),
@@ -2171,11 +2319,7 @@ INSERT INTO `tbl_timeline` (`temp_id`, `dept_id`, `group_name`, `date`, `day_ord
 (26, 5, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (27, 6, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (28, 7, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, 1, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 12, 13, 3),
-(30, 2, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
-(31, 3, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (32, 4, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, 5, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (34, 6, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (35, 7, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -2579,6 +2723,48 @@ ALTER TABLE `stafftbl`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `staff_achievements`
+--
+ALTER TABLE `staff_achievements`
+  ADD UNIQUE KEY `sno` (`sno`);
+
+--
+-- Indexes for table `staff_areaofinterest`
+--
+ALTER TABLE `staff_areaofinterest`
+  ADD UNIQUE KEY `sno` (`sno`);
+
+--
+-- Indexes for table `staff_book`
+--
+ALTER TABLE `staff_book`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `staff_conference`
+--
+ALTER TABLE `staff_conference`
+  ADD UNIQUE KEY `c_id` (`c_id`);
+
+--
+-- Indexes for table `staff_journals`
+--
+ALTER TABLE `staff_journals`
+  ADD UNIQUE KEY `j_id` (`j_id`);
+
+--
+-- Indexes for table `staff_patent`
+--
+ALTER TABLE `staff_patent`
+  ADD UNIQUE KEY `p_id` (`p_id`);
+
+--
+-- Indexes for table `staff_workshop`
+--
+ALTER TABLE `staff_workshop`
+  ADD UNIQUE KEY `sno` (`sno`);
+
+--
 -- Indexes for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
@@ -2676,7 +2862,7 @@ ALTER TABLE `stafftbl`
   MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
 
 --
--- AUTO_INCREMENT for table `tbl_booking`
+-- AUTO_INCREMENT for table `staff_achievements`
 --
 ALTER TABLE `tbl_booking`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;

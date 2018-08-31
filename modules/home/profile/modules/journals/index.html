@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="favicon" href="../../assets/image/saraicon.ico" type="image/x-icon">
+    <title>SeminarHallBooking</title>
+     <style>
+        .no-js #loader {
+            display: none;
+        }
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("http://localhost/seminar/assets/gif/Preloade.gif") center no-repeat #fff;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="../../../init.js"></script>
+</head>
+<style>
+      * {
+        margin: 0;
+        padding: 0;
+        vertical-align: baseline;
+        outline: 0;
+      }
+       body {
+          width:100vw;
+          height:auto;
+          overflow-x:hidden;
+      }
+
+      #labelsem {
+        position: absolute;
+        padding-top: 5px;
+        padding-left: 5px;
+      }
+    </style>
+<body>
+    <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
+       
+        <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
+           <img src="../../image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
+           <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
+       </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                   <i class="fas fa-bars"></i>
+           </button>
+         
+           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+               <li class="nav-item">
+                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../../">Home <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="nav-item">
+                       <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../../../home/event/">Event Booking</a>
+               </li>
+
+               <li class="nav-item dropdown ">
+                    <a class="nav-item nav-link dropdown-toggle hoverable rounded dropdown-item "  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Add
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+    
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/achievements/index.html"> &nbsp;Achievements</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/areaofinterest/index.html"> &nbsp;Area of interest</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/book/index.html"> &nbsp;Book</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/conference/index.html"> &nbsp;Conference</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/journals/index.html"> &nbsp;Journals</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/patent/index.html"> &nbsp;Patent</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/workshop/index.html"> &nbsp;Workshop</a>
+                    </div>
+                </li>
+
+
+    
+
+            </ul>
+           
+
+             <div class="my-1 my-lg-0">
+                   <ul class="nav navbar-nav">
+                           <li class="dropdown nav-item"> 
+                           
+                               <a class="dropdown-toggle  nav-link   p-0" data-toggle="dropdown" aria-expanded="false"  href="#">
+                       
+                                   <i class="fas fa-user-alt text-primary"></i> 
+                       &nbsp;
+                                   <label class="text-primary font-weight-bold" id="uname"></label>
+                       
+                               </a>
+                                   <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
+                                       <li role="presentation" class="dropdown-item "><a class="btn btn-link" style="text-decoration:none;" href="../../../profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class="dropdown-item "><a class="btn btn-link" onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class=" dropdown-item "><a class="btn btn-link" style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
+                                       </li>
+                                   </ul>
+                           </li>
+                   </ul>
+               </div>
+           </div>
+    </nav>
+   
+    <div class="row mt-md-5 mt-sm-4">
+        <div class=" bg-white shadow rounded col-sm-8 offset-sm-3 col-md-4 offset-md-4 mt-4">
+            <div class="row">
+                <div class="col text-center pt-3">
+                    <h4 class="text-primary">Add Journals</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr class="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="author" id="author" class="form-control input-sm" placeholder="Author Name">
+                </div>
+            </div>
+            <div class="row">
+                
+                    <div class="col p-4">
+                        <select class="form-control input-sm" id="dept">
+                            <option>Choose...</option>
+                            <option value="CSE">CSE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="ICE">ICE</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="MECH">MECH</option>
+                            <option value="IT">IT</option>
+
+                        </select>
+                    </div>
+            </div>
+            <div class="row">
+                
+                    <div class="col p-4">
+                        <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Title of Journals">
+                    </div>
+            </div>    
+            <div class="row">
+                
+                <div class="col p-4">
+                    <input type="text" name="jname" id="jname" class="form-control input-sm" placeholder="Journal Name">
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col p-4">
+                    <input type="text" name="mon" id="month" class="form-control input-sm" placeholder="Publish Month">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="number" name="year" id="year" class="form-control input-sm" placeholder="Publish Year">
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="vol" id="vol" class="form-control input-sm" placeholder="Volume">
+                </div>
+            </div>           
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="issue" id="issue" class="form-control input-sm" placeholder="Issue">
+                </div>
+            </div>  
+            <div class="row">
+                    <div class="col p-4">
+                        <input type="number" name="pages" id="pages" class="form-control input-sm" placeholder="Pages">
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="jtype" id="jtype" class="form-control input-sm" placeholder="Journal Type">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="jurl" id="jurl" class="form-control input-sm" placeholder="Journal URL">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="text" name="ptype" id="ptype" class="form-control input-sm" placeholder="Publish Type">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="number" name="ayear" id="ayear" class="form-control input-sm" placeholder="Academic Year">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="number" name="remarks" id="remarks" class="form-control input-sm" placeholder="Remarks">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-4">
+                    <input type="number" name="dis" id="dis" class="form-control input-sm" placeholder="Disporder">
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col p-2 mb-3 text-center">
+                        <input type="button" value="Add" id="validate" onClick="grabValue();" class="btn btn-outline-primary">
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- modal for changing password -->
+
+
+    <div class="modal fade" id="passwordModal"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="message" class="text-center">
+                    
+                </div>
+            <div class="modal-body" id="passwordContent">
+            </div>
+            <div class="modal-footer" id="passwordFooter">
+            </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="./core.js" type="text/javascript"></script> 
+</body>
+</html>
