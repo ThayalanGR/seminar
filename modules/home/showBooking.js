@@ -69,6 +69,10 @@ $(document).ready(function() {
 
 function insertTimelineValues(response) {
 
+
+    const mainBlockRef = document.getElementById('mainBlock')
+    mainBlockRef.style.display = "block"
+
     // fetch dayorder
 const fetchdayorder1 = document.getElementById('fetchdayorder1')
 const fetchdayorder2 = document.getElementById('fetchdayorder2')
@@ -1125,8 +1129,13 @@ function getresponse(deptId) {
             insertTimelineValues(response)
         }
         else {
+            const mainBlockRef = document.getElementById('mainBlock')
             const notifyMessage = document.getElementById('notifymessage')
+            mainBlockRef.style.display = "none"
             notifyMessage.innerHTML = `<div class="alert alert-danger"> No Data Found </div> `
+            setTimeout(function() {
+                notifyMessage.innerHTML = ``
+            }, 3000)
 
         }
     }).
