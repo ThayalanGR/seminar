@@ -1309,9 +1309,9 @@ function getPeriodInfo(periodId) {
                                                     </select>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row pt-3">
                                                     <div class="col">
-                                                    <textarea class="form-control rounded btn-outline-green" id="requestmsg" placeholder="Enter Request message" ></textarea>
+                                                    <textarea class="form-control rounded btn-outline-green" id="requestmsg" placeholder="Enter Description" ></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1402,7 +1402,7 @@ function getPeriodInfoCatch(book_id) {
                 periodMessageRef.innerHTML = `<p class="alert alert-success">Request successfully sent, keep checking your email </p>
                 <i class="fas fa-spinner text-primary fa-spin"></i> <br>
                 <p>please wait,redirecting you to homepage</p> `
-                getresponse(deptid)
+                // getresponse(deptid)
                 $('#periodinfomodal').modal('show')
                 
                 setTimeout(function() {    

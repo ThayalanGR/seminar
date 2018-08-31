@@ -11,6 +11,7 @@ if(isset($_GET['deptid'])) {
 
     $sql = "select t1.temp_id, t1.dept_id, t1.group_name, t1.day_order, t1.date, t1.p1, t1.p2, t1.p3, t1.p4, t1.p5, t1.p6, t1.p7, p8 from tbl_timeline t1 where t1.dept_id = ".$deptid;
     $result = mysqli_query($DB,$sql);
+    
     $json = array();
     $json["timeline"] = array();
     while($row = mysqli_fetch_array($result)) {

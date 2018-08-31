@@ -4,45 +4,20 @@ include("../config/dbconnection.php");
 require_once "../library/phpmailer/class.phpmailer.php";
 
 
-if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg']) && isset($_GET['sub_code'])) {
 
-    $token = $_GET['token'];
-    $book_id = $_GET['book_id'];
-    $request_msg = $_GET['request_msg'];
-    $sub = $_GET['sub_code'];
+
+if(isset($_GET['sender']) && isset($_GET['reciever']) && isset($_GET['date']) && isset($_GET['dayorder']) && isset($_GET['dept']) && isset($_GET['sem']) && isset($_GET['sec'])) {
+
+    $sender = $_GET['sender'];
+    $reciever = $_GET['reciever'];
+    $date = $_GET['date'];
+    $dayorder = $_GET['dayorder'];
+    $dept = $_GET['dept'];
+    $sem = $_GET['sem'];
+    $sec = $_GET['sec'];
 
     $sourceName = "";
     $destinationName = "";
-
-    $sql1 = "select name,role_id from tbl_staff where user_id = ".$token;
-    $result1 = mysqli_query($DB, $sql1);
-    $row1 = mysqli_fetch_array($result1);
-    $sendername = $row1['name'];
-    $role = $row1['role_id'];
-
-    $sql2 = "select t1.book_id, t1.dept_id, t2.dept_name, t1.group_name, t1.date, t1.day_order, t1.period, t1.user_name, t1.sub_code, t1.dept, t1.sec, t1.sem, t1.description, t1.active from tbl_booking t1 inner join tbl_dept t2 on t1.dept_id = t2.dept_id where t1.book_id=".$book_id;
-    $result2 = mysqli_query($DB,$sql2);
-    $row2 = mysqli_fetch_array($result2); 
-
-    $book_id = $row2['book_id'];
-    $dept_id = $row2['dept_id'];
-    $dept_name = $row2['dept_name'];
-    $group_name = $row2['group_name'];
-    $date = $row2['date'];
-    $day_order = $row2['day_order'];
-    $period = $row2['period'];
-    $recievername = $row2['user_name'];
-    $sub_code = $row2['sub_code'];
-    $dept = $row2['dept'];
-    $sec = $row2['sec'];
-    $sem = $row2['sem'];
-    $description = $row2['description'];
-    $active = $row2['active'];
-
-    $sql1 = "select name from tbl_staff where user_name = '".$recievername."'";
-    $result1 = mysqli_query($DB, $sql1);
-    $row1 = mysqli_fetch_array($result1);
-    $recievername = $row1['name'];
 
     $message = '
             <!DOCTYPE html>
@@ -67,8 +42,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                 }
                 .container {
                     padding: 50px;
-                    
-    
+                
                 }
     
                 .container > .row {
@@ -97,8 +71,6 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                     padding: 10px;
                 }
     
-    
-    
                 .text-p {
                     background: green;
                     color: white;
@@ -122,32 +94,19 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
                             </div>
                             <div class="row">
                                 <div class="col m-2 p-4">
-                                    <p><span class="font-weight-bold">Hello  <b>'.$recievername.'</b></span>,<br><br>
-                                    <span class="font-weight-bold"><b>'.$sendername.'</b></span> Requested the period that you have booked (ie., <span class="text-warning"> '.$date.' Day Order - '.$day_order.'  '.$dept_name.' Seminar Hall for the Class '.$sub_code. ' - '.$dept.'-'.$sec.'-SEM-'.$sem.' </span>)
+                                    <p><span class="font-weight-bold">Hello  '.$sender.'</span>,<br><br>
+                                    <span class="font-weight-bold">'.$reciever.'</span> does\'nt accept the request you have placed (ie., <span class="text-warning"> '.$date.' Day Order - '.$dayorder.'  '.$dept.' Seminar Hall for the Class - '.$dept.'-'.$sec.'-SEM-'.$sem.' </span>)
                                     <br> 
+                                    </p>
                                     <hr>
                                 </div>
                             </div>
-                            <br> <br>
-                            <div class="row pb-4">
-                                <div class="col text-center">
-                                    <a href="http://localhost/seminar/restapi/pushmailapi/allowrequest.php?bookid='.$book_id.'&deptid='.$dept_id.'&group='.$group_name.'&date='.$date.'&dayorder='.$day_order.'&period='.$period.'&username='.$sendername.'&subcode='.$sub.'&description='.$request_msg.'&userid='.$token.'&roleid='.$role.'" class="btn button text-p btn-success rounded pl-5 pr-5  text-white shadow">Allow</a>&nbsp;
-                                    <a href="http://localhost/seminar/restapi/pushmailapi/denyrequest.php?sender='.$sendername.'&reciever='.$recievername.'&date='.$date.'&dayorder='.$day_order.'&dept='.$dept_name.'&sem='.$sem.'&sec='.$sec.'" class="btn button text-d btn-danger text-white rounded shadow pl-5 pr-5">Deny</a>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <hr>
                         </div>
                     </div>
                 </div>
             </body>
             </html>
     ';
-
-    
-
-    
     // php mailer code starts
     date_default_timezone_set('Etc/UTC');
     $mail = new PHPMailer(true);
@@ -160,7 +119,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $mail->Username = 'dotcodecommunity@gmail.com';
     $mail->Password = 'dotcc@123';
     $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
-    $email = "grthayalan18@gmail.com";
+    $email = "rajavignesh36@gmail.com";
     $mail->AddAddress($email);
     $mail->Subject = trim("Seminar Hall Booking Portal");
     $mail->MsgHTML($message);
@@ -169,21 +128,22 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     
         if(!$mail){
             $json = array();
-            $json["response"] = array("status" => false);
+            $json["response"] = array(  "status" => false);
             echo json_encode($json);
         }
         else{
             $json = array();
-            $json["response"] = array("status" => true);
+            $json["response"] = array(  "status" => true);
             echo json_encode($json);
         }
     } catch (Exception $ex) {
 
         $msg = $ex->getMessage();
         $msgType = "warning";
-        
+
     }
 
+    // echo $message;
 }
 ?>
 
