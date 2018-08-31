@@ -1097,7 +1097,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five8.style.backgroundColor = "#ff918c"                 
 five8.innerHTML = output
 
