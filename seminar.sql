@@ -3,21 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2018 at 07:06 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `seminar`
 --
@@ -474,8 +462,13 @@ CREATE TABLE `tbl_booking` (
 
 INSERT INTO `tbl_booking` (`book_id`, `dept_id`, `group_name`, `date`, `day_order`, `period`, `user_name`, `sub_code`, `dept`, `sec`, `sem`, `description`, `active`, `event`, `event_name`) VALUES
 (3, 1, '2018-08-25', '2018-08-28', 3, 'p8', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
+<<<<<<< HEAD
 (14, 1, '2018-08-25', '2018-08-28', 3, 'p6', '', 'CS6701', 'CSE', 'B', 7, 0x617361736173, 0, 0, NULL),
 (15, 1, '2018-08-25', '2018-08-28', 3, 'p7', '', 'CS6701', 'CSE', 'B', 7, 0x616466736166617366, 0, 0, NULL);
+=======
+(12, 1, '2018-08-25', '2018-08-28', 3, 'p6', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL),
+(13, 1, '2018-08-25', '2018-08-28', 3, 'p7', 'hemantkumar-cse', 'CS6703', 'cse', 'a', 7, 0x6666676367636766, 0, 0, NULL);
+>>>>>>> upstream/master
 
 -- --------------------------------------------------------
 
@@ -826,7 +819,11 @@ INSERT INTO `tbl_limit` (`limit_id`, `user_id`, `sub_code`, `group_name`, `role_
 (209, 4, 'CS6504', '2018-08-25', 1, 0),
 (210, 8, 'CS6504', '2018-08-25', 1, 0),
 (211, 10, 'EC8393', '2018-08-25', 1, 0),
+<<<<<<< HEAD
 (212, 11, 'CS6701', '2018-08-25', 1, 2),
+=======
+(212, 11, 'CS6701', '2018-08-25', 1, 0),
+>>>>>>> upstream/master
 (213, 13, 'EI6001', '2018-08-25', 1, 0),
 (214, 13, 'CS6501', '2018-08-25', 1, 0),
 (215, 14, 'CS8351', '2018-08-25', 1, 0),
@@ -2322,11 +2319,7 @@ INSERT INTO `tbl_timeline` (`temp_id`, `dept_id`, `group_name`, `date`, `day_ord
 (26, 5, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (27, 6, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
 (28, 7, '2018-08-25', '2018-08-27', 2, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, 1, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 14, 15, 3),
-(30, 2, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
-(31, 3, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (32, 4, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, 5, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (34, 6, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0),
 (35, 7, '2018-08-25', '2018-08-28', 3, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -2871,50 +2864,8 @@ ALTER TABLE `stafftbl`
 --
 -- AUTO_INCREMENT for table `staff_achievements`
 --
-ALTER TABLE `staff_achievements`
-  MODIFY `sno` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_areaofinterest`
---
-ALTER TABLE `staff_areaofinterest`
-  MODIFY `sno` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_book`
---
-ALTER TABLE `staff_book`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_conference`
---
-ALTER TABLE `staff_conference`
-  MODIFY `c_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_journals`
---
-ALTER TABLE `staff_journals`
-  MODIFY `j_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_patent`
---
-ALTER TABLE `staff_patent`
-  MODIFY `p_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff_workshop`
---
-ALTER TABLE `staff_workshop`
-  MODIFY `sno` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_booking`
---
 ALTER TABLE `tbl_booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_group`

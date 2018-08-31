@@ -69,6 +69,10 @@ $(document).ready(function() {
 
 function insertTimelineValues(response) {
 
+
+    const mainBlockRef = document.getElementById('mainBlock')
+    mainBlockRef.style.display = "block"
+
     // fetch dayorder
 const fetchdayorder1 = document.getElementById('fetchdayorder1')
 const fetchdayorder2 = document.getElementById('fetchdayorder2')
@@ -1093,7 +1097,7 @@ fetch(url).
 then(data => data.json())
 .then(response => {
 console.log(response)
-let output = `<a class=" text-dark" onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
+let output = `<div class="row"><a class="text-dark col" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"  onclick="getPeriodInfo('${periodId}')">${response.perioddetails[0].user_name} <br> ${response.perioddetails[0].sub_code}</a></div>`
 five8.style.backgroundColor = "#ff918c"                 
 five8.innerHTML = output
 
@@ -1125,8 +1129,13 @@ function getresponse(deptId) {
             insertTimelineValues(response)
         }
         else {
+            const mainBlockRef = document.getElementById('mainBlock')
             const notifyMessage = document.getElementById('notifymessage')
+            mainBlockRef.style.display = "none"
             notifyMessage.innerHTML = `<div class="alert alert-danger"> No Data Found </div> `
+            setTimeout(function() {
+                notifyMessage.innerHTML = ``
+            }, 3000)
 
         }
     }).
@@ -1309,9 +1318,9 @@ function getPeriodInfo(periodId) {
                                                     </select>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row pt-3">
                                                     <div class="col">
-                                                    <textarea class="form-control rounded btn-outline-green" id="requestmsg" placeholder="Enter Request message" ></textarea>
+                                                    <textarea class="form-control rounded btn-outline-green" id="requestmsg" placeholder="Enter Description" ></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1402,7 +1411,7 @@ function getPeriodInfoCatch(book_id) {
                 periodMessageRef.innerHTML = `<p class="alert alert-success">Request successfully sent, keep checking your email </p>
                 <i class="fas fa-spinner text-primary fa-spin"></i> <br>
                 <p>please wait,redirecting you to homepage</p> `
-                getresponse(deptid)
+                // getresponse(deptid)
                 $('#periodinfomodal').modal('show')
                 
                 setTimeout(function() {    

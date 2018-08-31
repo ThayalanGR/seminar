@@ -67,7 +67,7 @@ function updatePassword(userId, pass1) {
 
             $('#passwordModal').modal('show')
 
-            setInterval(function() {
+            setTimeout(function() {
                 passwordFooterRef.innerHTML = ''
                 passwordContentRef.innerHTML = ''
                 messageRef.innerHTML = ''

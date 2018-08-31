@@ -28,6 +28,25 @@ function parseValidationResult(result) {
     }
     
 }
+ 
+$(document).ready(function() {
+
+    const validationFormRef = document.getElementById('validation')
+
+    validationFormRef.addEventListener('submit', (event) => {
+        event.preventDefault()
+        console.log(event)
+        console.log(event.target.elements['staffid'].value)
+        console.log(event.target.elements['password'].value)
+        const userId = event.target.elements['staffid'].value
+        const password = event.target.elements['password'].value
+        validate(userId, password)
+
+    })
+    
+    
+})
+
 
 function validate(userId, password) {
 
@@ -49,3 +68,6 @@ function grabValues() {
     console.log(userId,password)
     validate(userId, password)
 }
+
+
+

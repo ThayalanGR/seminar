@@ -4,12 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="assets/image/" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/image/saraicon.ico" type="image/x-icon">
     <title>SeminarHallBooking Profile</title>
     <script src="./init.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+    <style>
+        .no-js #loader {
+            display: none;
+        }
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("http://localhost/seminar/assets/gif/Preloade.gif") center no-repeat #fff;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <div class="se-pre-con"></div>
+
 </head>
 <style>
     * {
@@ -72,7 +100,7 @@
 <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
        
         <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
-           <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
+           <img src="http://localhost/seminar/assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
            <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
        </a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,12 +110,12 @@
            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                <li class="nav-item">
-                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
+                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../">Home <span class="sr-only">(current)</span></a>
                </li>
-               <li class="nav-item">
+               <!-- <li class="nav-item">
                        <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="#">Event Booking</a>
-               </li>
-   
+               </li> -->
+
              </ul>
              <div class="my-1 my-lg-0">
                    <ul class="nav navbar-nav">
