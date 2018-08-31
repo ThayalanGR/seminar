@@ -4,12 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="favicon" href="../../assets/image/saraicon.ico" type="image/x-icon">
+    <link rel="favicon" href="../../image/saraicon.ico" type="image/x-icon">
     <title>SeminarHallBooking</title>
+    <script src="../../../init.js"></script>
+      <style>
+        .no-js #loader {
+            display: none;
+        }
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("http://localhost/seminar/assets/gif/Preloade.gif") center no-repeat #fff;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <div class="se-pre-con"></div>
     <!-- <script src="./init.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/css/login.css">
+    
+    
 
 </head>
 <style>
@@ -18,6 +47,11 @@
         padding: 0;
         vertical-align: baseline;
         outline: 0;
+      }
+      body {
+          width:100vw;
+          height:auto;
+          overflow-x:hidden;
       }
 
       #labelsem {
@@ -31,8 +65,9 @@
     <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
        
         <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
-           <img src="../../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
+           <img src="../../image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
            <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
+           
        </a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                    <i class="fas fa-bars"></i>
@@ -41,24 +76,23 @@
            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                <li class="nav-item">
-                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../home/">Home <span class="sr-only">(current)</span></a>
+                   <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../../">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../event/">Event Booking</a>
+                  <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../../../home/event">Event Booking</a>
                </li>
 
                <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle dropdown-item "  href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Add
-                        </a>
+                        <a class="nav-link dropdown-toggle hoverable rounded dropdown-item"  href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Add</a>
                         <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/achievements/index.html"> &nbsp;Achievements</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/areaofinterest/index.html"> &nbsp;Area of interest</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/book/index.html"> &nbsp;Book</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/conference/index.html"> &nbsp;Conference</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/journals/index.html"> &nbsp;Journals</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/patent/index.html"> &nbsp;Patent</a>
-                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/workshop/index.html"> &nbsp;Workshop</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/achievements"> &nbsp;Achievements</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/areaofinterest"> &nbsp;Area of interest</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/book"> &nbsp;Book</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/conference"> &nbsp;Conference</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/journals"> &nbsp;Journals</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/patent"> &nbsp;Patent</a>
+                            <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/workshop"> &nbsp;Workshop</a>
                         </div>
              </li>
             </ul>
@@ -74,16 +108,16 @@
                                    <label class="text-primary font-weight-bold" id="uname"></label>
                                </a>
 
-                                <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
-                                    <li role="presentation" class="dropdown-item "><a href="../../home/profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
-                                    </li>
-                                    <hr>
-                                    <li role="presentation" class="dropdown-item "><a onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
-                                    </li>
-                                    <hr>
-                                    <li role="presentation" class=" dropdown-item "><a style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
-                                    </li>
-                                </ul>
+                               <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" >
+                                       <li role="presentation" class="dropdown-item "><a class="btn btn-link" style="text-decoration:none;" href="../../../profile/"><i class="fas fa-user-alt shadow" style="color:red !important;"></i> &nbsp; Profile</a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class="dropdown-item "><a class="btn btn-link" onClick="passwordChangeWithoutInitial();"> <i class="fa fa-edit shadow" style="color:purple !important;"></i> &nbsp; Change Password </a>
+                                       </li>
+                                       <hr>
+                                       <li role="presentation" class=" dropdown-item "><a class="btn btn-link" style="color:#039be5 !important;" onClick = "handleLogoutRequest()" id="logoutButton"><i class="fas fa-sign-out-alt shadow"></i>&nbsp; Logout </a>
+                                       </li>
+                                   </ul>
                            </li>
                    </ul>
                </div>
@@ -100,6 +134,11 @@
                 <div class="row">
                     <div class="col">
                         <hr class="">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col" id="er">
+                        
                     </div>
                 </div>
                 <div class="row">
@@ -123,11 +162,28 @@
     </div>
 
 
+<!-- modal for changing password -->
+
+
+    <div class="modal fade" id="passwordModal"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="notificationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="message" class="text-center">
+                    
+                </div>
+            <div class="modal-body" id="passwordContent">
+            </div>
+            <div class="modal-footer" id="passwordFooter">
+            </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+    
     <script src="./core.js"></script>
 </body>
 </html>

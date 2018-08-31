@@ -16,12 +16,6 @@
             left: 100px;
             top: 0;
         }
-         body {
-          width:100vw;
-          height:auto;
-          overflow-x:hidden;
-      }
-
         .se-pre-con {
             position: fixed;
             left: 0px;
@@ -49,6 +43,12 @@
         vertical-align: baseline;
         outline: 0;
       }
+      body {
+        width:100vw;
+        height:auto;
+        overflow-x:hidden;
+    }
+
 
       #labelsem {
         position: absolute;
@@ -83,13 +83,13 @@
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
             
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/achievements/index.html"> &nbsp;Achievements</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/areaofinterest/index.html"> &nbsp;Area of interest</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/book/index.html"> &nbsp;Book</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/conference/index.html"> &nbsp;Conference</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/journals/index.html"> &nbsp;Journals</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/patent/index.html"> &nbsp;Patent</a>
-                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/workshop/index.html"> &nbsp;Workshop</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/achievements">   &nbsp;Achievements</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/areaofinterest"> &nbsp;Area of interest</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/book">           &nbsp;Book</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/conference">     &nbsp;Conference</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/journals">       &nbsp;Journals</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/patent">         &nbsp;Patent</a>
+                                <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../modules/workshop">      &nbsp;Workshop</a>
 
                             </div>
                 </li>
@@ -130,17 +130,12 @@
                 
                 <div class="row">
                     <div class="col text-center pt-3">
-                        <h4 class="text-primary">Add Conference</h4>
+                        <h4 class="text-primary">Add Workshop</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <hr class="">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col p-4">
-                        <input type="text" name="author" id="author" class="form-control input-sm" placeholder="Author Name">
                     </div>
                 </div>
                 <div class="row">
@@ -162,15 +157,9 @@
                 <div class="row">
                     
                         <div class="col p-4">
-                            <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Title of Conference">
+                            <input type="text" name="wname" id="wname" class="form-control input-sm" placeholder="Name of Workshop">
                         </div>
                 </div>    
-                <div class="row">
-                    
-                    <div class="col p-4">
-                        <input type="text" name="cname" id="cname" class="form-control input-sm" placeholder="Conference Name">
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col p-4">
                         <input type="text" name="org" id="org" class="form-control input-sm" placeholder="Organized By">
@@ -183,32 +172,22 @@
                 </div>           
                 <div class="row">
                     <div class="col p-4">
-                        <input type="text" name="onDate" id="onDate" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Conference Date">
+                        <input type="text" name="onDate" id="onDate" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Workshop Date">
                     </div>
                 </div>
                 <div class="row">
                         <div class="col p-4">
-                            <input type="text" name="onDate" id="onDatef" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Conference from Date">
+                            <input type="text" name="onDate" id="onDatef" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Workshop from Date">
                         </div>
                 </div>
                 <div class="row">
                     <div class="col p-4">
-                        <input type="text" name="onDate" id="onDatet" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Conference to Date">
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="col p-4">
-                            <input type="number" name="pages" id="pages" class="form-control input-sm" placeholder="Pages">
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col p-4">
-                        <input type="text" name="ctype" id="ctype" class="form-control input-sm" placeholder="Conference Type">
+                        <input type="text" name="onDate" id="onDatet" class="form-control input-sm" onfocus="(this.type='date')" placeholder="Workshop to Date">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col p-4">
-                        <input type="text" name="url" id="url" class="form-control input-sm" placeholder="Conference URL">
+                        <input type="text" name="wtype" id="wtype" class="form-control input-sm" placeholder="Workshop Type">
                     </div>
                 </div>
                 <div class="row">

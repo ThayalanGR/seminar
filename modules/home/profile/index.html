@@ -4,12 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="assets/image/" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/image/saraicon.ico" type="image/x-icon">
     <title>SeminarHallBooking Profile</title>
     <script src="./init.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+    <style>
+        .no-js #loader {
+            display: none;
+        }
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("http://localhost/seminar/assets/gif/Preloade.gif") center no-repeat #fff;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <div class="se-pre-con"></div>
+
 </head>
 <style>
     * {
@@ -50,7 +78,7 @@
 
                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle dropdown-item "  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Add
+                       Add
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
     
@@ -60,6 +88,7 @@
                         <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../home/profile/modules/conference"> &nbsp;Conference</a>
                         <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../home/profile/modules/journals"> &nbsp;Journals</a>
                         <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../home/profile/modules/patent"> &nbsp;Patent</a>
+                        <a class="dropdown-item nav-item" data-toggle="tooltip" data-placement="top" href="../../home/profile/modules/Workshop"> &nbsp;Workshop</a>
                     </div>
                 </li>
 
@@ -149,11 +178,8 @@
     </div>
 
 
-
-          <!-- Side Modal Top Right -->
     
     
-    <!-- modal for changing password -->
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
