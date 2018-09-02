@@ -141,8 +141,8 @@ if(isset($_GET['sender']) && isset($_GET['reciever']) && isset($_GET['date']) &&
         $msg = $ex->getMessage();
         $msgType = "warning";
 
-    }
-
+    }  
+    echo "<h3>Sucessfully completed!!!!</h3>";
     // echo $message;
 }
 ?>
