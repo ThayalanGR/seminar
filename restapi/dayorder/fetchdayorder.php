@@ -7,9 +7,9 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once('../config/dbconnection.php');
 
-if(isset($_GET['roleid']) && isset($_GET['date'])) {
+if(isset($_GET['roleid'])) {
     $roleid = trim($_GET['roleid']);
-    $date = trim($_GET['date']);
+    $date = date("Y-m-d");
     if($roleid == 3)
     {
         $json = array();
