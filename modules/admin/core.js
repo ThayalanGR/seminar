@@ -150,6 +150,20 @@ if(dd<10){
 
 var date = yyyy+'-'+mm+'-'+dd;
 
+
+
+function fetchProcess() {
+    url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
+
+    fetch(url).
+    then(data => data.json()).
+    then(response => {
+        console.log(response)
+        displayBatchHistory(response)
+    })
+    .catch(error => console.log(error))
+}
+
 $(document).ready(function() {
     const unameRef = document.getElementById('uname')
     unameRef.innerHTML = localStorage.getItem('uname')
@@ -157,22 +171,7 @@ $(document).ready(function() {
     passwordChange(initial)
     //main process
     // getDept()
-
-   
-
-
-        url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
-
-        fetch(url).
-        then(data => data.json()).
-        then(response => {
-            console.log(response)
-            displayBatchHistory(response)
-        })
-        .catch(error => console.log(error))
-    
-
-
+    fetchProcess()
 
 })
 
@@ -267,12 +266,12 @@ function deleteAndSwap(date) {
     alertRef.innerHTML = `<p class="alert alert-warning ">please wait , our machines processing your request
                             <br><i class="fas fa-spinner text-primary fa-spin"></i> <br>    
                         </p>`
-    const url1 = `http://localhost/seminar/restapi/dayorder/insertdayordeqr.php?date=${date}`
+    const url1 = `http://localhost/seminar/restapi/dayorder/updatedayorder.php?holiday=${date}`
     fetch(url1).
     then(data => data.json()).
     then(result => {
         console.log(result)    
-        if(result.status == true) {
+        if(result.response.status == true) {
             batchCount.style.display = "block"
             batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>
                                     <p class="alert alert-success"> reflecting your changes
@@ -281,14 +280,7 @@ function deleteAndSwap(date) {
                                     `
             setTimeout(function() {
                 alertRef.innerHTML = ``
-                url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
-                fetch(url).
-                then(data => data.json()).
-                then(response => {
-                    console.log(response)
-                    displayBatchHistory(response)
-                })
-                .catch(error => console.log(error))
+                fetchProcess()
             }, 3000)
         }
 
@@ -334,17 +326,18 @@ function OneTimeGenerationProcess() {
     if( date != "" && count != 0 && count != "") {
         messageRef.innerHTML = ``  
         console.log(date,count)
-        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${date}&count=${count}`
+        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${date}&count=${count}&initial=1`
     
         fetch(url1).
         then(data => data.json()).
         then(result => {
             console.log(result)    
-            batchCount.style.display = "block"
-            batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+            // batchCount.style.display = "block"
+            passwordContentRef.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+            passwordFooterRef.innerHTML = ``
+            // batchBody.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
             setTimeout(function() {
-                batchBody.innerHTML = ``
-                batchCount.style.display = "none"
+                fetchProcess()
                 $('#passwordModal').modal('hide')
             }, 3000)
         })
@@ -368,6 +361,64 @@ function OneTimeGenerationProcess() {
 
 
 
+
+function commonGeneration() {
+
+    passwordContentRef.innerHTML = `<form onSubmit = "return false;">
+                                    <h5 class="text-primary text-center">Set Day Orders</h5>
+                                    <hr>
+                                    <div class="form-group">
+                                    <input type="number" class="rounded btn-outline-primary form-control" id="batchCounter" placeholder="Enter number of batches">
+                                    </div>
+                                </form>`
+    passwordFooterRef.innerHTML =`<button type="button" class="btn btn-primary" onClick="commonGenerationProcess();">Submit</button>`
+    passwordFooterRef.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+    $('#passwordModal').modal('show')
+
+
+    
+}
+
+function commonGenerationProcess() {
+
+    const batchCountRef = document.getElementById("batchCounter")
+    const count = batchCountRef.value
+    if( count != 0 && count != "") {
+        messageRef.innerHTML = ``  
+        console.log(date,count)
+        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?count=${count}&initial=0`
+        fetch(url1).
+        then(data => data.json()).
+        then(result => {
+            console.log(result)    
+            // batchCount.style.display = "block"
+            passwordContentRef.innerHTML = `<div class="alert alert-success">succesfully updated</div>`
+            passwordFooterRef.innerHTML = ``
+            // batchBody.innerHTML = 
+            setTimeout(function() {
+                // batchBody.innerHTML = ``
+                // batchCount.style.display = "none"
+                fetchProcess()
+                $('#passwordModal').modal('hide')
+            }, 2000)
+        })
+        .catch(error => {
+            console.log(error)
+        })    
+
+    }
+    else {
+        messageRef.innerHTML = `<p class="alert alert-danger">please fill-up all fields</p>`
+
+        $('#passwordModal').modal('show')
+      
+
+    }
+    
+
+
+    
+}
 
 
 

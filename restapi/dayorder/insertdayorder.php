@@ -8,8 +8,7 @@ require_once('../config/dbconnection.php');
 
 // if(isset($_GET['date']) && isset($_GET['count'])) {
 
-if(isset($_GET['date']) || isset($_GET['count']) && isset($_GET['initial'])) {
-    $date = trim($_GET['date']); 
+if(isset($_GET['count']) && isset($_GET['initial'])) {
     $count = trim($_GET['count']);
     $initial = trim($_GET['initial']);
     if($initial == 0) {
@@ -41,7 +40,8 @@ if(isset($_GET['date']) || isset($_GET['count']) && isset($_GET['initial'])) {
             $i++;
         }
     }
-    else {
+    else if($initial == 1) {
+        $date = trim($_GET['date']); 
         $count = $count * 5;
         $dayorder = 1;
         $i = 0;
