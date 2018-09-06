@@ -186,50 +186,50 @@ if(isset($_GET['bookid']) && isset($_GET['deptid']) && isset($_GET['group']) && 
             </div>
         </body>
         </html>
-';
+        ';
 
-   
-    // php mailer code starts
-    date_default_timezone_set('Etc/UTC');
-    $mail = new PHPMailer(true);
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
-    $mail->SMTPAuth = true;                  // enable SMTP authentication
-    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-    $mail->Host = gethostbyname('ssl://smtp.gmail.com');      // sets GMAIL as the SMTP server
-    $mail->Port = 465;                   // set the SMTP port for the GMAIL server
-    $mail->Username = 'dotcodecommunity@gmail.com';
-    $mail->Password = 'dotcc@123';
-    $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
-    $email = "rajavignesh36@gmail.com";
-    $mail->AddAddress($email);
-    $mail->Subject = trim("Seminar Hall Booking Portal");
-    $mail->MsgHTML($message);
-    try {
-        $mail->send();
-    
-        if(!$mail){
-            $json = array();
-            $json["response"] = array(  "status" => false);
-            echo json_encode($json);
+
+        // php mailer code starts
+        date_default_timezone_set('Etc/UTC');
+        $mail = new PHPMailer(true);
+        $mail->IsSMTP(); // telling the class to use SMTP
+        $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
+        $mail->SMTPAuth = true;                  // enable SMTP authentication
+        $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+        $mail->Host = gethostbyname('ssl://smtp.gmail.com');      // sets GMAIL as the SMTP server
+        $mail->Port = 465;                   // set the SMTP port for the GMAIL server
+        $mail->Username = 'dotcodecommunity@gmail.com';
+        $mail->Password = 'dotcc@123';
+        $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
+        $email = "rajavignesh36@gmail.com";
+        $mail->AddAddress($email);
+        $mail->Subject = trim("Seminar Hall Booking Portal");
+        $mail->MsgHTML($message);
+        try {
+            $mail->send();
+
+            if(!$mail){
+                $json = array();
+                $json["response"] = array(  "status" => false);
+                echo json_encode($json);
+            }
+            else{
+                $json = array();
+                $json["response"] = array(  "status" => true);
+                echo json_encode($json);
+            }
+        } catch (Exception $ex) {
+
+            $msg = $ex->getMessage();
+            $msgType = "warning";
+
         }
-        else{
-            $json = array();
-            $json["response"] = array(  "status" => true);
-            echo json_encode($json);
-        }
-    } catch (Exception $ex) {
 
-        $msg = $ex->getMessage();
-        $msgType = "warning";
-
-    }
-
-        $json = array();
-        $json["response"] = array(  
-            "status" => true
-        );
-        echo json_encode($json);
+            // $json = array();
+            // $json["response"] = array(  
+            //     "status" => true
+            // );
+            // echo json_encode($json);
     }
     else {
         $json = array();
