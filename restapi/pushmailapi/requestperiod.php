@@ -160,7 +160,7 @@ if(isset($_GET['token']) && isset($_GET['book_id']) && isset($_GET['request_msg'
     $mail->Username = 'dotcodecommunity@gmail.com';
     $mail->Password = 'dotcc@123';
     $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
-    $email = "grthayalan18@gmail.com";
+    $email = "rajavignesh36@gmail.com";
     $mail->AddAddress($email);
     $mail->Subject = trim("Seminar Hall Booking Portal");
     $mail->MsgHTML($message);
