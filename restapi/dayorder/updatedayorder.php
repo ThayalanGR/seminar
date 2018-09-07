@@ -18,16 +18,6 @@ if(isset($_GET['holiday'])) {
     $dayorder = $row1['day_order'];
     $groupname = $row1['group_name'];
 
-    
-    $sql3 = "select group_name, date from tbl_group where group_id >= ".$did." limit 5";
-    $result3 = mysqli_query($DB,$sql3);
-    $x = 0;
-    while ($row3 = mysqli_fetch_array($result3)) {
-    $olddate[$x] = $row3['date'];
-    $oldgroupname[$x] = $row3['group_name'];
-    $x++;
-    }
-
     $sql2 = "select date, day_order from tbl_group where group_id >= ".$did;
     $result2 = mysqli_query($DB,$sql2);
     $count = mysqli_num_rows($result2);
@@ -61,24 +51,6 @@ if(isset($_GET['holiday'])) {
         $i++;
         $did++;
     }
-    
-    $sql3 = "select group_name, date from tbl_group where group_id > ".$did." limit 5";
-    $result3 = mysqli_query($DB,$sql3);
-    $x = 0;
-    while ($row3 = mysqli_fetch_array($result3)) {
-    $newdate[$x] = $row3['date'];
-    $newgroupname[$x] = $row3['group_name'];
-    $x++;
-    }
-
-    for($i=0; $i<$x; $i++) {
-        $sql = "update tbl_temp set group_name = '".$newgroupname[$i]."', date = '".$newdate[$i]."' where date = ".$olddate[$i].;
-        mysqli_query($DB,$sql);
-        $sql = "update tbl_timeline set group_name = '".$newgroupname[$i]."', date = '".$newdate[$i]."' where date = ".$olddate[$i].;
-        mysqli_query($DB,$sql);
-    }
-
-
 
 
     // while($row2 = mysqli_fetch_array($result2)) {
