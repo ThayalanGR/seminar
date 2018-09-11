@@ -12,17 +12,12 @@ $(document).ready(function() {
     const unameRef = document.getElementById('uname')
     unameRef.innerHTML = localStorage.getItem('uname')
 
-
-
-
-
 })
 
 
 // password change block
 function passwordChange(initial) {
-    if(initial == 0)
-    { 
+    if(initial == 0){ 
         passwordContentRef.innerHTML = `<form onSubmit = "return false;">
                                         <h5 class="text-primary text-center">Update Password</h5>
                                         <hr>
@@ -158,15 +153,38 @@ function getDept() {
 
 }
 
-function processEventBooking() {
+function processEventBooking(eventDate, deptVal) {
     const eventDesc = document.getElementById('eventDesc')
-    const  contentPeriodBody = document.getElementById('contentPeriodBody')
-    const  contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
+    const contentPeriodBody = document.getElementById('contentPeriodBody')
+    const contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
     const desc = eventDesc.value
+    const title = document.getElementById('eventTitle').value
+    const userId = localStorage.getItem('token')
+    const uname = localStorage.getItem('uname')
     const periods = periodcount.slice(0, -1)
     // const  contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
-    console.log(desc, periods)
-    if (desc != "" && periods != "") {
+    let deptId = 0
+    
+    if(deptVal == 'CSE')
+        deptId = 1
+    if(deptVal == 'ECE')
+        deptId = 2
+    if(deptVal == 'IT')
+        deptId = 4
+    if(deptVal == 'EEE')
+        deptId = 3
+    if(deptVal == 'MECH')
+        deptId = 6
+    if(deptVal == 'ICE')
+        deptId = 5
+    if(deptVal == 'CIVIL')
+        deptId = 7
+    if(deptVal == 'ENG')
+        deptId = 8 
+
+    console.log(desc, periods, eventDate, deptId, title, userId, uname, deptVal    )
+    //$_GET['deptid']) && isset($_GET['date'])  && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['eventname']) && isset($_GET['deptname'])
+    if (desc != "" && title != "" && periods != "") {
         const  contentBodyMessage = document.getElementById('contentBodyMessage')
         clearPeriods()
         eventDesc.value = `` 
@@ -198,7 +216,7 @@ function period1() {
     const period1 = document.getElementById('period1')
     const totalperiods = document.getElementById('totalperiods')
     period1.classList.add('disabled', 'bg-success')
-    periodcount += '1,'
+    periodcount += '1-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(1, periodcount)
@@ -207,7 +225,7 @@ function period2() {
     const period2 = document.getElementById('period2')
     const totalperiods = document.getElementById('totalperiods')
     period2.classList.add('disabled', 'bg-success')
-    periodcount += '2,'
+    periodcount += '2-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(2, periodcount)
@@ -216,16 +234,17 @@ function period3() {
     const period3 = document.getElementById('period3')
     const totalperiods = document.getElementById('totalperiods')
     period3.classList.add('disabled', 'bg-success')
-    periodcount += '3,'
+    periodcount += '3-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(3, periodcount)
+
 }
 function period4() {
     const period4 = document.getElementById('period4')
     const totalperiods = document.getElementById('totalperiods')
     period4.classList.add('disabled', 'bg-success')
-    periodcount += '4,'
+    periodcount += '4-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(4, periodcount)
@@ -234,7 +253,7 @@ function period5() {
     const period5 = document.getElementById('period5')
     const totalperiods = document.getElementById('totalperiods')
     period5.classList.add('disabled', 'bg-success')
-    periodcount += '5,'
+    periodcount += '5-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(5, periodcount)
@@ -243,7 +262,7 @@ function period6() {
     const period6 = document.getElementById('period6')
     const totalperiods = document.getElementById('totalperiods')
     period6.classList.add('disabled', 'bg-success')
-    periodcount += '6,'
+    periodcount += '6-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(6, periodcount)
@@ -252,7 +271,7 @@ function period7() {
     const period7 = document.getElementById('period7')
     const totalperiods = document.getElementById('totalperiods')
     period7.classList.add('disabled', 'bg-success')
-    periodcount += '7,'
+    periodcount += '7-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(7, periodcount)
@@ -261,7 +280,7 @@ function period8()  {
     const period8 = document.getElementById('period8')
     const totalperiods = document.getElementById('totalperiods')
     period8.classList.add('disabled', 'bg-success')
-    periodcount += '8,'
+    periodcount += '8-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(8, periodcount)
@@ -269,7 +288,7 @@ function period8()  {
 
 function clearPeriods() {
     let period = []    
-    let periodcountarr = periodcount.slice(0, -1).split(",")
+    let periodcountarr = periodcount.slice(0, -1).split("-")
     console.log(periodcountarr)
     if(periodcountvalue != 0) {
         for(var i = 0; i < periodcountarr.length; i++) {
@@ -319,6 +338,16 @@ function handleEventBooking(eventDate, eventDept) {
     contentPeriodBodyDesc.innerHTML = `
                                         <div class="row">
                                             <div class="col text-danger">
+                                                Enter Event Title*
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col">
+                                                <textarea name="eventDesc"  id="eventTitle" class="form-control btn-outline-blue"    rows="1"></textarea>
+                                            </div>
+                                        </div>  
+                                        <div class="row">
+                                            <div class="col text-danger">
                                                 Enter Event Description*
                                             </div>
                                         </div>
@@ -329,7 +358,7 @@ function handleEventBooking(eventDate, eventDept) {
                                         </div>  
                                         <div class="row ">
                                         <div class="col text-center p-3">
-                                            <input type="button" value="Book" id="bookButton" onclick="processEventBooking();" class="btn btn-primary ">
+                                            <input type="button" value="Book" id="bookButton" onclick="processEventBooking('${eventDate}', '${eventDept}');" class="btn btn-primary ">
                                         </div>
                                         </div>  
                                         `

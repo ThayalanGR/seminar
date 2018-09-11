@@ -5,17 +5,17 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once('../config/dbconnection.php');
-if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && isset($_GET['dayorder']) && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['event']) && isset($_GET['eventname']) && isset($_GET['deptname'])) {
+if(isset($_GET['deptid']) && isset($_GET['date'])  && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['eventname']) && isset($_GET['deptname'])) {
     $deptid = trim($_GET['deptid']);
     $dept = trim($_GET['deptname']);
-    $group = trim($_GET['group']);
+    // $group = trim($_GET['group']);
     $date = trim($_GET['date']);
-    $dayorder = trim($_GET['dayorder']);
+    // $dayorder = trim($_GET['dayorder']);
     $period = trim($_GET['period']);
     $name = trim($_GET['username']);
     $description = trim($_GET['description']);
     $userid = trim($_GET['userid']);
-    $event = trim($_GET['event']);
+    // $event = trim($_GET['event']);
     $active = 0;
     $event1 = 0;
     $eventname = trim($_GET['eventname']);
@@ -185,7 +185,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
             $sql3 = "delete from tbl_booking where book_id = ".$usrbookid;
             mysqli_query($DB,$sql3);
 
-            $sql4 = "update tbl_timeline set ".$usrperiod." = 0 where dept_id = ".$usrdeptid." and group_name = '".$usrgroupname."' and date = '".$usrdate."' and day_order = ".$usrdayorder;
+            $sql4 = "update tbl_timel ine set ".$usrperiod." = 0 where dept_id = ".$usrdeptid." and group_name = '".$usrgroupname."' and date = '".$usrdate."' and day_order = ".$usrdayorder;
             mysqli_query($DB,$sql4);
 
             $sql8 = "select t1.current_usage, t2.max_book from tbl_limit t1 inner join tbl_role t2 on t1.role_id = t2.role_id where user_id = ".$userid." and sub_code = '".$usrsubcode."' and group_name = '".$usrgroupname."'";
