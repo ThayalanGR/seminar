@@ -53,55 +53,6 @@ if(isset($_GET['holiday'])) {
     }
 
 
-    // while($row2 = mysqli_fetch_array($result2)) {
-    //     $swapdate = $row2['date'];
-    //     $did++;
-    // }
-    // $sql6 = "select group_id, day_order from tbl_group where date = '".$swapdate."'";
-    // $result6 = mysqli_query($DB,$sql6);
-    // $row6 = mysqli_fetch_array($result6);    
-    // $extradid = $row6['group_id'];
-    // $extrado = $row6['day_order'];
-    // $sql7 = "select count(group_id) from tbl_group where group_id > ".$extradid;
-    // $result7 = mysqli_query($DB,$sql7);
-    // $extra = mysqli_num_rows($result7);
-    // $count = $extra;
-    // $gndate = $swapdate;
-    // $dayorder = $extrado;
-    // $i = 0;
-    // for($x=0; $x<$count; $x++) {
-    //     $date = date('Y-m-d', strtotime("+$i days", strtotime($gndate)));   
-    //     $is_sunday = date('l', strtotime($date)); 
-    //     if($is_sunday == "Sunday")
-    //     {
-    //         $i=$i+1;
-    //     }
-    //     $do=$dayorder % 5;
-    //     if($do == 0) {
-    //         $do = 5;
-    //     }
-    //     $reqdate = date('Y-m-d', strtotime("$i days",strtotime($gndate)));  
-    //     if($do == 1) {
-    //         $groupname = $reqdate;
-    //     }
-    //     $extradid++;
-    //     $sql = "update tbl_group set date = '".$reqdate."' where group_id = ".$extradid;
-    //     mysqli_query($DB,$sql); 
-    //     $dayorder++;
-    //     $i++;
-    // }
-    // $sql4 = "select group_id, date, day_order from tbl_group";
-    // $result4 = mysqli_query($DB,$sql4); 
-    // while($row4 = mysqli_fetch_array($result4)) {
-    //     $grpdid = $row4['group_id'];
-    //     $grpdate = $row4['date'];
-    //     $grpdo = $row4['day_order'];
-    //     if($grpdo == 1) {
-    //         $groupname = $grpdate;
-    //     }
-    //     $sql5 = "update tbl_group set group_name = '".$groupname."' where group_id = ".$grpdid;
-    //     mysqli_query($DB,$sql5);
-    // }
 
     $date1 = $holiday;
     $group1 = $groupname;
@@ -115,7 +66,7 @@ if(isset($_GET['holiday'])) {
     $sql = "select temp_id from tbl_temp where temp_id >= ".$tempid;
     $result = mysqli_query($DB,$sql);
     $count = mysqli_num_rows($result);
-    echo $count;
+    // echo $count;
 
 
     $sql1 = "select date, group_name, group_id from tbl_group where group_id > ".$id." limit ".$count;
@@ -127,7 +78,7 @@ if(isset($_GET['holiday'])) {
         $gid[$x] = $row1['group_id'];
         $x++;
     }
-    echo $x;
+    // echo $x;
     
     $sql2 = "update tbl_temp set date = '".$date[0]."' , group_name = '".$group[0]."' , swap = 1 where swap = 0 and date  = '".$date1."'";
     mysqli_query($DB,$sql2);
@@ -135,7 +86,7 @@ if(isset($_GET['holiday'])) {
     $sql3 = "update tbl_timeline set date = '".$date[0]."' , group_name = '".$group[0]."' , swap = 1 where swap = 0 and date  = '".$date1."'";
     mysqli_query($DB,$sql3);
 
-    echo $sql2, $sql3;
+    // echo $sql2, $sql3;
     for($i=0; $i<$x; $i++) {
         $j = $i+1;
         if($j < ($x)) {
@@ -145,7 +96,7 @@ if(isset($_GET['holiday'])) {
         $sql3 = "update tbl_timeline set date = '".$date[$j]."' , group_name = '".$group[$j]."' , swap = 1 where swap = 0 and date  = '".$date[$i]."'";
         mysqli_query($DB,$sql3);
 
-        echo $sql2, $sql3;
+        // echo $sql2, $sql3;
         }
     }
 
