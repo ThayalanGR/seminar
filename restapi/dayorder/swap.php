@@ -10,7 +10,7 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
     $date1 = trim($_GET['holiday']); 
     $group1 = trim($_GET['group']);
     $id = trim($_GET['id']);
-
+    // echo $date1,$group1,$id;
     $sql = "select temp_id from tbl_temp where date = '".$date1."'";
     $result = mysqli_query($DB,$sql);
     $row = mysqli_fetch_array($result);
@@ -19,10 +19,10 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
     $sql = "select temp_id from tbl_temp where temp_id >= ".$tempid;
     $result = mysqli_query($DB,$sql);
     $count = mysqli_num_rows($result);
-    echo $count;
+    // echo $count;
 
 
-    $sql1 = "select date, group_name, group_id from tbl_group where group_id > ".$id." limit ".$count;
+    $sql1 = "select date, group_name, group_id from tbl_group where group_id >= ".$id." limit ".$count;
     $result1 = mysqli_query($DB,$sql1);
     $x = 0;
     while($row1 = mysqli_fetch_array($result1)) {
@@ -31,7 +31,7 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
         $gid[$x] = $row1['group_id'];
         $x++;
     }
-    echo $x;
+    // echo $x;
     
     $sql2 = "update tbl_temp set date = '".$date[0]."' , group_name = '".$group[0]."' , swap = 1 where swap = 0 and date  = '".$date1."'";
     mysqli_query($DB,$sql2);
@@ -39,7 +39,7 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
     $sql3 = "update tbl_timeline set date = '".$date[0]."' , group_name = '".$group[0]."' , swap = 1 where swap = 0 and date  = '".$date1."'";
     mysqli_query($DB,$sql3);
 
-    echo $sql2, $sql3;
+    // echo $sql2, $sql3;
     for($i=0; $i<$x; $i++) {
         $j = $i+1;
         if($j < ($x)) {
@@ -49,7 +49,7 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
         $sql3 = "update tbl_timeline set date = '".$date[$j]."' , group_name = '".$group[$j]."' , swap = 1 where swap = 0 and date  = '".$date[$i]."'";
         mysqli_query($DB,$sql3);
 
-        echo $sql2, $sql3;
+        // echo $sql2, $sql3;
         }
     }
 

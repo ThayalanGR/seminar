@@ -1,7 +1,7 @@
 <?php
 
 require_once('../config/dbconnection.php');
-$date = "2018-09-10";
+$date = "2018-09-11";
 echo $date;
 $sql5 = "select group_name, date, day_order from tbl_group where group_name = '".$date."'";
 $result5 = mysqli_query($DB,$sql5);
