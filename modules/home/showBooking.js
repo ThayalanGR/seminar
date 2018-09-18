@@ -1,8 +1,4 @@
 
-
-
-
-
 $(document).ready(function() {
 
     const  departmentView = document.getElementById('departmentView')
@@ -64,8 +60,6 @@ $(document).ready(function() {
 
 
 })
-
-
 
 function insertTimelineValues(response) {
 
@@ -1116,7 +1110,6 @@ five8.innerHTML = output
 
 }
 
-
 function getresponse(deptId) {
     url = `http://localhost/seminar/restapi/timeline/gettimeline.php?deptid=${deptId}`
     fetch(url).
@@ -1141,8 +1134,6 @@ function getresponse(deptId) {
     }).
     catch(err => console.log(err))
 }        
-
- 
 
 function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
     const periodMessageRef = document.getElementById('periodmessage')
@@ -1190,7 +1181,6 @@ function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
   
 
 }
-
 
 
 function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
@@ -1244,7 +1234,6 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
     
 
 }
-
 
 
 function getPeriodInfo(periodId) {
@@ -1326,7 +1315,7 @@ function getPeriodInfo(periodId) {
                                             </div>
                                         </form>`
                 const periodinfomodalRefFooter = document.getElementById('periodFooter')
-                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}')">Request</button>`
+                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}', '${response.perioddetails[0].group_name}')">Request</button>`
                 periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
                 $('#periodinfomodal').modal('show')
             } else {
@@ -1373,7 +1362,7 @@ function getPeriodInfo(periodId) {
                     </div>
                 </form>`
                 const periodinfomodalRefFooter = document.getElementById('periodFooter')
-                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}')">Cancel Booking</button>`
+                periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "cancelPeriod('${response.perioddetails[0].book_id}')">Cancel Booking</button>`
                 periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
                 $('#periodinfomodal').modal('show')
             }
@@ -1386,8 +1375,7 @@ function getPeriodInfo(periodId) {
 
 }
 
-
-function getPeriodInfoCatch(book_id) {
+function getPeriodInfoCatch(book_id, group_name) {
     const periodMessageRef = document.getElementById('periodmessage')
     periodMessageRef.innerHTML = `<i class="fas fa-spinner text-primary fa-spin"></i> <br>
                                     <p>please wait,processing</p>
@@ -1400,41 +1388,93 @@ function getPeriodInfoCatch(book_id) {
     console.log(Token, requestmsg, book_id, periodSub)
 
     if(requestmsg != "" && periodSub != "Select Subject") {
-        url = `http://localhost/seminar/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
-        console.log(url)
+        url = `http://localhost/seminar/restapi/limit/getcurrentusage.php?group=${group_name}&subcode=${periodSub}&userid=${localStorage.getItem('token')}`
         fetch(url)
         .then(data => data.json())
         .then(response => {
-            console.log(response)
-            if(response.response.status) {
+            if(response.response.status == true) {
+                url = `http://localhost/seminar/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
+                console.log(url)
+                fetch(url)
+                .then(data => data.json())
+                .then(response => {
+                    console.log(response)
+                    if(response.response.status) {
+                        const periodMessageRef = document.getElementById('periodmessage')
+                        periodMessageRef.innerHTML = `<p class="alert alert-success">Request successfully sent, keep checking your email </p>
+                        <i class="fas fa-spinner text-primary fa-spin"></i> <br>
+                        <p>please wait,redirecting you to homepage</p> `
+                        // getresponse(deptid)
+                        $('#periodinfomodal').modal('show')
+                        
+                        setTimeout(function() {    
+                            periodMessageRef.innerHTML = ''
+                            $('#periodinfomodal').modal('hide')
+                        }, 3000)
+                    }
+                    else {
+                        const periodMessageRef = document.getElementById('periodmessage')
+                        periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>  `
+                        $('#periodinfomodal').modal('show')
+                    }
+                })
+                .catch(err => console.log(err))
+            } else {
                 const periodMessageRef = document.getElementById('periodmessage')
-                periodMessageRef.innerHTML = `<p class="alert alert-success">Request successfully sent, keep checking your email </p>
-                <i class="fas fa-spinner text-primary fa-spin"></i> <br>
-                <p>please wait,redirecting you to homepage</p> `
-                // getresponse(deptid)
-                $('#periodinfomodal').modal('show')
-                
-                setTimeout(function() {    
-                    periodMessageRef.innerHTML = ''
-                    $('#periodinfomodal').modal('hide')
-                }, 3000)
-            }
-            else {
-                const periodMessageRef = document.getElementById('periodmessage')
-                periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>  `
+                periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>`
                 $('#periodinfomodal').modal('show')
             }
-    
-    
-        })
-        .catch(err => console.log(err))
-        
+        })            
     }else {
         const periodMessageRef = document.getElementById('periodmessage')
         periodMessageRef.innerHTML = `<p class="alert alert-danger">Something went wrong try again with correct details</p>  `
         $('#periodinfomodal').modal('show')
     }
-
-
   
+}
+
+
+function cancelPeriod(bookid) {
+    const periodMessageRef = document.getElementById('periodmessage')
+    periodMessageRef.innerHTML = `<i class="fas fa-spinner text-primary fa-spin"></i> <br>
+                                    <p>please wait,processing</p>
+                                    `
+     $('#periodinfomodal').modal('show')
+
+    url = `http://localhost/seminar/restapi/timeline/cancelbooking.php?bookid=${bookid}`
+    fetch(url)
+    .then(data => data.json())
+    .then(response => {
+        if(response.response.status == true) {
+            const periodMessageRef = document.getElementById('periodmessage')
+            let deptId = 0
+            const deptVal = document.getElementById('departmentView').value
+            if(deptVal == 'CSE')
+                deptId = 1
+            if(deptVal == 'ECE')
+                deptId = 2
+            if(deptVal == 'IT')
+                deptId = 4
+            if(deptVal == 'EEE')
+                deptId = 3
+            if(deptVal == 'MECH')
+                deptId = 6
+            if(deptVal == 'ICE')
+                deptId = 5
+            if(deptVal == 'CIVIL')
+                deptId = 7
+            if(deptVal == 'ENG')
+                deptId = 8 
+             getresponse(deptId)
+             periodMessageRef.innerHTML = `<p class="alert alert-success">period cancelled successfully!</p>
+             <i class="fas fa-spinner text-primary fa-spin"></i> <br>
+             <p>please wait,redirecting you to homepage</p> `
+             // getresponse(deptid)
+             $('#periodinfomodal').modal('show')
+             setTimeout(function() {    
+                 periodMessageRef.innerHTML = ''
+                 $('#periodinfomodal').modal('hide')
+             }, 3000)
+        }
+    })
 }

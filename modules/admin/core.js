@@ -211,7 +211,7 @@ function displayBatchHistory(response) {
                 <div id="msg" class="alert alert-danger"  style="display:none"> </div>
                 <div class="row ">
                         <div class="col">Day-Order-1</div>
-                        <div class="col"><input class="input input-sm btn-outline-blue" type="date" min="${date}"   value="${element[0].date}" id="${element[0].groupname+'1'}"></div>
+                        <div class="col"><input class="input input-sm btn-outline-blue" type="date" min="${date}"   value="${element[0].date}" id="${element[0].groupname+'1'}" disabled></div>
                         <div class="col">
                         <a id="deleteandswap" onClick="deleteAndSwap('${element[0].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
                         </div>
@@ -219,7 +219,7 @@ function displayBatchHistory(response) {
                 <hr>
                 <div class="row ">
                         <div class="col">Day-Order-2</div>
-                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[1].date}"   id="${element[0].groupname+'2'}"></div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[1].date}"   id="${element[0].groupname+'2'}" disabled></div>
                         <div class="col">
                         <a id="deleteandswap" onClick="deleteAndSwap('${element[1].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
                         </div>
@@ -227,7 +227,7 @@ function displayBatchHistory(response) {
                 <hr>
                 <div class="row ">
                         <div class="col">Day-Order-3</div>
-                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[2].date}"   id="${element[0].groupname+'3'}"></div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[2].date}"   id="${element[0].groupname+'3'}" disabled></div>
                         <div class="col">
                         <a id="deleteandswap" onClick="deleteAndSwap('${element[2].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
                         </div>
@@ -235,7 +235,7 @@ function displayBatchHistory(response) {
                 <hr>
                 <div class="row ">
                         <div class="col">Day-Order-4</div>
-                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[3].date}"   id="${element[0].groupname+'4'}"></div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[3].date}"   id="${element[0].groupname+'4'}" disabled></div>
                         <div class="col">
                         <a id="deleteandswap" onClick="deleteAndSwap('${element[3].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
                         </div>
@@ -243,7 +243,7 @@ function displayBatchHistory(response) {
                 <hr>
                 <div class="row ">
                         <div class="col">Day-Order-5</div>
-                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[4].date}"   id="${element[0].groupname+'5'}"></div>
+                        <div class="col"><input type="date"  class="input input-sm btn-outline-blue" min="${date}"  value="${element[4].date}"   id="${element[0].groupname+'5'}" disabled></div>
                         <div class="col">
                         <a id="deleteandswap" onClick="deleteAndSwap('${element[4].date}');" > <i class="fas fa-trash-alt text-danger"></i></a>                    
                         </div>
