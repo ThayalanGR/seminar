@@ -197,13 +197,8 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
                 $sql3 = "delete from tbl_booking where book_id = ".$usrbookid;
                 mysqli_query($DB,$sql3);
 
-<<<<<<< HEAD
                 $sql4 = "update tbl_timeline set ".$usrperiod." = 0 where dept_id = ".$usrdeptid." and group_name = '".$usrgroupname."' and date = '".$usrdate."' and day_order = ".$usrdayorder;
                 mysqli_query($DB,$sql4);
-=======
-            $sql4 = "update tbl_timel ine set ".$usrperiod." = 0 where dept_id = ".$usrdeptid." and group_name = '".$usrgroupname."' and date = '".$usrdate."' and day_order = ".$usrdayorder;
-            mysqli_query($DB,$sql4);
->>>>>>> upstream/master
 
                 $sql8 = "select t1.current_usage, t2.max_book from tbl_limit t1 inner join tbl_role t2 on t1.role_id = t2.role_id where user_id = ".$userid." and sub_code = '".$usrsubcode."' and group_name = '".$usrgroupname."'";
                 $result8 = mysqli_query($DB,$sql8);
