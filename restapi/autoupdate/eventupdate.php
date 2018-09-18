@@ -2,7 +2,7 @@
 
 require_once('../config/dbconnection.php');
 
-$currenttime = "2018-09-20";
+$currenttime = "2018-09-15";
 
 $sql1 = "select dept_id, date, period, user_name, event_name, description from tbl_events where date = '".$currenttime."'";
 $result1 = mysqli_query($DB,$sql1);
@@ -15,7 +15,6 @@ if($row1 = mysqli_fetch_array($result1)) {
     $eventname = $row1['event_name'];
     $event = 0;
     $active = 0;
-
     $sql2 = "select user_id from tbl_staff where user_name = '".$name."'";
     $result2 = mysqli_query($DB,$sql2);
     $row2 = mysqli_fetch_array($result2);
@@ -25,7 +24,6 @@ if($row1 = mysqli_fetch_array($result1)) {
     $result3 = mysqli_query($DB,$sql3);
     $row3 = mysqli_fetch_array($result3);
     $dept = $row3['dept_name'];
-
     $sql4 = "select group_name, date, day_order from tbl_temp  where date = '".$date."'";
     $result4 = mysqli_query($DB,$sql4);
     if ($row4 = mysqli_fetch_array($result4)) {

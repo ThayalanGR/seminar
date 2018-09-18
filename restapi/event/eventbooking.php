@@ -23,6 +23,9 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
     $row3 = mysqli_fetch_array($result3);
     $dept = $row3['dept_name'];
 
+    $sql1 = "insert into tbl_events (dept_id, date, period, user_name, event_name, description, timestamp) values (".$deptid.", '".$date."', '".$period."', '".$name."', '".$eventname."', '".$description."', ".$timestamp.")";
+    mysqli_query($DB,$sql1);
+    
     $sql2 = "select group_name, date, day_order from tbl_temp where date = '".$date."'";
     $result2 = mysqli_query($DB,$sql2);
     if ($row2 = mysqli_fetch_array($result2)) {
