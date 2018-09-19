@@ -108,7 +108,6 @@
                <li class="nav-item">
                     <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../allevents/">All Events</a>
                 </li>
-   
                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle dropdown-item ml-3"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        Add
@@ -159,51 +158,41 @@
     <div class="row">
         <div class="col-md-10 col-sm-12 offset-md-1 mt-5 pt-5">
             <div class="row">
-                <div class="col text-center text-primary font-weight-bold">
-                    <hr><h3 class="text-primary font-weight-bold">Event Booking</h3><hr>
+                <div class="col text-center">
+                    <h5 class="text-primary">
+                        All Events
+                    </h5>
+                    <hr>
                 </div>
             </div>
-            <div class="row ">
-                    
-                    <div class="col text-center">
-                        <label for="departmentView" class="text-success font-weight-bold">Department : </label>
-                        <select name="department" class="input input-block form-control-sm btn-outline-success rounded" id="departmentView"></select>
-                        <hr>
+            <div class="row bg-white p-2">
+                <div class="col  rounded" id="mainBlock">
+                    <div class="row ">
+                        <div class="col period font-weight-bold "><br> Period/Day order</div>
+                        <div class="col period font-weight-bold "><br> 1</div>
+                        <div class="col period font-weight-bold "><br> 2</div>
+                        <div class="col period font-weight-bold "><br> 3</div>
+                        <div class="col period font-weight-bold "><br> 4</div>
+                        <div class="col period font-weight-bold "><br> 5</div>
+                        <div class="col period font-weight-bold "><br> 6</div>
+                        <div class="col period font-weight-bold "><br> 7</div>
+                        <div class="col period font-weight-bold "><br> 8</div>
+                        <div class="col period font-weight-bold "><br> Delete</div>
                     </div>
-                    <div class="col text-center">
-                            <label for="departmentView" class="text-success font-weight-bold">Date : </label>
-                            <input type="date" name="departmentdate" id="departmentdate" min="" class="input input-block form-control-sm btn-outline-success rounded">
-                            <hr>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col">
-                                <hr>
-                        </div>
-                            
-                    </div>
-                    
-            </div>
-            <div class="row">
-                    <div class="col text-center text-warning font-weight-bold">
-                        Availability View<hr>
-                    </div>
-            </div>
-            <div class="row">
-                <div class="col">
                     <div class="row">
-                        <div class="col text-danger">
-                            <div id="contentBodyMessage"></div>    
-                        </div>
+                        <div class="col period font-weight-bold "><span id="fetchdate1"></span><br>(<span id="fetchdayorder1"></span>)</div>
+                        <div class="col period hoverable font-weight-bold" id="11"></div>
+                        <div class="col period hoverable font-weight-bold" id="12"></div>
+                        <div class="col period hoverable font-weight-bold" id="13"></div>
+                        <div class="col period hoverable font-weight-bold" id="14"></div>
+                        <div class="col period hoverable font-weight-bold" id="15"></div>
+                        <div class="col period hoverable font-weight-bold" id="16"></div>
+                        <div class="col period hoverable font-weight-bold" id="17"></div>
+                        <div class="col period hoverable font-weight-bold" id="18"></div>
+                        <div class="col period hoverable font-weight-bold d-flex justify-content-center align-items-center text-danger " id="eventdelete"> <i class="fa fa-trash " style="font-size: 20px;"> </i></div>
                     </div>
-                    <div id="contentPeriodBody"></div>
-                    <div class="row">
-                        <div class="col text-center text-warning font-weight-bold">
-                            <hr>
-                        </div>
-                    </div>
-                    <div id="contentPeriodBodyDesc"></div>
                 </div>
-            </div>     
+            </div>
         </div>
     </div>
 </div>

@@ -326,8 +326,12 @@ function OneTimeGenerationProcess() {
     if( date != "" && count != 0 && count != "") {
         messageRef.innerHTML = ``  
         console.log(date,count)
-        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?date=${date}&count=${count}&initial=1`
-    
+        passwordFooterRef.innerHTML = ``
+        passwordContentRef.innerHTML = `<p class="alert alert-warning ">please wait , our machines processing your request
+        <br><i class="fas fa-spinner text-primary text-center fa-spin"></i> <br>    
+    </p>`
+        // passwordFooterRef.innerHTML = ``
+        const url1 = `http://localhost/seminar/restapi/autoupdate/onetimegen.php?date=${date}&count=${count}&initial=1`
         fetch(url1).
         then(data => data.json()).
         then(result => {
@@ -339,7 +343,7 @@ function OneTimeGenerationProcess() {
             setTimeout(function() {
                 fetchProcess()
                 $('#passwordModal').modal('hide')
-            }, 3000)
+            }, 2000)
         })
         .catch(error => {
             console.log(error)
