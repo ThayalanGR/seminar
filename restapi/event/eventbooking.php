@@ -8,7 +8,6 @@ require_once "../library/phpmailer/class.phpmailer.php";
 
 
 require_once('../config/dbconnection.php');
-
 if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['eventname'])) {
     $deptid = trim($_GET['deptid']);
     $date = trim($_GET['date']);
@@ -181,14 +180,14 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
                 $mail->send();
             
                 if(!$mail){
-                    $json = array();
-                    $json["response"] = array(  "status" => false);
-                    echo json_encode($json);
+                    // $json = array();
+                    // $json["response"] = array(  "status" => false);
+                    // echo json_encode($json);
                 }
                 else{
-                    $json = array();
-                    $json["response"] = array(  "status" => true);
-                    echo json_encode($json);
+                    // $json = array();
+                    // $json["response"] = array(  "status" => true);
+                    // echo json_encode($json);
                 }
             } catch (Exception $ex) {
         
@@ -229,6 +228,9 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
         //     "status" => true
         // );
         // echo json_encode($json); 
+        $json = array();
+        $json["response"] = array(  "status" => true);
+        echo json_encode($json);
     }
     else {
         $sql1 = "insert into tbl_events (dept_id, date, period, user_name, event_name, description, timestamp) values (".$deptid.", '".$date."', '".$period."', '".$name."', '".$eventname."', '".$description."', ".$timestamp.")";

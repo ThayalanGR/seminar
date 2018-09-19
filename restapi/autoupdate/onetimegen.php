@@ -186,7 +186,7 @@ if(isset($_GET['count']) && isset($_GET['initial']) && isset($_GET['date'])) {
             $roleid = $row1['role_id'];
             $sql2 = "select sub_code from tbl_workload where sub_type = 'T' and staff1 = '".$username."'";
             $result2 = mysqli_query($DB,$sql2);
-            $groupname = "2018-08-18";
+            // $groupname = "2018-08-18";
 
             while($row2 = mysqli_fetch_array($result2)) {
                 $subcode = $row2['sub_code'];

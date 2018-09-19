@@ -158,7 +158,8 @@ function processEventBooking(eventDate, deptVal) {
     const contentPeriodBody = document.getElementById('contentPeriodBody')
     const contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
     const desc = eventDesc.value
-    const title = document.getElementById('eventTitle').value
+    const titleRef = document.getElementById('eventTitle')
+    const title = titleRef.value
     const userId = localStorage.getItem('token')
     const uname = localStorage.getItem('uname')
     const periods = periodcount.slice(0, -1)
@@ -186,15 +187,39 @@ function processEventBooking(eventDate, deptVal) {
     //$_GET['deptid']) && isset($_GET['date'])  && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['eventname']) && isset($_GET['deptname'])
     if (desc != "" && title != "" && periods != "") {
         const  contentBodyMessage = document.getElementById('contentBodyMessage')
+
+        contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"><i class="fas fa-spinner text-white fa-spin"></i> <br>
+                                        <p>please wait,processing</p></div>`
         clearPeriods()
         eventDesc.value = `` 
-        console.log("accepted")
-        contentBodyMessage.innerHTML = `<div class="alert alert-success text-center"> Event Booking Successfull</div> `
+        titleRef.value = ``
         contentPeriodBody.innerHTML = ``
         contentPeriodBodyDesc.innerHTML = ``
-        setTimeout(function(){
-            contentBodyMessage.innerHTML = ``
-        }, 5000)
+        console.log("accepted")
+        let url = `http://localhost/seminar/restapi/event/eventbooking.php?deptid=${deptId}&date=${eventDate}&period=${periods}&username=${uname}&description=${desc}&userid=${userId}&eventname=${title}&deptname=${deptVal}`
+        console.log(url)
+        fetch(url)
+        .then(data => data.json())
+        .then(response => {
+            console.log(response)
+            if(response.response.status) {
+                contentBodyMessage.innerHTML = `<div class="alert alert-success text-center"> Event Booking Successfull</div> `
+                contentPeriodBody.innerHTML = ``
+                contentPeriodBodyDesc.innerHTML = ``
+                setTimeout(function(){
+                    contentBodyMessage.innerHTML = ``
+                }, 5000)
+            }
+            else {
+                contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"> Something went wrong</div>`
+                contentPeriodBody.innerHTML = ``
+                setTimeout(function(){
+                    contentBodyMessage.innerHTML = ``
+                }, 5000)
+            }
+
+        })
+        .catch(error => console.log(error))
     }
     else {
         const  contentBodyMessage = document.getElementById('contentBodyMessage')
