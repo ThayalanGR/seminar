@@ -9,6 +9,7 @@ require_once('../config/dbconnection.php');
 $currenttime = date("Y-m-d");
 $timestamp = strtotime($currenttime);
 
+
 $sql = "select event_id, dept_id, date, period, user_name, event_name, description from tbl_events where timestamp >= ".$timestamp." order by timestamp";
 $result = mysqli_query($DB,$sql);
 $json = array();
@@ -27,6 +28,7 @@ while($row = mysqli_fetch_array($result)) {
     array_push($json["eventdetails"], $jsonArray);  
 }
 echo json_encode($json);
+
 
 
 ?>

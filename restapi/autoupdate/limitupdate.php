@@ -1,16 +1,15 @@
 <?php
 
 require_once('../config/dbconnection.php');
-$currenttime = date("Y-m-d");
 
-$sql2 = "select group_id, day_order from tbl_group where date = '".$currenttime."'";
+$sql2 = "select group_id, day_order from tbl_group where date = '2018-09-18'";
 $result2 = mysqli_query($DB,$sql2);
 $row2 = mysqli_fetch_array($result2);
 $currentid = $row2['group_id'];
 $dayorder = $row2['day_order'];
 
 if($dayorder == 1) {        
-    $currentid = $currentid + 5;
+    // $currentid = $currentid + 5;
     $sql3 = "select group_name from tbl_group where group_id = ".$currentid;
     $result3 = mysqli_query($DB,$sql3);
     $row3 = mysqli_fetch_array($result3);
