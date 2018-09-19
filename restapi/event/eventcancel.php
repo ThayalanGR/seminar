@@ -8,12 +8,12 @@ require_once('../config/dbconnection.php');
 
 if(isset($_GET['bookid'])) {
     $bookid = trim($_GET['bookid']);    
-    $booking = array(); 
-    $booking = explode("-",$bookid);
-    $bookcount = count($booking);
+    // $booking = array(); 
+    // $booking = explode("-",$bookid);
+    // $bookcount = count($booking);
 
-    for($x=0; $x<$bookcount; $x++) {
-        $sql1 = "select  dept_id, group_name, date, day_order, period, sub_code, user_name from tbl_booking where book_id = " .$booking[$x]; 
+    // for($x=0; $x<$bookcount; $x++) {
+        $sql1 = "select  dept_id, group_name, date, day_order, period, sub_code, user_name from tbl_booking where book_id = " .$bookid; 
         $result = mysqli_query($DB,$sql1);
         $row = mysqli_fetch_array($result); 
     
@@ -25,7 +25,7 @@ if(isset($_GET['bookid'])) {
         $username = $row['user_name'];
 
     
-        $sql2 = "delete from tbl_booking where book_id = ".$booking[$x];
+        $sql2 = "delete from tbl_booking where book_id = ".$bookid;
         mysqli_query($DB,$sql2);
     
         $sql3 = "update tbl_timeline set ".$period." = 0 where dept_id = ".$deptid." and group_name = '".$groupname."' and date = '".$date."' and day_order = ".$dayorder;
@@ -227,6 +227,6 @@ if(isset($_GET['bookid'])) {
                 echo json_encode($json);
             }
         }
-    }
+    // }
 }
 ?>
