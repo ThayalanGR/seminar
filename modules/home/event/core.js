@@ -241,7 +241,7 @@ function period1() {
     const period1 = document.getElementById('period1')
     const totalperiods = document.getElementById('totalperiods')
     period1.classList.add('disabled', 'bg-success')
-    periodcount += '1-'
+    periodcount += 'p1-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(1, periodcount)
@@ -250,7 +250,7 @@ function period2() {
     const period2 = document.getElementById('period2')
     const totalperiods = document.getElementById('totalperiods')
     period2.classList.add('disabled', 'bg-success')
-    periodcount += '2-'
+    periodcount += 'p2-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(2, periodcount)
@@ -259,7 +259,7 @@ function period3() {
     const period3 = document.getElementById('period3')
     const totalperiods = document.getElementById('totalperiods')
     period3.classList.add('disabled', 'bg-success')
-    periodcount += '3-'
+    periodcount += 'p3-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(3, periodcount)
@@ -269,7 +269,7 @@ function period4() {
     const period4 = document.getElementById('period4')
     const totalperiods = document.getElementById('totalperiods')
     period4.classList.add('disabled', 'bg-success')
-    periodcount += '4-'
+    periodcount += 'p4-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(4, periodcount)
@@ -278,7 +278,7 @@ function period5() {
     const period5 = document.getElementById('period5')
     const totalperiods = document.getElementById('totalperiods')
     period5.classList.add('disabled', 'bg-success')
-    periodcount += '5-'
+    periodcount += 'p5-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(5, periodcount)
@@ -287,7 +287,7 @@ function period6() {
     const period6 = document.getElementById('period6')
     const totalperiods = document.getElementById('totalperiods')
     period6.classList.add('disabled', 'bg-success')
-    periodcount += '6-'
+    periodcount += 'p6-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(6, periodcount)
@@ -296,7 +296,7 @@ function period7() {
     const period7 = document.getElementById('period7')
     const totalperiods = document.getElementById('totalperiods')
     period7.classList.add('disabled', 'bg-success')
-    periodcount += '7-'
+    periodcount += 'p7-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(7, periodcount)
@@ -305,7 +305,7 @@ function period8()  {
     const period8 = document.getElementById('period8')
     const totalperiods = document.getElementById('totalperiods')
     period8.classList.add('disabled', 'bg-success')
-    periodcount += '8-'
+    periodcount += 'p8-'
     periodcountvalue++
     totalperiods.innerHTML = periodcountvalue
     console.log(8, periodcount)
@@ -317,7 +317,7 @@ function clearPeriods() {
     console.log(periodcountarr)
     if(periodcountvalue != 0) {
         for(var i = 0; i < periodcountarr.length; i++) {
-            period = document.getElementById(`period${periodcountarr[i]}`)
+            period = document.getElementById(`period${periodcountarr[i][1]}`)
             period.classList.remove('disabled', 'bg-success')
         }    
         periodcount = ``;

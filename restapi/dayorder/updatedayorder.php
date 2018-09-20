@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once('../config/dbconnection.php');
-
+ 
 
 
 if(isset($_GET['holiday'])) {
@@ -14,10 +14,10 @@ if(isset($_GET['holiday'])) {
     $sql1 = "select group_id, group_name, date, day_order from tbl_group where date = '".$holiday."'";
     $result1 = mysqli_query($DB,$sql1);
     $row1 = mysqli_fetch_array($result1);
+
     $did = $row1['group_id'];
     $dayorder = $row1['day_order'];
     $groupname = $row1['group_name'];
-    
     $date1 = $holiday;
     $group1 = $groupname;
     $id = $did;

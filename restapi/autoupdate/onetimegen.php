@@ -108,6 +108,9 @@ if(isset($_GET['count']) && isset($_GET['initial']) && isset($_GET['date'])) {
     }
 
     $currenttime = date("Y-m-d");
+    // echo $currenttime;
+    // $currenttime = $timeline;
+    // echo $currenttime;
 
     
     $sql2 = "select group_id from tbl_group where date = '".$currenttime."'";

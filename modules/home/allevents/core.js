@@ -120,311 +120,108 @@ if(dd<10){
 
 var date = yyyy+'-'+mm+'-'+dd;
 
+function fetchProcess() {
+    const maincontent = document.getElementById('maincontent')
+    maincontent.innerHTML = ``
+    const url = `http://localhost/seminar/restapi/event/eventview.php`
+    fetch(url)
+    .then(data => data.json())
+    .then(response => {
+        console.log(response)
+        if(response.eventdetails.length) {
+            response.eventdetails.forEach(event => {
+                // console.log(event)
+                let periodsArr = event.period.split("-")
+                // console.log(periodsArr)
+                let periodVar = []
+                Array.prototype.contains = function(element){
+                    return this.indexOf(element) > -1
+                }
+                for(var i = 1; i <= 8; i++) {
+                    if(periodsArr.contains(`p${i}`)){
+                        periodVar[i] = `Reserved by ${event.user_name}`
+                    }else {
+                        periodVar[i] = "-"
+                    }
+                }
+                let cancelBtn = ''
+                if(event.user_name == localStorage.getItem('uname')) {
+                    cancelBtn = `<a onclick = "cancelBooking(${event.event_id}, '${event.period}', '${event.date}');" class="col period  d-flex justify-content-center align-items-center text-danger shadow hoverable" > <i class="fa fa-trash shadow-lg" style="font-size: 20px;"> </i></a>`
+                } else {
+                    cancelBtn = `<div class="col period font-weight-bold d-flex justify-content-center align-items-center text-danger shadow" >-</div>`
+                }
+                let construct = `<div class="row">
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-warning shadow">${event.event_name} <br> ${event.date}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[1]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[2]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[3]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[4]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[5]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[6]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[7]}</div>
+                                    <div class="col period font-weight-bold d-flex justify-content-center align-items-center text-primary shadow">${periodVar[8]}</div>
+                                    ${cancelBtn}
+                                </div>`
+                maincontent.innerHTML += construct
+                // console.log(construct)
+            })
+        } else {
+            maincontent.innerHTML = `<div class="row"><div class="col text-center alert alert-warning text-danger">No Events Yet</div></div> `
+        }   
 
-
-function constructDeptDom(result) {
-    const deptRef = document.getElementById('departmentView')
-    let output = ''
-    const items = result.department
-    items.forEach(e => {
-        output += `<option name="${e.deptId}">${e.deptName}</option>`
     })
-    deptRef.innerHTML = output
-
-}
-
-function constructDateDom() {
-    const dateRef = document.getElementById('departmentdate')
-    dateRef.setAttribute("min", date) 
-
-}
-
-function getDept() {
-    
-    url = `http://localhost/seminar/restapi/department/getdepartment.php`
-    fetch(url).
-    then(data => data.json()).
-    then(result => {
-        console.log(result)
-        constructDeptDom(result)
-    })  
     .catch(error => console.log(error))
-
-
-}
-
-function processEventBooking(eventDate, deptVal) {
-    const eventDesc = document.getElementById('eventDesc')
-    const contentPeriodBody = document.getElementById('contentPeriodBody')
-    const contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
-    const desc = eventDesc.value
-    const title = document.getElementById('eventTitle').value
-    const userId = localStorage.getItem('token')
-    const uname = localStorage.getItem('uname')
-    const periods = periodcount.slice(0, -1)
-    // const  contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
-    let deptId = 0
-    
-    if(deptVal == 'CSE')
-        deptId = 1
-    if(deptVal == 'ECE')
-        deptId = 2
-    if(deptVal == 'IT')
-        deptId = 4
-    if(deptVal == 'EEE')
-        deptId = 3
-    if(deptVal == 'MECH')
-        deptId = 6
-    if(deptVal == 'ICE')
-        deptId = 5
-    if(deptVal == 'CIVIL')
-        deptId = 7
-    if(deptVal == 'ENG')
-        deptId = 8 
-
-    console.log(desc, periods, eventDate, deptId, title, userId, uname, deptVal    )
-    //$_GET['deptid']) && isset($_GET['date'])  && isset($_GET['period']) && isset($_GET['username']) && isset($_GET['description']) && isset($_GET['userid']) && isset($_GET['eventname']) && isset($_GET['deptname'])
-    if (desc != "" && title != "" && periods != "") {
-        const  contentBodyMessage = document.getElementById('contentBodyMessage')
-        clearPeriods()
-        eventDesc.value = `` 
-        console.log("accepted")
-        contentBodyMessage.innerHTML = `<div class="alert alert-success text-center"> Event Booking Successfull</div> `
-        contentPeriodBody.innerHTML = ``
-        contentPeriodBodyDesc.innerHTML = ``
-        setTimeout(function(){
-            contentBodyMessage.innerHTML = ``
-        }, 5000)
-    }
-    else {
-        const  contentBodyMessage = document.getElementById('contentBodyMessage')
-        console.log("rejected")
-        contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"> invalid fields</div> `
-        setTimeout(function(){
-            contentBodyMessage.innerHTML = ``
-        }, 3000)
-
-    }
-
-}
-
-let periodcount = ``;
-let periodcountvalue = 0;
-
-
-function period1() {
-    const period1 = document.getElementById('period1')
-    const totalperiods = document.getElementById('totalperiods')
-    period1.classList.add('disabled', 'bg-success')
-    periodcount += '1-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(1, periodcount)
-}
-function period2() {
-    const period2 = document.getElementById('period2')
-    const totalperiods = document.getElementById('totalperiods')
-    period2.classList.add('disabled', 'bg-success')
-    periodcount += '2-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(2, periodcount)
-}
-function period3() {
-    const period3 = document.getElementById('period3')
-    const totalperiods = document.getElementById('totalperiods')
-    period3.classList.add('disabled', 'bg-success')
-    periodcount += '3-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(3, periodcount)
-
-}
-function period4() {
-    const period4 = document.getElementById('period4')
-    const totalperiods = document.getElementById('totalperiods')
-    period4.classList.add('disabled', 'bg-success')
-    periodcount += '4-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(4, periodcount)
-}
-function period5() {
-    const period5 = document.getElementById('period5')
-    const totalperiods = document.getElementById('totalperiods')
-    period5.classList.add('disabled', 'bg-success')
-    periodcount += '5-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(5, periodcount)
-}
-function period6() {
-    const period6 = document.getElementById('period6')
-    const totalperiods = document.getElementById('totalperiods')
-    period6.classList.add('disabled', 'bg-success')
-    periodcount += '6-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(6, periodcount)
-}
-function period7() {
-    const period7 = document.getElementById('period7')
-    const totalperiods = document.getElementById('totalperiods')
-    period7.classList.add('disabled', 'bg-success')
-    periodcount += '7-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(7, periodcount)
-}
-function period8()  {
-    const period8 = document.getElementById('period8')
-    const totalperiods = document.getElementById('totalperiods')
-    period8.classList.add('disabled', 'bg-success')
-    periodcount += '8-'
-    periodcountvalue++
-    totalperiods.innerHTML = periodcountvalue
-    console.log(8, periodcount)
-}
-
-function clearPeriods() {
-    let period = []    
-    let periodcountarr = periodcount.slice(0, -1).split("-")
-    console.log(periodcountarr)
-    if(periodcountvalue != 0) {
-        for(var i = 0; i < periodcountarr.length; i++) {
-            period = document.getElementById(`period${periodcountarr[i]}`)
-            period.classList.remove('disabled', 'bg-success')
-        }    
-        periodcount = ``;
-        periodcountvalue = 0;
-        totalperiods.innerHTML = periodcountvalue
-    }
-}
-
-
-
-
-
-
-
-function handleEventBooking(eventDate, eventDept) {
-    console.log(eventDate, eventDept)
-    const  contentPeriodBody = document.getElementById('contentPeriodBody')
-    const  contentPeriodBodyDesc = document.getElementById('contentPeriodBodyDesc')
-    contentPeriodBody.innerHTML = `
-                                <div class="row justify-content-center">
-                                    <div class="col text-danger">
-                                        Select Required periods*
-                                    </div>
-                                    <div class="col text-danger text-center" >
-                                        Total-Periods-selected : <span id="totalperiods">0</span>
-                                    </div>
-                                    <div class="col text-danger text-right p-0 m-0 " id="clearButton" >
-                                        <a onclick="clearPeriods()" class="btn btn-sm btn-outline-warning" style="margin-top: -10px;">clear-all</a>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period1" ><div class="row"><a class="text-dark col"  onclick="period1()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >1</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period2" ><div class="row"><a class="text-dark col"  onclick="period2()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >2</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period3" ><div class="row"><a class="text-dark col"  onclick="period3()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >3</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period4" ><div class="row"><a class="text-dark col"  onclick="period4()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >4</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period5" ><div class="row"><a class="text-dark col"  onclick="period5()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >5</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period6" ><div class="row"><a class="text-dark col"  onclick="period6()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >6</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period7" ><div class="row"><a class="text-dark col"  onclick="period7()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >7</a></div></div>
-                                    <div class="col periodmeta hoverable font-weight-bold" id="period8" ><div class="row"><a class="text-dark col"  onclick="period8()" style="position:absolute; display:flex; align-items:center; justify-content:center; text-align:center; padding:0; width:100%; height:100%; top:0; overflow:hidden; left: 0;"s >8</a></div></div>
-                                </div>
-                                `
-
-    contentPeriodBodyDesc.innerHTML = `
-                                        <div class="row">
-                                            <div class="col text-danger">
-                                                Enter Event Title*
-                                            </div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col">
-                                                <textarea name="eventDesc"  id="eventTitle" class="form-control btn-outline-blue"    rows="1"></textarea>
-                                            </div>
-                                        </div>  
-                                        <div class="row">
-                                            <div class="col text-danger">
-                                                Enter Event Description*
-                                            </div>
-                                        </div>
-                                        <div class="row ">
-                                        <div class="col">
-                                            <textarea name="eventDesc"  id="eventDesc" class="form-control btn-outline-blue" rows="5"></textarea>
-                                        </div>
-                                        </div>  
-                                        <div class="row ">
-                                        <div class="col text-center p-3">
-                                            <input type="button" value="Book" id="bookButton" onclick="processEventBooking('${eventDate}', '${eventDept}');" class="btn btn-primary ">
-                                        </div>
-                                        </div>  
-                                        `
-
 }
 
 
 $(document).ready(function() {
-    const initial = localStorage.getItem('initial')
-    const  contentBodyMessage = document.getElementById('contentBodyMessage')
-    passwordChange(initial)
-    //main process
-    getDept()
-    constructDateDom()
-
-    const  departmentView = document.getElementById('departmentView')
-    const deptId = localStorage.getItem('deptId')
-    let deptVal
-    if(deptId == 1)
-       deptVal = 'CSE'
-    if(deptId == 2)
-       deptVal = 'ECE'
-    if(deptId == 4)
-       deptVal = 'IT'
-    if(deptId == 3)
-       deptVal = 'EEE'
-    if(deptId == 6)
-       deptVal = 'MECH'
-    if(deptId == 5)
-       deptVal = 'ICE'
-    if(deptId == 7)
-       deptVal = 'CIVIL'
-    if(deptId == 8)
-       deptVal = 'ENG'
-    departmentView.value =  deptVal
-
-    const  departmentdate = document.getElementById('departmentdate')
-
-    departmentdate.addEventListener("change", function() {
-        if(departmentView.value != "") {
-            console.log(departmentdate.value, departmentView.value)
-            handleEventBooking(departmentdate.value, departmentView.value)
-        }
-        else {
-            contentBodyMessage.innerHTML = `<div class="alert alert-danger"> please select department field</div> `
-            setTimeout(function(){
-                contentBodyMessage.innerHTML = ``
-            }, 3000)
-        }
-    })
-    
-    departmentView.addEventListener("change", function() {
-        if(departmentdate.value != "") {
-            console.log(departmentdate.value, departmentView.value)
-            handleEventBooking(departmentdate.value, departmentView.value)
-        }
-        else {
-            contentBodyMessage.innerHTML = `<div class="alert alert-danger text-center"> please select Event Date</div> `
-            setTimeout(function(){
-                contentBodyMessage.innerHTML = ``
-            }, 3000)
-        }
-    })
-    
-
+   fetchProcess()
 })
 
 
 
+function cancelBooking(eventId, period, date) {
+    notifyContentRef.innerHTML = `<div class="alert alert-danger text-center">Are you sure to cancel the Event ? 
+                                    <button class="btn btn-primary" onclick="cancelBookingProcess(${eventId}, '${period}', '${date}')"> Ok </button>
+                                  </div>`
+    notifyCloseButton.style.display = "block"
+    $('#notifyModal').modal("show")
+    console.log(eventId)
+}
+
+
+function cancelBookingProcess(eventId, period, date) {
+    notifyContentRef.innerHTML =`<div class="alert alert-warning text-center"><i class="fas fa-spinner  text-primary fa-spin"></i> <br>
+                                    <p>please wait,processing</p> </div>`
+    notifyCloseButton.style.display = "none"
+    console.log(eventId)
+    const url = `http://localhost/seminar/restapi/event/eventcancel.php?eventid=${eventId}&periods=${period}&date=${date}`
+    console.log(url)
+    fetch(url)
+    .then(data => data.json())
+    .then(response => {
+        console.log(response)
+        if(response.response.status){
+            notifyContentRef.innerHTML = `<div class="alert alert-success text-center"> 
+                                                ${response.response.msg}
+                                        </div>`
+            // notifyCloseButton.style.display = "block"
+            $('#notifyModal').modal("show")
+            fetchProcess()
+            setTimeout(function() {
+                $('#notifyModal').modal("hide")
+            }, 2000)
+        } else {
+                notifyContentRef.innerHTML = `<div class="alert alert-danger text-center"> 
+                                                    ${response.response.msg}
+                                            </div>`
+                // notifyCloseButton.style.display = "block"
+                $('#notifyModal').modal("show")
+                fetchProcess()
+                setTimeout(function() {
+                    $('#notifyModal').modal("hide")
+                }, 2000)
+        }
+    })
+    .catch(error => console.log(error))
+}

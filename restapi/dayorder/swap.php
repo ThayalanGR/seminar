@@ -1,5 +1,5 @@
 <?php
-
+ 
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -58,5 +58,12 @@ if(isset($_GET['holiday']) && isset($_GET['id']) && isset($_GET['group'])) {
 
     $sql5 = "update tbl_timeline set swap = 0";
     mysqli_query($DB,$sql5);
+
+
+    $json = array();
+    $json["response"] = array(  
+        "status" => true
+    );
+    echo json_encode($json);
 
 }

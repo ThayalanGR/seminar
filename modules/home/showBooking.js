@@ -1186,8 +1186,7 @@ function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
 function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
     const periodMessageRef = document.getElementById('periodmessage')
     periodMessageRef.innerHTML = `<i class="fas fa-spinner text-primary fa-spin"></i> <br>
-                                    <p>please wait,processing</p>
-                                    `
+                                    <p>please wait,processing</p>`
      $('#periodinfomodal').modal('show')
     const uname = localStorage.getItem('uname')
     const periodDesc = document.getElementById('periodDesc').value
@@ -1215,6 +1214,7 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
                 }, 3000)
             }
             else {
+                console.log("error in else 1218")
                 const periodMessageRef = document.getElementById('periodmessage')
                 periodMessageRef.innerHTML = `<p class="alert alert-danger">${response.response.error}</p>`
                 $('#periodinfomodal').modal('show')
@@ -1234,7 +1234,6 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
     
 
 }
-
 
 function getPeriodInfo(periodId) {
     const periodMessageRef = document.getElementById('periodmessage')
@@ -1263,7 +1262,7 @@ function getPeriodInfo(periodId) {
             console.log(response)
             const periodinfomodalRef = document.getElementById('periodContent')
 
-            if(response.perioddetails[0].user_name != uname) {
+            if(response.perioddetails[0].user_name != uname && response.perioddetails[0].sec != null) {
                 periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
                                             <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
                                             <hr>
@@ -1318,7 +1317,48 @@ function getPeriodInfo(periodId) {
                 periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}', '${response.perioddetails[0].group_name}')">Request</button>`
                 periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
                 $('#periodinfomodal').modal('show')
-            } else {
+
+
+
+            }else if(response.perioddetails[0].sec == null && response.perioddetails[0].user_name == uname ){
+                periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
+                                            <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
+                                            <hr>
+                                        <div class="form-group " >
+                                                <div class="row bg-light">
+                                                    <div class="col text-primary font-weight-bold">
+                                                        Staff Name :
+                                                    </div>
+                                                    <div class="col">
+                                                        ${response.perioddetails[0].user_name}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col text-primary font-weight-bold">
+                                                        Subject Code :
+                                                    </div>
+                                                    <div class="col">
+                                                        ${response.perioddetails[0].sub_code}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col text-primary font-weight-bold">
+                                                  Event  Description :
+                                                </div>
+                                                <div class="col">
+                                                    ${response.perioddetails[0].description}
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                        </form>`
+                const periodinfomodalRefFooter = document.getElementById('periodFooter')
+                periodinfomodalRefFooter.innerHTML =`<div class="alert alert-danger text-center"> You can cancel the event using All Events menu  </div><br>`
+                periodinfomodalRefFooter.innerHTML  += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+                $('#periodinfomodal').modal('show')
+
+
+            } else if(response.perioddetails[0].sec != null && response.perioddetails[0].user_name == uname ) {
                 periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
                 <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
                 <hr>
@@ -1355,16 +1395,51 @@ function getPeriodInfo(periodId) {
                                 ${response.perioddetails[0].description}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col"> <hr> </div>
-                        </div>
-                       
+
                     </div>
                 </form>`
                 const periodinfomodalRefFooter = document.getElementById('periodFooter')
                 periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "cancelPeriod('${response.perioddetails[0].book_id}')">Cancel Booking</button>`
                 periodinfomodalRefFooter.innerHTML += ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
                 $('#periodinfomodal').modal('show')
+            } else {
+                periodinfomodalRef.innerHTML = `<form onSubmit = "return false;">
+                                            <p class=" font-weight-bold text-primary text-center">Already Booked Period ${response.perioddetails[0].period.split("")[1]} from dayorder ${response.perioddetails[0].day_order} date:${response.perioddetails[0].date}</p>
+                                            <hr>
+                                        <div class="form-group " >
+                                                <div class="row bg-light">
+                                                    <div class="col text-primary font-weight-bold">
+                                                        Staff Name :
+                                                    </div>
+                                                    <div class="col">
+                                                        ${response.perioddetails[0].user_name}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col text-primary font-weight-bold">
+                                                        Subject Code :
+                                                    </div>
+                                                    <div class="col">
+                                                        ${response.perioddetails[0].sub_code}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col text-primary font-weight-bold">
+                                                  Event  Description :
+                                                </div>
+                                                <div class="col">
+                                                    ${response.perioddetails[0].description}
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                        </form>`
+                const periodinfomodalRefFooter = document.getElementById('periodFooter')
+                // periodinfomodalRefFooter.innerHTML =`<button type="button" class="btn btn-danger" onClick = "getPeriodInfoCatch('${response.perioddetails[0].book_id}', '${response.perioddetails[0].group_name}')">Request</button>`
+                periodinfomodalRefFooter.innerHTML  = ` <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>`
+                $('#periodinfomodal').modal('show')
+
+
             }
 
         })
@@ -1388,12 +1463,14 @@ function getPeriodInfoCatch(book_id, group_name) {
     console.log(Token, requestmsg, book_id, periodSub)
 
     if(requestmsg != "" && periodSub != "Select Subject") {
-        url = `http://localhost/seminar/restapi/limit/getcurrentusage.php?group=${group_name}&subcode=${periodSub}&userid=${localStorage.getItem('token')}`
+        const url = `http://localhost/seminar/restapi/limit/getcurrentusage.php?group=${group_name}&subcode=${periodSub}&userid=${localStorage.getItem('token')}`
+        console.log(url)
         fetch(url)
         .then(data => data.json())
         .then(response => {
+            console.log(response)
             if(response.response.status == true) {
-                url = `http://localhost/seminar/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
+                const url = `http://localhost/seminar/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
                 console.log(url)
                 fetch(url)
                 .then(data => data.json())

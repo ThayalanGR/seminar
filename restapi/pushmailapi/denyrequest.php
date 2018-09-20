@@ -119,7 +119,7 @@ if(isset($_GET['sender']) && isset($_GET['reciever']) && isset($_GET['date']) &&
     $mail->Username = 'dotcodecommunity@gmail.com';
     $mail->Password = 'dotcc@123';
     $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
-    $email = "rajavignesh36@gmail.com";
+    $email = "grthayalan18@gmail.com";
     $mail->AddAddress($email);
     $mail->Subject = trim("Seminar Hall Booking Portal");
     $mail->MsgHTML($message);

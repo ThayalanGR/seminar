@@ -110,7 +110,7 @@ if(isset($_GET['deptid']) && isset($_GET['group']) && isset($_GET['date']) && is
                 "status" => false,
                 "error" => "maximum booking limit reached"
             );
-            echo json_encode($json);
+            echo json_encode($json); 
         }
     }
 }

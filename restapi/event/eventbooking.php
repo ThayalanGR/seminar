@@ -25,12 +25,13 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
     $row3 = mysqli_fetch_array($result3);
     $dept = $row3['dept_name'];
 
-    $sql1 = "insert into tbl_events (dept_id, date, period, user_name, event_name, description, timestamp) values (".$deptid.", '".$date."', '".$period."', '".$name."', '".$eventname."', '".$description."', ".$timestamp.")";
-    mysqli_query($DB,$sql1);
-    
     $sql2 = "select group_name, date, day_order from tbl_temp where date = '".$date."'";
     $result2 = mysqli_query($DB,$sql2);
     if ($row2 = mysqli_fetch_array($result2)) {
+        
+        $sql1 = "insert into tbl_events (dept_id, date, period, user_name, event_name, description, timestamp) values (".$deptid.", '".$date."', '".$period."', '".$name."', '".$eventname."', '".$description."', ".$timestamp.")";
+        mysqli_query($DB,$sql1);
+    
         $group = $row2['group_name']; 
         $date = $row2['date']; 
         $dayorder = $row2['day_order'];
@@ -148,7 +149,7 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
                                         <p><span class="font-weight-bold">Hello  '.$username.'</span>,<br><br>
                                         <span class="font-weight-bold"></span> The seminar hall that you have booked for the period (ie., <span class="text-warning"> '.$usrdate.' Day Order - '.$usrdayorder.'  '.$usrdept.' Seminar Hall for the Class '.$usrsubcode.' - '.$usrdept.' - '.$usrsec.' -SEM- '.$usrsem.' </span>) has been cancelled due to the event('.$eventname.'). 
                                         <br> 
-                                        </p>1
+                                        </p>
                                         <hr>
                                     </div>
                                 </div>
@@ -156,45 +157,44 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
                         </div>
                     </div>
                 </body>
-                </html>
-        ';
+                </html>';
         
-        
-            // php mailer code starts
-            date_default_timezone_set('Etc/UTC');
-            $mail = new PHPMailer(true);
-            $mail->IsSMTP(); // telling the class to use SMTP
-            $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
-            $mail->SMTPAuth = true;                  // enable SMTP authentication
-            $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-            $mail->Host = gethostbyname('ssl://smtp.gmail.com');      // sets GMAIL as the SMTP server
-            $mail->Port = 465;                   // set the SMTP port for the GMAIL server
-            $mail->Username = 'dotcodecommunity@gmail.com';
-            $mail->Password = 'dotcc@123';
-            $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
-            $email = "grthayalan18@gmail.com";
-            $mail->AddAddress($email);
-            $mail->Subject = trim("Seminar Hall Booking Portal");
-            $mail->MsgHTML($message);
-            try {
-                $mail->send();
             
-                if(!$mail){
-                    // $json = array();
-                    // $json["response"] = array(  "status" => false);
-                    // echo json_encode($json);
-                }
-                else{
-                    // $json = array();
-                    // $json["response"] = array(  "status" => true);
-                    // echo json_encode($json);
-                }
-            } catch (Exception $ex) {
-        
-                $msg = $ex->getMessage();
-                $msgType = "warning";
-        
-            }            
+                // php mailer code starts
+                date_default_timezone_set('Etc/UTC');
+                $mail = new PHPMailer(true);
+                $mail->IsSMTP(); // telling the class to use SMTP
+                $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
+                $mail->SMTPAuth = true;                  // enable SMTP authentication
+                $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+                $mail->Host = gethostbyname('ssl://smtp.gmail.com');      // sets GMAIL as the SMTP server
+                $mail->Port = 465;                   // set the SMTP port for the GMAIL server
+                $mail->Username = 'dotcodecommunity@gmail.com';
+                $mail->Password = 'dotcc@123';
+                $mail->SetFrom('dotcodecommunity@gmail.com', 'Sara Seminar hall');
+                $email = "grthayalan18@gmail.com";
+                $mail->AddAddress($email);
+                $mail->Subject = trim("Seminar Hall Booking Portal");
+                $mail->MsgHTML($message);
+                try {
+                    $mail->send();
+                
+                    if(!$mail){
+                        // $json = array();
+                        // $json["response"] = array(  "status" => false);
+                        // echo json_encode($json);
+                    }
+                    else{
+                        // $json = array();
+                        // $json["response"] = array(  "status" => true);
+                        // echo json_encode($json);
+                    }
+                } catch (Exception $ex) {
+            
+                    $msg = $ex->getMessage();
+                    $msgType = "warning";
+            
+                }            
 
                 $sql3 = "delete from tbl_booking where book_id = ".$usrbookid;
                 mysqli_query($DB,$sql3);
@@ -212,7 +212,7 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
                 $sql9 = "update tbl_limit set current_usage = ".$current." where user_id = ".$userid." and sub_code = '".$usrsubcode."' and group_name = '".$usrgroupname."'";
                 mysqli_query($DB,$sql9);
             }
-            $sql6 = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, dept, description, active, event,event_name) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '".$periods[$x]."', '".$name."', '".$dept."', '".$description."', ".$active.", ".$event.", '".$eventname."')";
+            $sql6 = "insert into tbl_booking (dept_id, group_name, date, day_order, period, user_name, sub_code, dept, description, active, event,event_name) values (".$deptid.", '".$group."', '".$date."', ".$dayorder.", '".$periods[$x]."', '".$name."', '".$eventname."', '".$dept."', '".$description."', ".$active.", ".$event.", '".$eventname."')";
             mysqli_query($DB,$sql6);
 
             $sql10 = "select book_id from tbl_booking where dept_id = ".$deptid." and group_name = '".$group."' and date = '".$date."' and day_order = ".$dayorder." and period = '".$periods[$x]."'";
@@ -234,12 +234,12 @@ if(isset($_GET['deptid']) && isset($_GET['date']) && isset($_GET['period']) && i
     }
     else {
         $sql1 = "insert into tbl_events (dept_id, date, period, user_name, event_name, description, timestamp) values (".$deptid.", '".$date."', '".$period."', '".$name."', '".$eventname."', '".$description."', ".$timestamp.")";
-        // mysqli_query($DB,$sql1);
-        // $json = array();
-        // $json["response"] = array(  
-        //     "status" => true
-        // );
-        // echo json_encode($json); 
+        mysqli_query($DB,$sql1);
+        $json = array();
+        $json["response"] = array(  
+            "status" => true
+        );
+        echo json_encode($json); 
     }
 }
 ?>
