@@ -1,3 +1,5 @@
+ 
+
 const notifyContentRef = document.getElementById('notifyContent')
 const notifyCloseRef = document.getElementById('notifyCloseButton')
 const passwordContentRef = document.getElementById('passwordContent')
@@ -8,7 +10,7 @@ const logoutRef = document.getElementById('logoutButton')
 
 
 function handleLogoutRequest(){
-    window.location.href = "http://localhost/seminar/modules/logout/"
+    window.location.href =  baseUrl+"/modules/logout/"
 }
 
 // password change block
@@ -55,7 +57,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    const url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -122,7 +124,7 @@ function constructDeptDom(result) {
 
 function getDept() {
     
-    url = `http://localhost/seminar/restapi/department/getdepartment.php`
+    const url = `${baseUrl}/restapi/department/getdepartment.php`
     fetch(url).
     then(data => data.json()).
     then(result => {

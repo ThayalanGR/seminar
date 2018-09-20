@@ -1,3 +1,4 @@
+ 
 
  const achieveRef = document.getElementById('achievement')
  const prizeRef = document.getElementById('prize')
@@ -15,7 +16,7 @@
  const messageRef = document.getElementById('message')
  const logoutRef = document.getElementById('logoutButton')
  function handleLogoutRequest(){
-     window.location.href = "http://localhost/seminar/modules/logout/"
+     window.location.href =  baseUrl+"/modules/logout/"
  }
 
  $(document).ready(function() {
@@ -60,7 +61,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {

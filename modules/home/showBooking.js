@@ -186,7 +186,7 @@ setInterval(function() {
 if(response.timeline[0].p1 != 0 ){
     
     const periodId = response.timeline[0].p1
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -207,7 +207,7 @@ if(response.timeline[0].p1 != 0 ){
 if(response.timeline[0].p2 != 0){
 
     const periodId = response.timeline[0].p2
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -228,7 +228,7 @@ if(response.timeline[0].p2 != 0){
 if(response.timeline[0].p3  != 0){
     
     const periodId = response.timeline[0].p3
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -251,7 +251,7 @@ if(response.timeline[0].p3  != 0){
 if(response.timeline[0].p4  != 0){
 
     const periodId = response.timeline[0].p4
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -274,7 +274,7 @@ if(response.timeline[0].p4  != 0){
 if(response.timeline[0].p5  != 0){
     
     const periodId = response.timeline[0].p5
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -295,7 +295,7 @@ if(response.timeline[0].p5  != 0){
 if(response.timeline[0].p6  != 0){
 
     const periodId = response.timeline[0].p6
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -316,7 +316,7 @@ if(response.timeline[0].p6  != 0){
 if(response.timeline[0].p7  != 0){
     
     const periodId = response.timeline[0].p7
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -337,7 +337,7 @@ if(response.timeline[0].p7  != 0){
 if(response.timeline[0].p8  != 0){
 
     const periodId = response.timeline[0].p8
-    const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+    const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
     fetch(url).
     then(data => data.json())
     .then(response => {
@@ -373,7 +373,7 @@ if(response.timeline[0].p8  != 0){
 if(response.timeline[1].p1  != 0){
     
 const periodId = response.timeline[1].p1
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -394,7 +394,7 @@ two1.innerHTML = output
 if(response.timeline[1].p2  != 0){
 
 const periodId = response.timeline[1].p2
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -416,7 +416,7 @@ two2.innerHTML = output
 if(response.timeline[1].p3  != 0){
 
 const periodId = response.timeline[1].p3
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -439,7 +439,7 @@ two3.innerHTML = output
 if(response.timeline[1].p4  != 0){
 
 const periodId = response.timeline[1].p4
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -462,7 +462,7 @@ two4.innerHTML = output
 if(response.timeline[1].p5  != 0){
 
 const periodId = response.timeline[1].p5
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -483,7 +483,7 @@ two5.innerHTML = output
 if(response.timeline[1].p6  != 0){
 
 const periodId = response.timeline[1].p6
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -504,7 +504,7 @@ two6.innerHTML = output
 if(response.timeline[1].p7  != 0){
 
 const periodId = response.timeline[1].p7
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -525,7 +525,7 @@ two7.innerHTML = output
 if(response.timeline[1].p8  != 0){
 
 const periodId = response.timeline[1].p8
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -561,7 +561,7 @@ two8.innerHTML = output
 if(response.timeline[2].p1  != 0){
     
 const periodId = response.timeline[2].p1
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -582,7 +582,7 @@ three1.innerHTML = output
 if(response.timeline[2].p2  != 0){
 
 const periodId = response.timeline[2].p2
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -604,7 +604,7 @@ three2.innerHTML = output
 if(response.timeline[2].p3  != 0){
 
 const periodId = response.timeline[2].p3
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -627,7 +627,7 @@ three3.innerHTML = output
 if(response.timeline[2].p4  != 0){
 
 const periodId = response.timeline[2].p4
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -650,7 +650,7 @@ three4.innerHTML = output
 if(response.timeline[2].p5  != 0){
 
 const periodId = response.timeline[2].p5
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -671,7 +671,7 @@ three5.innerHTML = output
 if(response.timeline[2].p6  != 0){
 
 const periodId = response.timeline[2].p6
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -692,7 +692,7 @@ three6.innerHTML = output
 if(response.timeline[2].p7  != 0){
 
 const periodId = response.timeline[2].p7
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -713,7 +713,7 @@ three7.innerHTML = output
 if(response.timeline[2].p8  != 0){
 
 const periodId = response.timeline[2].p8
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -746,7 +746,7 @@ three8.innerHTML = output
 if(response.timeline[3].p1  != 0){
     
 const periodId = response.timeline[3].p1
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -767,7 +767,7 @@ four1. style.backgroundColor = "#60ff73"
 if(response.timeline[3].p2  != 0){
 
 const periodId = response.timeline[3].p2
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -789,7 +789,7 @@ four2.innerHTML = output
 if(response.timeline[3].p3  != 0){
 
 const periodId = response.timeline[3].p3
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -812,7 +812,7 @@ four3.innerHTML = output
 if(response.timeline[3].p4  != 0){
 
 const periodId = response.timeline[3].p4
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -835,7 +835,7 @@ four4.innerHTML = output
 if(response.timeline[3].p5  != 0){
 
 const periodId = response.timeline[3].p5
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -856,7 +856,7 @@ four5.innerHTML = output
 if(response.timeline[3].p6  != 0){
 
 const periodId = response.timeline[3].p6
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -877,7 +877,7 @@ four6.innerHTML = output
 if(response.timeline[3].p7  != 0){
 
 const periodId = response.timeline[3].p7
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -898,7 +898,7 @@ four7.innerHTML = output
 if(response.timeline[3].p8  != 0){
 
 const periodId = response.timeline[3].p8
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -934,7 +934,7 @@ four8.innerHTML = output
 if(response.timeline[4].p1  != 0){
     
 const periodId = response.timeline[4].p1
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -955,7 +955,7 @@ five1.innerHTML = output
 if(response.timeline[4].p2  != 0){
 
 const periodId = response.timeline[4].p2
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -977,7 +977,7 @@ five2.innerHTML = output
 if(response.timeline[4].p3  != 0){
 
 const periodId = response.timeline[4].p3
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1000,7 +1000,7 @@ five3.innerHTML = output
 if(response.timeline[4].p4  != 0){
 
 const periodId = response.timeline[4].p4
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1023,7 +1023,7 @@ five4.innerHTML = output
 if(response.timeline[4].p5  != 0){
 
 const periodId = response.timeline[4].p5
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1044,7 +1044,7 @@ five5.innerHTML = output
 if(response.timeline[4].p6  != 0){
 
 const periodId = response.timeline[4].p6
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1065,7 +1065,7 @@ five6.innerHTML = output
 if(response.timeline[4].p7  != 0){
 
 const periodId = response.timeline[4].p7
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1086,7 +1086,7 @@ five7.innerHTML = output
 if(response.timeline[4].p8  != 0){
 
 const periodId = response.timeline[4].p8
-const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
 fetch(url).
 then(data => data.json())
 .then(response => {
@@ -1111,7 +1111,7 @@ five8.innerHTML = output
 }
 
 function getresponse(deptId) {
-    url = `http://localhost/seminar/restapi/timeline/gettimeline.php?deptid=${deptId}`
+    const url = `${baseUrl}/restapi/timeline/gettimeline.php?deptid=${deptId}`
     fetch(url).
     then(data => data.json()).
     then(response => {
@@ -1141,7 +1141,7 @@ function setPeriodInfo(periodName,groupName,date,dayorder,deptid) {
 
     const uname = localStorage.getItem('uname')
     console.log(uname)
-    const url = `http://localhost/seminar/restapi/workload/getworkload.php?username=${uname}`
+    const url = `${baseUrl}/restapi/workload/getworkload.php?username=${uname}`
     fetch(url)
     .then(data => data.json())
     .then(response => {
@@ -1194,7 +1194,7 @@ function setPeriodInfoCatch(periodName,groupName,date,dayorder,deptid) {
     console.log(periodDesc, periodSub, periodName,groupName,date,dayorder,deptid)
 
     if(periodDesc != "" && periodSub != "Select Subject" ) {
-        url = `http://localhost/seminar/restapi/timeline/insertperioddetails.php?deptid=${deptid}&group=${groupName}&date=${date}&dayorder=${dayorder}&period=${periodName}&username=${uname}&subcode=${periodSub}&description=${periodDesc}&userid=${localStorage.getItem('token')}&roleid=${localStorage.getItem('roleId')}`
+        const url = `${baseUrl}/restapi/timeline/insertperioddetails.php?deptid=${deptid}&group=${groupName}&date=${date}&dayorder=${dayorder}&period=${periodName}&username=${uname}&subcode=${periodSub}&description=${periodDesc}&userid=${localStorage.getItem('token')}&roleid=${localStorage.getItem('roleId')}`
         console.log(url)
         fetch(url)
         .then(data => data.json())
@@ -1241,7 +1241,7 @@ function getPeriodInfo(periodId) {
 
     const uname = localStorage.getItem('uname')
     console.log(uname)
-    const url = `http://localhost/seminar/restapi/workload/getworkload.php?username=${uname}`
+    const url = `${baseUrl}/restapi/workload/getworkload.php?username=${uname}`
     fetch(url)
     .then(data => data.json())
     .then(response => {
@@ -1253,7 +1253,7 @@ function getPeriodInfo(periodId) {
             option += `<option>${e.sub_code}-${e.dept}-${e.section}-sem-${e.sem}</option>`
         })
         console.log(option)
-        const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+        const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
         fetch(url)
         .then(data => data.json())
         .then(response => {
@@ -1463,14 +1463,14 @@ function getPeriodInfoCatch(book_id, group_name) {
     console.log(Token, requestmsg, book_id, periodSub)
 
     if(requestmsg != "" && periodSub != "Select Subject") {
-        const url = `http://localhost/seminar/restapi/limit/getcurrentusage.php?group=${group_name}&subcode=${periodSub}&userid=${localStorage.getItem('token')}`
+        const url = `${baseUrl}/restapi/limit/getcurrentusage.php?group=${group_name}&subcode=${periodSub}&userid=${localStorage.getItem('token')}`
         console.log(url)
         fetch(url)
         .then(data => data.json())
         .then(response => {
             console.log(response)
             if(response.response.status == true) {
-                const url = `http://localhost/seminar/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
+                const url = `${baseUrl}/restapi/pushmailapi/requestperiod.php?token=${Token}&book_id=${book_id}&request_msg=${requestmsg}&sub_code=${periodSub}`
                 console.log(url)
                 fetch(url)
                 .then(data => data.json())
@@ -1518,7 +1518,7 @@ function cancelPeriod(bookid) {
                                     `
      $('#periodinfomodal').modal('show')
 
-    url = `http://localhost/seminar/restapi/timeline/cancelbooking.php?bookid=${bookid}`
+    const url = `${baseUrl}/restapi/timeline/cancelbooking.php?bookid=${bookid}`
     fetch(url)
     .then(data => data.json())
     .then(response => {

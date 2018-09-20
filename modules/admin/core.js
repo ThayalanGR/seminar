@@ -1,3 +1,5 @@
+ 
+
 const notifyContentRef = document.getElementById('notifyContent')
 const notifyCloseRef = document.getElementById('notifyCloseButton')
 const passwordContentRef = document.getElementById('passwordContent')
@@ -6,7 +8,7 @@ const messageRef = document.getElementById('message')
 const logoutRef = document.getElementById('logoutButton')
 
 function handleLogoutRequest(){
-    window.location.href = "http://localhost/seminar/modules/logout/"
+    window.location.href =  baseUrl+"/modules/logout/"
 }
 
 function passwordChange(initial) {
@@ -53,7 +55,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -123,7 +125,7 @@ function constructDeptDom(result) {
 
 function getDept() {
     
-    url = `http://localhost/seminar/restapi/department/getdepartment.php`
+    url = `${baseUrl}/restapi/department/getdepartment.php`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -153,7 +155,7 @@ var date = yyyy+'-'+mm+'-'+dd;
 
 
 function fetchProcess() {
-    url = `http://localhost/seminar/restapi/dayorder/fetchdayorder.php?roleid=3`
+    url = `${baseUrl}/restapi/dayorder/fetchdayorder.php?roleid=3`
 
     fetch(url).
     then(data => data.json()).
@@ -266,7 +268,7 @@ function deleteAndSwap(date) {
     alertRef.innerHTML = `<p class="alert alert-warning ">please wait , our machines processing your request
                             <br><i class="fas fa-spinner text-primary fa-spin"></i> <br>    
                         </p>`
-    const url1 = `http://localhost/seminar/restapi/dayorder/updatedayorder.php?holiday=${date}`
+    const url1 = `${baseUrl}/restapi/dayorder/updatedayorder.php?holiday=${date}`
     console.log(url1)
     fetch(url1).
     then(data => data.json()).
@@ -331,7 +333,7 @@ function OneTimeGenerationProcess() {
         passwordContentRef.innerHTML = `<div class="alert alert-warning text-center"><p>please wait , our machines processing your request
                                         <br><i class="fas fa-spinner text-primary text-center fa-spin"></i></div>`
         // passwordFooterRef.innerHTML = ``
-        const url1 = `http://localhost/seminar/restapi/autoupdate/onetimegen.php?date=${date}&count=${count}&initial=1`
+        const url1 = `${baseUrl}/restapi/autoupdate/onetimegen.php?date=${date}&count=${count}&initial=1`
         console.log(url1)
         fetch(url1).
         then(data => data.json()).
@@ -391,7 +393,7 @@ function commonGenerationProcess() {
     if( count != 0 && count != "") {
         messageRef.innerHTML = ``  
         console.log(date,count)
-        const url1 = `http://localhost/seminar/restapi/dayorder/insertdayorder.php?count=${count}&initial=0`
+        const url1 = `${baseUrl}/restapi/dayorder/insertdayorder.php?count=${count}&initial=0`
         fetch(url1).
         then(data => data.json()).
         then(result => {

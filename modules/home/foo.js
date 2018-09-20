@@ -1,3 +1,5 @@
+let baseUrl = localStorage.getItem('baseUrl')
+
 $(document).ready(function() {
     let output = ``;
 
@@ -7,7 +9,7 @@ $(document).ready(function() {
         if(element.p1){
             const periodId = 'p'+element.p1
             console.log(periodId)
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -29,7 +31,7 @@ $(document).ready(function() {
 
         if(element.p2){
             const periodId = 'p'+element.p2
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -51,7 +53,7 @@ $(document).ready(function() {
 
         if(element.p3){
             const periodId = 'p'+element.p3
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -73,7 +75,7 @@ $(document).ready(function() {
 
         if(element.p4){
             const periodId = 'p'+element.p4
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -96,7 +98,7 @@ $(document).ready(function() {
 
         if(element.p5){
             const periodId = 'p'+element.p5
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -118,7 +120,7 @@ $(document).ready(function() {
 
         if(element.p6){
             const periodId ='p'+ element.p6
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -141,7 +143,7 @@ $(document).ready(function() {
 
         if(element.p7){
             const periodId = 'p'+element.p7
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -159,7 +161,7 @@ $(document).ready(function() {
     function p8(element){    
         if(element.p8){
             const periodId = 'p'+element.p8
-            const url = `http://localhost/seminar/restapi/timeline/getperioddetails.php?periodid=${periodId}`
+            const url = `${baseUrl}/restapi/timeline/getperioddetails.php?periodid=${periodId}`
             fetch(url).
             then(data => data.json())
             .then(response => {
@@ -195,7 +197,7 @@ function insertTimelineValues(response) {
 }
 
 const deptId = localStorage.getItem('deptId')
-url = `http://localhost/seminar/restapi/timeline/gettimeline.php?deptid=${deptId}`
+const url = `${baseUrl}/restapi/timeline/gettimeline.php?deptid=${deptId}`
 
 fetch(url).
 then(data => data.json())

@@ -1,3 +1,5 @@
+ 
+
 const notifyContentRef = document.getElementById('notifyContent')
 const notifyCloseRef = document.getElementById('notifyCloseButton')
 const passwordContentRef = document.getElementById('passwordContent')
@@ -5,7 +7,7 @@ const passwordFooterRef = document.getElementById('passwordFooter')
 const messageRef = document.getElementById('message')
 const logoutRef = document.getElementById('logoutButton')
 function handleLogoutRequest(){
-    window.location.href = "http://localhost/seminar/modules/logout/"
+    window.location.href =  baseUrl+"/modules/logout/"
 }
 
 $(document).ready(function() {
@@ -58,7 +60,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -123,7 +125,7 @@ var date = yyyy+'-'+mm+'-'+dd;
 function fetchProcess() {
     const maincontent = document.getElementById('maincontent')
     maincontent.innerHTML = ``
-    const url = `http://localhost/seminar/restapi/event/eventview.php`
+    const url = `${baseUrl}/restapi/event/eventview.php`
     fetch(url)
     .then(data => data.json())
     .then(response => {
@@ -195,7 +197,7 @@ function cancelBookingProcess(eventId, period, date) {
                                     <p>please wait,processing</p> </div>`
     notifyCloseButton.style.display = "none"
     console.log(eventId)
-    const url = `http://localhost/seminar/restapi/event/eventcancel.php?eventid=${eventId}&periods=${period}&date=${date}`
+    const url = `${baseUrl}/restapi/event/eventcancel.php?eventid=${eventId}&periods=${period}&date=${date}`
     console.log(url)
     fetch(url)
     .then(data => data.json())

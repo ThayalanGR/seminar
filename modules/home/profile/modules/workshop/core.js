@@ -1,3 +1,5 @@
+ 
+
 const wnameRef = document.getElementById('wname')
 const orgRef = document.getElementById('org')
 const locationRef = document.getElementById('loc')
@@ -22,7 +24,7 @@ const disRef = document.getElementById('dis')
  const messageRef = document.getElementById('message')
  const logoutRef = document.getElementById('logoutButton')
  function handleLogoutRequest(){
-     window.location.href = "http://localhost/seminar/modules/logout/"
+     window.location.href =  baseUrl+"/modules/logout/"
  }
 $(document).ready(function() {
    const unameRef = document.getElementById('uname')
@@ -48,7 +50,7 @@ function grabValue() {
    const dispor = disRef.value
    const id1 = localStorage.getItem('token')
    console.log(id1,text,wname,org,location,ondate,ondatef,ondatet,wtype,ayear,remarks,dispor)
-   url = `http://localhost/seminar/restapi/workshop/workshop.php?userid=${id1}&dept=${text}&wname=${wname}&org=${org}
+   url = `${baseUrl}/restapi/workshop/workshop.php?userid=${id1}&dept=${text}&wname=${wname}&org=${org}
    &loc=${location}&on=${ondate}&from=${ondatef}&to=${ondatet}&wtype=${wtype}&acad=${ayear}&rem=${remarks}&dis=${dispor}`
    fetch(url).
    then(data => data.json()).
@@ -83,7 +85,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
    console.log(pass1,userId)
-   url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+   url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
    fetch(url).
    then(data => data.json()).
    then(result => {

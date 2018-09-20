@@ -3,6 +3,7 @@ const disRef = document.getElementById('dis')
 
  //for changing password
 
+  
 
  const notifyContentRef = document.getElementById('notifyContent')
  const notifyCloseRef = document.getElementById('notifyCloseButton')
@@ -11,7 +12,7 @@ const disRef = document.getElementById('dis')
  const messageRef = document.getElementById('message')
  const logoutRef = document.getElementById('logoutButton')
  function handleLogoutRequest(){
-     window.location.href = "http://localhost/seminar/modules/logout/"
+     window.location.href =  baseUrl+"/modules/logout/"
  }
 
 
@@ -30,7 +31,7 @@ function grabAOF() {
     const disporder = disRef.value
     const id1 = localStorage.getItem('token')
     console.log(text,disporder,id1)
-    url = `http://localhost/seminar/restapi/areaofin/areaofin.php?aof=${text}&dis=${disporder}&userid=${id1}`
+    url = `${baseUrl}/restapi/areaofin/areaofin.php?aof=${text}&dis=${disporder}&userid=${id1}`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -63,7 +64,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {

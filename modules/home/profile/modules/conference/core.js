@@ -17,6 +17,7 @@
 
 
   //for changing password
+   
 
 
   const notifyContentRef = document.getElementById('notifyContent')
@@ -26,7 +27,7 @@
   const messageRef = document.getElementById('message')
   const logoutRef = document.getElementById('logoutButton')
   function handleLogoutRequest(){
-      window.location.href = "http://localhost/seminar/modules/logout/"
+      window.location.href =  baseUrl+"/modules/logout/"
   }
  $(document).ready(function() {
     const unameRef = document.getElementById('uname')
@@ -56,7 +57,7 @@ function grabValue() {
     const dispor = disRef.value
     const id1 = localStorage.getItem('token')
     console.log(id1,author,text,title,cname,org,location,ondate,ondatef,ondatet,pages,ctype,url,ayear,remarks,dispor)
-    url = `http://localhost/seminar/restapi/confer/confer.php?userid=${id1}$auth=${author}&dept=${text}&tit=${title}&cname=${cname}&org=${org}
+    url = `${baseUrl}/restapi/confer/confer.php?userid=${id1}$auth=${author}&dept=${text}&tit=${title}&cname=${cname}&org=${org}
     &loc=${location}&on=${ondate}&from=${ondatef}&to=${ondatet}&pag=${pages}&ctype=${ctype}&url=${url}&acad=${ayear}&rem=${remarks}&dis=${dispor}`
     fetch(url).
     then(data => data.json()).
@@ -91,7 +92,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {

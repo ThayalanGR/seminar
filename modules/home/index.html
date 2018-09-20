@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="../../assets/image/saraicon.ico" type="image/x-icon">
     <title>SeminarHallBooking</title>
     <script src="./init.js"></script>
+    <script src="../../config.js"></script>
+
     <style>
         .no-js #loader {
             display: none;
@@ -24,7 +26,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: url("http://localhost/seminar/assets/gif/Preloade.gif") center no-repeat #fff;
+            background: url( "../../assets/gif/Preloade.gif") center no-repeat #fff;
         }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -90,7 +92,7 @@
 
 <nav class="navbar navbar-expand-lg  fixed-top shadow" style="width:100%; background-color: #f3f3f3;" >
        
-     <a class="navbar-brand text-center p-0 font-weight-bold" href="http://localhost/seminar/">
+     <a class="navbar-brand text-center p-0 font-weight-bold" href= "../../">
         <img src="../../assets/image/saralogo.png" class="rounded-circle" width="40" height="40" alt="">
         <span class="text-primary" style="text-transform: uppercase;">Saranathan College Of Engineering</span><br>
     </a>
@@ -98,7 +100,7 @@
                 <i class="fas fa-bars"></i>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
                 <a class="nav-item nav-link dropdown-item hoverable rounded ml-3" href="../../modules/home/">Home <span class="sr-only">(current)</span></a>
@@ -111,7 +113,7 @@
             </li>
 
             <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle dropdown-item ml-3 "  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link nav-item dropdown-toggle dropdown-item hoverable rounded ml-3 "  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        Add
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">

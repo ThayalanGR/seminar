@@ -1,3 +1,4 @@
+ 
 
  const titleRef = document.getElementById('bname')
  const authorRef = document.getElementById('aname')
@@ -15,7 +16,7 @@
   const messageRef = document.getElementById('message')
   const logoutRef = document.getElementById('logoutButton')
   function handleLogoutRequest(){
-      window.location.href = "http://localhost/seminar/modules/logout/"
+      window.location.href =  baseUrl+"/modules/logout/"
   }
 
 
@@ -32,7 +33,7 @@ function grabBook() {
     const remarks   = remarkRef.value
     const id1 = localStorage.getItem('token')
     console.log(id1,title,author,remarks)
-    url = `http://localhost/seminar/restapi/book/book.php?tit=${title}&auth=${author}&userid=${id1}&monyr=${mony}&rem=${remarks}`
+    url = `${baseUrl}/restapi/book/book.php?tit=${title}&auth=${author}&userid=${id1}&monyr=${mony}&rem=${remarks}`
     fetch(url).
     then(data => data.json()).
     then(result => {
@@ -65,7 +66,7 @@ function passwordChangeWithoutInitial() {
 
 function updatePassword(userId, pass1) {
     console.log(pass1,userId)
-    url = `http://localhost/seminar/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
+    url = `${baseUrl}/restapi/update/updatepassword.php?staffid=${userId}&password=${pass1}`
     fetch(url).
     then(data => data.json()).
     then(result => {

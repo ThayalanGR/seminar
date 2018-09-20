@@ -1,3 +1,5 @@
+console.log(localStorage.getItem('baseUrl'))
+ 
 
 const textRef = document.getElementById('staffid')
 const passRef = document.getElementById('password')
@@ -15,10 +17,10 @@ function parseValidationResult(result) {
         localStorage.setItem("deptId",  result.response[0].deptId)
         localStorage.setItem("emailId",  result.response[0].email)
         if(result.response[0].roleId == 1) {
-            window.location.href = "http://localhost/seminar/modules/home/"
+            window.location.href =  baseUrl+"/modules/home/"
         }
         if(result.response[0].roleId == 3) {
-            window.location.href = "http://localhost/seminar/modules/admin/"
+            window.location.href =  baseUrl+"/modules/admin/"
         }
     }
     else {
@@ -50,7 +52,7 @@ $(document).ready(function() {
 
 function validate(userId, password) {
 
-    url = `http://localhost/seminar/restapi/authentication/validate.php?staffid=${userId}&password=${password}`
+    const url = `${baseUrl}/restapi/authentication/validate.php?staffid=${userId}&password=${password}`
     fetch(url).
     then(data => data.json()).
     then(result => {
